@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RoutineStepCell" customModule="Lunaris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="161"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="161"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJ9-Ha-49Y">
+                        <rect key="frame" x="-2" y="0.6666666666666714" width="414" height="160"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h4-Yq-OEd">
+                                <rect key="frame" x="20" y="10" width="17" height="24"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="20"/>
+                                <color key="textColor" red="0.62745098039215685" green="0.62745098039215685" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cleanser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDd-Fa-fCP">
+                                <rect key="frame" x="42" y="10" width="71" height="24"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Bold" family="Bodoni 72" pointSize="20"/>
+                                <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S4C-hg-7qZ">
+                                <rect key="frame" x="118" y="8.6666666666666679" width="27" height="25.333333333333332"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large" variableValue="1"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jla-4O-yac">
+                                <rect key="frame" x="20" y="39" width="374" height="56"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cerave" translatesAutoresizingMaskIntoConstraints="NO" id="KBH-nJ-yQ4">
+                                        <rect key="frame" x="5" y="4" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="SKA-Yu-ZdH"/>
+                                            <constraint firstAttribute="height" constant="48" id="V3A-41-JCf"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heimish" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf6-qV-xAg">
+                                        <rect key="frame" x="63" y="6" width="44.666666666666657" height="17"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                        <color key="textColor" red="0.21568627450980393" green="0.16078431372549018" blue="0.30196078431372547" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Effaclar Gel Moussant Cleanser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phv-uo-iJ0">
+                                        <rect key="frame" x="60.999999999999986" y="25.000000000000007" width="187.66666666666663" height="19.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="16"/>
+                                        <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cnv-KF-3Wt">
+                                        <rect key="frame" x="342" y="14.333333333333339" width="27" height="25.333333333333332"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large" variableValue="1"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="phv-uo-iJ0" firstAttribute="top" secondItem="Lf6-qV-xAg" secondAttribute="bottom" constant="2" id="10l-W9-FhK"/>
+                                    <constraint firstItem="KBH-nJ-yQ4" firstAttribute="top" secondItem="jla-4O-yac" secondAttribute="top" constant="4" id="4Lv-y7-lSc"/>
+                                    <constraint firstItem="cnv-KF-3Wt" firstAttribute="centerY" secondItem="jla-4O-yac" secondAttribute="centerY" id="IdY-Sf-nyf"/>
+                                    <constraint firstItem="Lf6-qV-xAg" firstAttribute="leading" secondItem="KBH-nJ-yQ4" secondAttribute="trailing" constant="10" id="MQe-a9-CNZ"/>
+                                    <constraint firstItem="phv-uo-iJ0" firstAttribute="leading" secondItem="KBH-nJ-yQ4" secondAttribute="trailing" constant="8" id="Ozv-Mk-Viv"/>
+                                    <constraint firstAttribute="bottom" secondItem="KBH-nJ-yQ4" secondAttribute="bottom" constant="4" id="Qul-rP-THm"/>
+                                    <constraint firstItem="KBH-nJ-yQ4" firstAttribute="leading" secondItem="jla-4O-yac" secondAttribute="leading" constant="5" id="dyO-bD-0sb"/>
+                                    <constraint firstAttribute="trailing" secondItem="cnv-KF-3Wt" secondAttribute="trailing" constant="5" id="uyH-6I-Az7"/>
+                                    <constraint firstItem="Lf6-qV-xAg" firstAttribute="top" secondItem="jla-4O-yac" secondAttribute="top" constant="6" id="xuv-oK-Ve3"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xkz-hg-Kue">
+                                <rect key="frame" x="20" y="105" width="374" height="45"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7Nq-lc-DZ3">
+                                        <rect key="frame" x="5" y="5" width="364" height="35"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYk-zu-2jX">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mqc-3N-8xz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMn-l1-xef">
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="gAe-Qj-NE8"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                                                <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-ZL-jrh">
+                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
+                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="Mqc-3N-8xz" firstAttribute="leading" secondItem="ZYk-zu-2jX" secondAttribute="leading" id="0jn-Bp-vOO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Mqc-3N-8xz" secondAttribute="trailing" id="Ce4-dk-yfi"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Mqc-3N-8xz" secondAttribute="bottom" id="FMW-yl-YvD"/>
+                                                    <constraint firstItem="Mqc-3N-8xz" firstAttribute="top" secondItem="ZYk-zu-2jX" secondAttribute="top" id="Sel-hF-jZa"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLG-dv-H0C">
+                                                <rect key="frame" x="55" y="0.0" width="34.666666666666657" height="35"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Ts-np-OcV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxp-DJ-9wx">
+                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="YwA-e5-sIa"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                                                <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cWp-5J-lUE">
+                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="34.666666666666664" height="11.000000000000007"/>
+                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="8Ts-np-OcV" secondAttribute="trailing" id="4cd-a7-o03"/>
+                                                    <constraint firstItem="8Ts-np-OcV" firstAttribute="leading" secondItem="cLG-dv-H0C" secondAttribute="leading" id="SPR-ta-k7t"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8Ts-np-OcV" secondAttribute="bottom" id="gCX-F8-jbR"/>
+                                                    <constraint firstItem="8Ts-np-OcV" firstAttribute="top" secondItem="cLG-dv-H0C" secondAttribute="top" id="vs2-zy-wAa"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-w3-LEK">
+                                                <rect key="frame" x="109.66666666666666" y="0.0" width="35" height="35"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PV5-Fk-umO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38q-gE-ziK">
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="mvE-X8-DqP"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                                                <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-hH-2mN">
+                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
+                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="PV5-Fk-umO" firstAttribute="leading" secondItem="fj0-w3-LEK" secondAttribute="leading" id="EVZ-cS-4Wl"/>
+                                                    <constraint firstAttribute="bottom" secondItem="PV5-Fk-umO" secondAttribute="bottom" id="cXe-5B-G2t"/>
+                                                    <constraint firstItem="PV5-Fk-umO" firstAttribute="top" secondItem="fj0-w3-LEK" secondAttribute="top" id="lRd-dM-Rch"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PV5-Fk-umO" secondAttribute="trailing" id="mtA-Kn-nJO"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUa-J1-6zx">
+                                                <rect key="frame" x="164.66666666666666" y="0.0" width="34.666666666666657" height="35"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="j1B-5J-D95">
+                                                        <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvd-2a-qv4">
+                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="OeV-Am-0rt"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                                                <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dxc-Pm-LSh">
+                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="34.666666666666664" height="11.000000000000007"/>
+                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="j1B-5J-D95" secondAttribute="trailing" id="OCI-sa-LJJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="j1B-5J-D95" secondAttribute="bottom" id="aKv-XS-Kf5"/>
+                                                    <constraint firstItem="j1B-5J-D95" firstAttribute="leading" secondItem="eUa-J1-6zx" secondAttribute="leading" id="cqU-Dp-gcW"/>
+                                                    <constraint firstItem="j1B-5J-D95" firstAttribute="top" secondItem="eUa-J1-6zx" secondAttribute="top" id="m2s-B6-BlH"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIq-Ic-zrm">
+                                                <rect key="frame" x="219.33333333333334" y="0.0" width="35" height="35"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2fk-7L-ovF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDb-9x-Q4X">
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="56b-0T-Enk"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                                                <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vwk-Ax-9RE">
+                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
+                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="2fk-7L-ovF" firstAttribute="leading" secondItem="pIq-Ic-zrm" secondAttribute="leading" id="FxG-i6-a2N"/>
+                                                    <constraint firstAttribute="bottom" secondItem="2fk-7L-ovF" secondAttribute="bottom" id="Yca-Ez-faH"/>
+                                                    <constraint firstItem="2fk-7L-ovF" firstAttribute="top" secondItem="pIq-Ic-zrm" secondAttribute="top" id="ace-st-Mzo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2fk-7L-ovF" secondAttribute="trailing" id="h0j-NX-5ao"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jA-HL-VH3">
+                                                <rect key="frame" x="274.33333333333331" y="0.0" width="34.666666666666686" height="35"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8G9-wV-ehD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-Bo-edN">
+                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="bK2-WC-Sig"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                                                <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ptG-Qd-dtl">
+                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="34.666666666666664" height="11.000000000000007"/>
+                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="8G9-wV-ehD" secondAttribute="trailing" id="UGH-ol-UPq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8G9-wV-ehD" secondAttribute="bottom" id="iIF-NU-MOn"/>
+                                                    <constraint firstItem="8G9-wV-ehD" firstAttribute="top" secondItem="7jA-HL-VH3" secondAttribute="top" id="kMO-HO-Ioh"/>
+                                                    <constraint firstItem="8G9-wV-ehD" firstAttribute="leading" secondItem="7jA-HL-VH3" secondAttribute="leading" id="ol5-G2-j3L"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efD-Uk-sHi">
+                                                <rect key="frame" x="329" y="0.0" width="35" height="35"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hsT-5Q-rC2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bF2-7b-Kui">
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="T0t-j5-OH1"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                                                <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Eo-6K-l5y">
+                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
+                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="hsT-5Q-rC2" firstAttribute="top" secondItem="efD-Uk-sHi" secondAttribute="top" id="8Ze-Uo-6xt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hsT-5Q-rC2" secondAttribute="bottom" id="UfR-Cj-hRQ"/>
+                                                    <constraint firstItem="hsT-5Q-rC2" firstAttribute="leading" secondItem="efD-Uk-sHi" secondAttribute="leading" id="WpM-d2-mVd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hsT-5Q-rC2" secondAttribute="trailing" id="zVO-3k-VwH"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7Nq-lc-DZ3" secondAttribute="bottom" constant="5" id="DVv-Cs-KFd"/>
+                                    <constraint firstAttribute="height" constant="45" id="DmH-lv-wuk"/>
+                                    <constraint firstItem="7Nq-lc-DZ3" firstAttribute="top" secondItem="Xkz-hg-Kue" secondAttribute="top" constant="5" id="TGo-aN-iy2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="vSH-Aw-eW6"/>
+                                    <constraint firstItem="7Nq-lc-DZ3" firstAttribute="leading" secondItem="Xkz-hg-Kue" secondAttribute="leading" constant="5" id="ypv-3x-1q4"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Nq-lc-DZ3" secondAttribute="trailing" constant="5" id="zxU-vC-NR0"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-XB-G60">
+                                <rect key="frame" x="356.33333333333331" y="2.6666666666666679" width="58" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aso-jI-wsi">
+                                <rect key="frame" x="376.66666666666669" y="12.666666666666664" width="17.333333333333314" height="15.333333333333336"/>
+                                <color key="tintColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="414" id="4am-zf-HVf"/>
+                            <constraint firstItem="hgd-XB-G60" firstAttribute="centerX" secondItem="aso-jI-wsi" secondAttribute="centerX" id="5ml-hG-4jd"/>
+                            <constraint firstAttribute="trailing" secondItem="jla-4O-yac" secondAttribute="trailing" constant="20" id="5sG-wc-4xh"/>
+                            <constraint firstItem="jla-4O-yac" firstAttribute="leading" secondItem="BJ9-Ha-49Y" secondAttribute="leading" constant="20" id="6mG-kV-Mis"/>
+                            <constraint firstItem="Xkz-hg-Kue" firstAttribute="leading" secondItem="BJ9-Ha-49Y" secondAttribute="leading" constant="20" id="GHw-Vy-MOV"/>
+                            <constraint firstItem="tDd-Fa-fCP" firstAttribute="leading" secondItem="6h4-Yq-OEd" secondAttribute="trailing" constant="5" id="Gau-Xb-HcZ"/>
+                            <constraint firstItem="tDd-Fa-fCP" firstAttribute="top" secondItem="BJ9-Ha-49Y" secondAttribute="top" constant="10" id="QTw-zZ-2HC"/>
+                            <constraint firstItem="aso-jI-wsi" firstAttribute="top" secondItem="BJ9-Ha-49Y" secondAttribute="top" constant="10" id="SAO-Yy-FM5"/>
+                            <constraint firstAttribute="trailing" secondItem="aso-jI-wsi" secondAttribute="trailing" constant="20" id="Wiq-3n-eXb"/>
+                            <constraint firstAttribute="trailing" secondItem="Xkz-hg-Kue" secondAttribute="trailing" constant="20" id="aGP-eS-a6i"/>
+                            <constraint firstAttribute="bottom" secondItem="Xkz-hg-Kue" secondAttribute="bottom" constant="10" id="hiP-KS-5he"/>
+                            <constraint firstAttribute="height" constant="160" id="sRb-De-NFI"/>
+                            <constraint firstItem="S4C-hg-7qZ" firstAttribute="top" secondItem="BJ9-Ha-49Y" secondAttribute="top" constant="12" id="szH-cQ-f8E"/>
+                            <constraint firstItem="hgd-XB-G60" firstAttribute="width" secondItem="aso-jI-wsi" secondAttribute="width" multiplier="3.35821" id="tyj-w4-bUM"/>
+                            <constraint firstItem="jla-4O-yac" firstAttribute="top" secondItem="6h4-Yq-OEd" secondAttribute="bottom" constant="5" id="ucb-Zn-4Bk"/>
+                            <constraint firstItem="S4C-hg-7qZ" firstAttribute="leading" secondItem="tDd-Fa-fCP" secondAttribute="trailing" constant="5" id="vAa-Cs-Swm"/>
+                            <constraint firstItem="6h4-Yq-OEd" firstAttribute="leading" secondItem="BJ9-Ha-49Y" secondAttribute="leading" constant="20" symbolic="YES" id="vbf-Ph-469"/>
+                            <constraint firstItem="hgd-XB-G60" firstAttribute="centerY" secondItem="aso-jI-wsi" secondAttribute="centerY" id="xvT-rn-08g"/>
+                            <constraint firstItem="hgd-XB-G60" firstAttribute="height" secondItem="aso-jI-wsi" secondAttribute="height" multiplier="1.72131" id="z0S-at-V2r"/>
+                            <constraint firstItem="Xkz-hg-Kue" firstAttribute="top" secondItem="jla-4O-yac" secondAttribute="bottom" constant="10" id="zXJ-6t-3yM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="BJ9-Ha-49Y" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="GjC-Tq-FSG"/>
+                <constraint firstItem="BJ9-Ha-49Y" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="d2E-p3-gF8"/>
+            </constraints>
+            <size key="customSize" width="414" height="161"/>
+            <connections>
+                <outlet property="addStepProductImageView" destination="cnv-KF-3Wt" id="3hK-JR-xKI"/>
+                <outlet property="deleteStepButton" destination="hgd-XB-G60" id="kn4-uV-PYH"/>
+                <outlet property="deleteStepImage" destination="aso-jI-wsi" id="TaL-Vl-s6c"/>
+                <outlet property="editStepNameImage" destination="S4C-hg-7qZ" id="Juv-uS-cvR"/>
+                <outlet property="friCheckMarkImage" destination="Vwk-Ax-9RE" id="PvZ-I1-y79"/>
+                <outlet property="friView" destination="pIq-Ic-zrm" id="SuN-BK-K3l"/>
+                <outlet property="monCheckMarkImage" destination="E2e-ZL-jrh" id="2Dp-kT-KYJ"/>
+                <outlet property="monView" destination="ZYk-zu-2jX" id="1S8-at-Klz"/>
+                <outlet property="satCheckMarkImage" destination="ptG-Qd-dtl" id="ooo-UJ-I30"/>
+                <outlet property="satView" destination="7jA-HL-VH3" id="QAw-7D-n7H"/>
+                <outlet property="stepDaysView" destination="Xkz-hg-Kue" id="n6P-n0-EqG"/>
+                <outlet property="stepNameLabel" destination="tDd-Fa-fCP" id="a21-ku-1hf"/>
+                <outlet property="stepNumberLabel" destination="6h4-Yq-OEd" id="UiH-19-bmx"/>
+                <outlet property="stepProductBrandLabel" destination="Lf6-qV-xAg" id="61T-FH-XeI"/>
+                <outlet property="stepProductImage" destination="KBH-nJ-yQ4" id="YUb-vP-cHb"/>
+                <outlet property="stepProductNameLabel" destination="phv-uo-iJ0" id="nNO-ge-6W2"/>
+                <outlet property="stepProductView" destination="jla-4O-yac" id="vWP-AO-BHG"/>
+                <outlet property="stepView" destination="BJ9-Ha-49Y" id="tVf-gB-Cog"/>
+                <outlet property="sunCheckMarkImage" destination="4Eo-6K-l5y" id="p7p-yE-UeD"/>
+                <outlet property="sunView" destination="efD-Uk-sHi" id="a2e-A0-WsQ"/>
+                <outlet property="thuCheckMarkImage" destination="dxc-Pm-LSh" id="IIa-iF-Owz"/>
+                <outlet property="thuView" destination="eUa-J1-6zx" id="VTl-2f-fLB"/>
+                <outlet property="tueCheckMarkImage" destination="cWp-5J-lUE" id="7jc-G3-y6B"/>
+                <outlet property="tueView" destination="cLG-dv-H0C" id="uuM-8j-EQp"/>
+                <outlet property="wedCheckMarkImage" destination="B3w-hH-2mN" id="jcy-JQ-RGk"/>
+                <outlet property="wedView" destination="fj0-w3-LEK" id="6mW-Sq-z6B"/>
+            </connections>
+            <point key="canvasLocation" x="206.10687022900763" y="45.422535211267608"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cerave" width="500" height="500"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

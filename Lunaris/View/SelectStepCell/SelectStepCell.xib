@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SelectStepCell" customModule="Lunaris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="73"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="73"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dnf-2S-CQc">
+                        <rect key="frame" x="5.6666666666666572" y="6.6666666666666643" width="384" height="59.999999999999993"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPP-ZY-mQX">
+                                <rect key="frame" x="0.0" y="15.333333333333332" width="384" height="28.999999999999996"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="24"/>
+                                <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="yPP-ZY-mQX" firstAttribute="leading" secondItem="Dnf-2S-CQc" secondAttribute="leading" id="7By-l8-eie"/>
+                            <constraint firstAttribute="height" constant="60" id="KsZ-vb-xRt"/>
+                            <constraint firstAttribute="width" constant="384" id="TKM-Lt-cI6"/>
+                            <constraint firstAttribute="trailing" secondItem="yPP-ZY-mQX" secondAttribute="trailing" id="rOa-Jo-dSf"/>
+                            <constraint firstItem="yPP-ZY-mQX" firstAttribute="centerY" secondItem="Dnf-2S-CQc" secondAttribute="centerY" id="vyP-4x-1Xg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Dnf-2S-CQc" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="30H-NU-Ugs"/>
+                <constraint firstItem="Dnf-2S-CQc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ec1-gf-HRB"/>
+            </constraints>
+            <size key="customSize" width="260" height="73"/>
+            <connections>
+                <outlet property="stepNameLabel" destination="yPP-ZY-mQX" id="kbi-Ft-nwP"/>
+            </connections>
+            <point key="canvasLocation" x="293.89312977099235" y="27.816901408450704"/>
+        </collectionViewCell>
+    </objects>
+</document>
