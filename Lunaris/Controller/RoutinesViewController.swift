@@ -54,16 +54,50 @@ class RoutinesViewController: UIViewController {
     
     var test: [[Bool]] = []
     
-    var days: [Bool] = [false, false, false, false, false, false, false]
+    var morningTest: [[Bool]] = []
+    var eveningTest: [[Bool]] = []
     
-    //var setDays: [Bool] = [false, false, false, false, false, false, false]
+    var days: [Bool] = [false, false, false, false, false, false, false]
     
     var indexSelect: Int? {
         didSet {
             checkTest = test
             print(test)
+            stepCollectionView.reloadData()
+//
+//            // Eğer indexSelect değeri geçerliyse (nil değilse) ve test dizisinin boyutu indexSelect için uygunsa devam edin
+//            if let index = indexSelect, index < test.count {
+//                let selectedDays = test[index]
+//
+//                // `selectedDays` dizisindeki `true` olan elemanların indekslerini bulun
+//                let trueIndices = selectedDays.enumerated().compactMap { $0.element ? $0.offset : nil }
+//
+//                if let routineStepCell = stepCollectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? RoutineStepCell {
+//                    // RoutineStepCell'e eriştik, monView'a erişebiliriz
+//                    for dayIndex in trueIndices {
+//                        // İlgili günün rengini değiştirin
+//                        switch dayIndex {
+//                        case 0:
+//                            routineStepCell.monView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+//                            routineStepCell.monLabel.textColor = UIColor.white
+//                            routineStepCell.monCheckMarkImageView.tintColor = UIColor.white
+//                        case 1:
+//                            routineStepCell.tueView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+//                            routineStepCell.tueLabel.textColor = UIColor.white
+//                            routineStepCell.tueCheckMarkImageView.tintColor = UIColor.white
+//                        case 2:
+//                            routineStepCell.wedView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+//                            routineStepCell.wedLabel.textColor = UIColor.white
+//                            routineStepCell.wedCheckMarkImageView.tintColor = UIColor.white
+//                        default:
+//                            break
+//                        }
+//                    }
+//                }
+//            }
         }
     }
+
     
     var checkTest: [[Bool]] = []
     
@@ -144,6 +178,7 @@ class RoutinesViewController: UIViewController {
     }
     
     @objc func tappedMorningRoutineLabel() {
+        addControl = false
         if morning {
             morning = true
         } else {
@@ -160,6 +195,7 @@ class RoutinesViewController: UIViewController {
     }
     
     @objc func tappedEveningRoutineLabel() {
+        addControl = false
         if morning {
             morningSteps = steps
             steps = []
@@ -180,10 +216,11 @@ class RoutinesViewController: UIViewController {
         if let indexPath = stepCollectionView.indexPathForItem(at: viewPosition) {
             // Silinecek adımın indeksi bulundu, indexPath'i kullanabilirsiniz
             let item = indexPath.item
-            let section = indexPath.section
             // Diğer işlemleri burada gerçekleştiri
             test[item][0] = true
             indexSelect = item
+        
+            
             stepCollectionView.reloadData()
         } else {
             // Silinecek adımın indeksi bulunamadı
@@ -196,7 +233,6 @@ class RoutinesViewController: UIViewController {
         if let indexPath = stepCollectionView.indexPathForItem(at: viewPosition) {
             // Silinecek adımın indeksi bulundu, indexPath'i kullanabilirsiniz
             let item = indexPath.item
-            let section = indexPath.section
             // Diğer işlemleri burada gerçekleştiri
             test[item][1] = true
             indexSelect = item
@@ -205,20 +241,70 @@ class RoutinesViewController: UIViewController {
             return
         }
     }
-    @objc func wedViewTapped() {
-        days[2] = true
+    @objc func wedViewTapped(_ sender: UITapGestureRecognizer) {
+        let viewPosition = sender.location(in: stepCollectionView)
+        if let indexPath = stepCollectionView.indexPathForItem(at: viewPosition) {
+            // Silinecek adımın indeksi bulundu, indexPath'i kullanabilirsiniz
+            let item = indexPath.item
+            // Diğer işlemleri burada gerçekleştiri
+            test[item][2] = true
+            indexSelect = item
+        } else {
+            // Silinecek adımın indeksi bulunamadı
+            return
+        }
     }
-    @objc func thuViewTapped() {
-        days[3] = true
+    @objc func thuViewTapped(_ sender: UITapGestureRecognizer) {
+        let viewPosition = sender.location(in: stepCollectionView)
+        if let indexPath = stepCollectionView.indexPathForItem(at: viewPosition) {
+            // Silinecek adımın indeksi bulundu, indexPath'i kullanabilirsiniz
+            let item = indexPath.item
+            // Diğer işlemleri burada gerçekleştiri
+            test[item][3] = true
+            indexSelect = item
+        } else {
+            // Silinecek adımın indeksi bulunamadı
+            return
+        }
     }
-    @objc func friViewTapped() {
-        days[4] = true
+    @objc func friViewTapped(_ sender: UITapGestureRecognizer) {
+        let viewPosition = sender.location(in: stepCollectionView)
+        if let indexPath = stepCollectionView.indexPathForItem(at: viewPosition) {
+            // Silinecek adımın indeksi bulundu, indexPath'i kullanabilirsiniz
+            let item = indexPath.item
+            // Diğer işlemleri burada gerçekleştiri
+            test[item][4] = true
+            indexSelect = item
+        } else {
+            // Silinecek adımın indeksi bulunamadı
+            return
+        }
     }
-    @objc func satViewTapped() {
-        days[5] = true
+    @objc func satViewTapped(_ sender: UITapGestureRecognizer) {
+        let viewPosition = sender.location(in: stepCollectionView)
+        if let indexPath = stepCollectionView.indexPathForItem(at: viewPosition) {
+            // Silinecek adımın indeksi bulundu, indexPath'i kullanabilirsiniz
+            let item = indexPath.item
+            // Diğer işlemleri burada gerçekleştiri
+            test[item][5] = true
+            indexSelect = item
+        } else {
+            // Silinecek adımın indeksi bulunamadı
+            return
+        }
     }
-    @objc func sunViewTapped() {
-        days[6] = true
+    @objc func sunViewTapped(_ sender: UITapGestureRecognizer) {
+        let viewPosition = sender.location(in: stepCollectionView)
+        if let indexPath = stepCollectionView.indexPathForItem(at: viewPosition) {
+            // Silinecek adımın indeksi bulundu, indexPath'i kullanabilirsiniz
+            let item = indexPath.item
+            // Diğer işlemleri burada gerçekleştiri
+            test[item][6] = true
+            indexSelect = item
+        } else {
+            // Silinecek adımın indeksi bulunamadı
+            return
+        }
     }
     
     
@@ -277,29 +363,60 @@ extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewData
             routineStepCell.tueView.isUserInteractionEnabled = true
             routineStepCell.tueView.addGestureRecognizer(tueTapGesture)
             
-            let wedTapGesture = UITapGestureRecognizer(target: self, action: #selector(wedViewTapped))
+            let wedTapGesture = UITapGestureRecognizer(target: self, action: #selector(wedViewTapped(_:)))
             routineStepCell.wedView.isUserInteractionEnabled = true
             routineStepCell.wedView.addGestureRecognizer(wedTapGesture)
             
-            let thuTapGesture = UITapGestureRecognizer(target: self, action: #selector(thuViewTapped))
+            let thuTapGesture = UITapGestureRecognizer(target: self, action: #selector(thuViewTapped(_:)))
             routineStepCell.thuView.isUserInteractionEnabled = true
             routineStepCell.thuView.addGestureRecognizer(thuTapGesture)
             
-            let friTapGesture = UITapGestureRecognizer(target: self, action: #selector(friViewTapped))
+            let friTapGesture = UITapGestureRecognizer(target: self, action: #selector(friViewTapped(_:)))
             routineStepCell.friView.isUserInteractionEnabled = true
             routineStepCell.friView.addGestureRecognizer(friTapGesture)
             
-            let satTapGesture = UITapGestureRecognizer(target: self, action: #selector(satViewTapped))
+            let satTapGesture = UITapGestureRecognizer(target: self, action: #selector(satViewTapped(_:)))
             routineStepCell.satView.isUserInteractionEnabled = true
             routineStepCell.satView.addGestureRecognizer(satTapGesture)
             
-            let sunTapGesture = UITapGestureRecognizer(target: self, action: #selector(sunViewTapped))
+            let sunTapGesture = UITapGestureRecognizer(target: self, action: #selector(sunViewTapped(_:)))
             routineStepCell.sunView.isUserInteractionEnabled = true
             routineStepCell.sunView.addGestureRecognizer(sunTapGesture)
 
+            
+            let viewArr = [routineStepCell.monView, routineStepCell.tueView, routineStepCell.wedView, routineStepCell.thuView, routineStepCell.friView, routineStepCell.satView, routineStepCell.sunView]
+            
+            let lblArr = [routineStepCell.monLabel, routineStepCell.tueLabel, routineStepCell.wedLabel, routineStepCell.thuLabel, routineStepCell.friLabel, routineStepCell.satLabel, routineStepCell.sunLabel]
+            
+            viewArr.forEach { item in
+                item?.backgroundColor = UIColor.white
+            }
+            
+            lblArr.forEach { item in
+                item?.textColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+            }
 
-
-
+            let selectedArr = test[indexPath.item]
+            let trueIndices = selectedArr.enumerated().compactMap { $0.element ? $0.offset : nil }
+            for dayIndex in trueIndices {
+                // İlgili günün rengini değiştirin
+                switch dayIndex {
+                case 0:
+                    routineStepCell.monView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                    routineStepCell.monLabel.textColor = UIColor.white
+                    routineStepCell.monCheckMarkImageView.tintColor = UIColor.white
+                case 1:
+                    routineStepCell.tueView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                    routineStepCell.tueLabel.textColor = UIColor.white
+                    routineStepCell.tueCheckMarkImageView.tintColor = UIColor.white
+                case 2:
+                    routineStepCell.wedView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                    routineStepCell.wedLabel.textColor = UIColor.white
+                    routineStepCell.wedCheckMarkImageView.tintColor = UIColor.white
+                default:
+                    break
+                }
+            }
             return routineStepCell
         }
         

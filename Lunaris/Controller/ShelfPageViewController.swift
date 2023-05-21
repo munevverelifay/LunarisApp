@@ -26,9 +26,14 @@ class ShelfPageViewController: UIViewController {
         productCollectionView.register(UINib(nibName: String(describing: ProductCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProductCell.self))
         productCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
         
-        navigationController?.isNavigationBarHidden = true
+
 //        configureData()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
     
 //    func configureData() {

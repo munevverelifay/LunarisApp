@@ -362,11 +362,14 @@
                 <outlet property="deleteStepButton" destination="hgd-XB-G60" id="kn4-uV-PYH"/>
                 <outlet property="deleteStepImage" destination="aso-jI-wsi" id="TaL-Vl-s6c"/>
                 <outlet property="editStepNameImage" destination="S4C-hg-7qZ" id="Juv-uS-cvR"/>
-                <outlet property="friCheckMarkImage" destination="Vwk-Ax-9RE" id="PvZ-I1-y79"/>
+                <outlet property="friCheckMarkImageView" destination="Vwk-Ax-9RE" id="ysy-2g-uFU"/>
+                <outlet property="friLabel" destination="xDb-9x-Q4X" id="wFh-nq-CIu"/>
                 <outlet property="friView" destination="pIq-Ic-zrm" id="SuN-BK-K3l"/>
-                <outlet property="monCheckMarkImage" destination="E2e-ZL-jrh" id="2Dp-kT-KYJ"/>
+                <outlet property="monCheckMarkImageView" destination="E2e-ZL-jrh" id="g7N-N6-UDI"/>
+                <outlet property="monLabel" destination="qMn-l1-xef" id="Om1-ti-8iU"/>
                 <outlet property="monView" destination="ZYk-zu-2jX" id="1S8-at-Klz"/>
-                <outlet property="satCheckMarkImage" destination="ptG-Qd-dtl" id="ooo-UJ-I30"/>
+                <outlet property="satCheckMarkImageView" destination="ptG-Qd-dtl" id="rlK-eI-5zS"/>
+                <outlet property="satLabel" destination="HUI-Bo-edN" id="diI-ep-LgM"/>
                 <outlet property="satView" destination="7jA-HL-VH3" id="QAw-7D-n7H"/>
                 <outlet property="stepDaysView" destination="Xkz-hg-Kue" id="n6P-n0-EqG"/>
                 <outlet property="stepNameLabel" destination="tDd-Fa-fCP" id="a21-ku-1hf"/>
@@ -376,13 +379,17 @@
                 <outlet property="stepProductNameLabel" destination="phv-uo-iJ0" id="nNO-ge-6W2"/>
                 <outlet property="stepProductView" destination="jla-4O-yac" id="vWP-AO-BHG"/>
                 <outlet property="stepView" destination="BJ9-Ha-49Y" id="tVf-gB-Cog"/>
-                <outlet property="sunCheckMarkImage" destination="4Eo-6K-l5y" id="p7p-yE-UeD"/>
+                <outlet property="sunCheckMarkImageView" destination="4Eo-6K-l5y" id="IjC-Cw-Del"/>
+                <outlet property="sunLabel" destination="bF2-7b-Kui" id="M7D-ZE-sgZ"/>
                 <outlet property="sunView" destination="efD-Uk-sHi" id="a2e-A0-WsQ"/>
-                <outlet property="thuCheckMarkImage" destination="dxc-Pm-LSh" id="IIa-iF-Owz"/>
+                <outlet property="thuCheckMarkImageView" destination="dxc-Pm-LSh" id="BQe-b8-CkS"/>
+                <outlet property="thuLabel" destination="Hvd-2a-qv4" id="N0G-zp-if0"/>
                 <outlet property="thuView" destination="eUa-J1-6zx" id="VTl-2f-fLB"/>
-                <outlet property="tueCheckMarkImage" destination="cWp-5J-lUE" id="7jc-G3-y6B"/>
+                <outlet property="tueCheckMarkImageView" destination="cWp-5J-lUE" id="CB0-t0-Vop"/>
+                <outlet property="tueLabel" destination="vxp-DJ-9wx" id="aQo-Vf-ZqI"/>
                 <outlet property="tueView" destination="cLG-dv-H0C" id="uuM-8j-EQp"/>
-                <outlet property="wedCheckMarkImage" destination="B3w-hH-2mN" id="jcy-JQ-RGk"/>
+                <outlet property="wedCheckMarkImageView" destination="B3w-hH-2mN" id="LMx-GO-avA"/>
+                <outlet property="wedLabel" destination="38q-gE-ziK" id="6oU-7b-qr3"/>
                 <outlet property="wedView" destination="fj0-w3-LEK" id="6mW-Sq-z6B"/>
             </connections>
             <point key="canvasLocation" x="206.10687022900763" y="45.422535211267608"/>

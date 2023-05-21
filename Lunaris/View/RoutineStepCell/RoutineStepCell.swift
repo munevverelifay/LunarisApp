@@ -28,13 +28,21 @@ class RoutineStepCell: UICollectionViewCell {
     @IBOutlet weak var satView: UIView!
     @IBOutlet weak var sunView: UIView!
     
-    @IBOutlet weak var monCheckMarkImage: UIImageView!
-    @IBOutlet weak var tueCheckMarkImage: UIImageView!
-    @IBOutlet weak var wedCheckMarkImage: UIImageView!
-    @IBOutlet weak var thuCheckMarkImage: UIImageView!
-    @IBOutlet weak var friCheckMarkImage: UIImageView!
-    @IBOutlet weak var satCheckMarkImage: UIImageView!
-    @IBOutlet weak var sunCheckMarkImage: UIImageView!
+    @IBOutlet weak var monLabel: UILabel!
+    @IBOutlet weak var tueLabel: UILabel!
+    @IBOutlet weak var wedLabel: UILabel!
+    @IBOutlet weak var thuLabel: UILabel!
+    @IBOutlet weak var friLabel: UILabel!
+    @IBOutlet weak var satLabel: UILabel!
+    @IBOutlet weak var sunLabel: UILabel!
+    
+    @IBOutlet weak var monCheckMarkImageView: UIImageView!
+    @IBOutlet weak var tueCheckMarkImageView: UIImageView!
+    @IBOutlet weak var wedCheckMarkImageView: UIImageView!
+    @IBOutlet weak var thuCheckMarkImageView: UIImageView!
+    @IBOutlet weak var friCheckMarkImageView: UIImageView!
+    @IBOutlet weak var satCheckMarkImageView: UIImageView!
+    @IBOutlet weak var sunCheckMarkImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

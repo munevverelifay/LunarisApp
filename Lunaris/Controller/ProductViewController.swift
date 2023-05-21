@@ -81,10 +81,8 @@ class ProductViewController : UIViewController {
         
         productRatingStar()
 
-
-        
-
     }
+
     
     func productRatingStar() {
         if Double(productListTotalRating) ?? 0 <= 0.75 {
@@ -260,6 +258,7 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
 //            tableView.reloadSections(sections, with: .none)
 //
 //        }
+
         if indexPath.section == 1 && indexPath.row == 1 {
             // İlgili hücre seçildiğinde başka bir ekrana geçmek için kodları buraya yazın.
             if let commentCV = storyboard?.instantiateViewController(withIdentifier: "CommentPageViewController") as? UserCommentsViewController {
@@ -277,7 +276,6 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadSections(sections, with: .none)
         }
     }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
          if indexPath.row == 0 {
              if tableViewData[indexPath.section].opened == true {
