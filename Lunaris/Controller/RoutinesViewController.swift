@@ -64,42 +64,13 @@ class RoutinesViewController: UIViewController {
             checkTest = test
             print(test)
             stepCollectionView.reloadData()
-//
-//            // Eğer indexSelect değeri geçerliyse (nil değilse) ve test dizisinin boyutu indexSelect için uygunsa devam edin
-//            if let index = indexSelect, index < test.count {
-//                let selectedDays = test[index]
-//
-//                // `selectedDays` dizisindeki `true` olan elemanların indekslerini bulun
-//                let trueIndices = selectedDays.enumerated().compactMap { $0.element ? $0.offset : nil }
-//
-//                if let routineStepCell = stepCollectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? RoutineStepCell {
-//                    // RoutineStepCell'e eriştik, monView'a erişebiliriz
-//                    for dayIndex in trueIndices {
-//                        // İlgili günün rengini değiştirin
-//                        switch dayIndex {
-//                        case 0:
-//                            routineStepCell.monView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-//                            routineStepCell.monLabel.textColor = UIColor.white
-//                            routineStepCell.monCheckMarkImageView.tintColor = UIColor.white
-//                        case 1:
-//                            routineStepCell.tueView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-//                            routineStepCell.tueLabel.textColor = UIColor.white
-//                            routineStepCell.tueCheckMarkImageView.tintColor = UIColor.white
-//                        case 2:
-//                            routineStepCell.wedView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-//                            routineStepCell.wedLabel.textColor = UIColor.white
-//                            routineStepCell.wedCheckMarkImageView.tintColor = UIColor.white
-//                        default:
-//                            break
-//                        }
-//                    }
-//                }
-//            }
         }
     }
 
     
     var checkTest: [[Bool]] = []
+    var checkMorTest: [[Bool]] = []
+    var checkEveTest: [[Bool]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +97,6 @@ class RoutinesViewController: UIViewController {
         
         let tapEveningRoutineGesture = UITapGestureRecognizer(target: self, action: #selector(tappedEveningRoutineLabel))
         configureTouchableLabel(label: eveningRoutineLabel, gesture: tapEveningRoutineGesture)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,6 +107,12 @@ class RoutinesViewController: UIViewController {
     @IBAction func addStepButton(_ sender: UIButton) {
         addControl = true
         steps.append("New Step")
+        print("testtttt")
+        print(test)
+        print("morninnggg")
+        print(morningTest)
+        print("eveningggg")
+        print(eveningTest)
     }
 
     @objc func deleteButtonTapped(_ sender: UIButton) { //bunun yerine kaydırma ile yap
@@ -145,12 +121,6 @@ class RoutinesViewController: UIViewController {
                let indexPath = stepCollectionView.indexPathForItem(at: buttonPosition) else {
              return // Silinecek adımın indeksi bulunamadı
          }
-        stepCollectionView.performBatchUpdates({
-            steps.remove(at: indexPath.item) // Tıklanan adımı diziden sil
-            stepCollectionView.deleteItems(at: [indexPath])
-        }, completion: nil)
-        let indexPaths = stepCollectionView.indexPathsForVisibleItems
-        stepCollectionView.reloadItems(at: indexPaths)
         
         test.remove(at: indexPath.item)
         if (indexSelect != nil) {
@@ -159,6 +129,15 @@ class RoutinesViewController: UIViewController {
             print("Test \(test)")
             print("Check \(checkTest)")
         }
+        
+        stepCollectionView.performBatchUpdates({
+            steps.remove(at: indexPath.item) // Tıklanan adımı diziden sil
+            stepCollectionView.deleteItems(at: [indexPath])
+        }, completion: nil)
+        let indexPaths = stepCollectionView.indexPathsForVisibleItems
+        stepCollectionView.reloadItems(at: indexPaths)
+        
+    
     }
     
     @objc func editStepNameImageViewTapped(_ sender: UIImageView) { //bunun yerine kaydırma ile yap
@@ -183,8 +162,14 @@ class RoutinesViewController: UIViewController {
             morning = true
         } else {
             eveningSteps = steps
+            eveningTest = test
+            checkEveTest = checkTest
             steps = []
+            test = []
+            checkTest = []
             steps = morningSteps
+            test = morningTest
+            checkTest = checkMorTest
             morning = true
             morningRoutineView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             morningRoutineLabel.textColor = UIColor.white
@@ -198,8 +183,14 @@ class RoutinesViewController: UIViewController {
         addControl = false
         if morning {
             morningSteps = steps
+            morningTest = test
+            checkMorTest = checkTest
             steps = []
+            test = []
+            checkTest = []
             steps = eveningSteps
+            test = eveningTest
+            checkTest = checkEveTest
             morning = false
             eveningRoutineView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             eveningRoutineLabel.textColor = UIColor.white
@@ -404,15 +395,12 @@ extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewData
                 case 0:
                     routineStepCell.monView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
                     routineStepCell.monLabel.textColor = UIColor.white
-                    routineStepCell.monCheckMarkImageView.tintColor = UIColor.white
                 case 1:
                     routineStepCell.tueView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
                     routineStepCell.tueLabel.textColor = UIColor.white
-                    routineStepCell.tueCheckMarkImageView.tintColor = UIColor.white
                 case 2:
                     routineStepCell.wedView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
                     routineStepCell.wedLabel.textColor = UIColor.white
-                    routineStepCell.wedCheckMarkImageView.tintColor = UIColor.white
                 default:
                     break
                 }

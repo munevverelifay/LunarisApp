@@ -36,14 +36,6 @@ class RoutineStepCell: UICollectionViewCell {
     @IBOutlet weak var satLabel: UILabel!
     @IBOutlet weak var sunLabel: UILabel!
     
-    @IBOutlet weak var monCheckMarkImageView: UIImageView!
-    @IBOutlet weak var tueCheckMarkImageView: UIImageView!
-    @IBOutlet weak var wedCheckMarkImageView: UIImageView!
-    @IBOutlet weak var thuCheckMarkImageView: UIImageView!
-    @IBOutlet weak var friCheckMarkImageView: UIImageView!
-    @IBOutlet weak var satCheckMarkImageView: UIImageView!
-    @IBOutlet weak var sunCheckMarkImageView: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -68,7 +60,4 @@ class RoutineStepCell: UICollectionViewCell {
     func configureView(view: UIView) {
         view.layer.cornerRadius = view.frame.height / 2
     }
-    
-   
-    
 }

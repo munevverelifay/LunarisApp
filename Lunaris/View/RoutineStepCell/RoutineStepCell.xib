@@ -92,20 +92,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMn-l1-xef">
-                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="gAe-Qj-NE8"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
                                                                 <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2e-ZL-jrh">
-                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
-                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
-                                                            </imageView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="qMn-l1-xef" firstAttribute="centerY" secondItem="Mqc-3N-8xz" secondAttribute="centerY" id="nVR-O1-EQq"/>
+                                                            <constraint firstItem="qMn-l1-xef" firstAttribute="centerX" secondItem="Mqc-3N-8xz" secondAttribute="centerX" id="npz-WY-WMj"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -123,20 +119,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxp-DJ-9wx">
-                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="YwA-e5-sIa"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
                                                                 <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cWp-5J-lUE">
-                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="34.666666666666664" height="11.000000000000007"/>
-                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
-                                                            </imageView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="vxp-DJ-9wx" firstAttribute="centerY" secondItem="8Ts-np-OcV" secondAttribute="centerY" id="agf-4g-bJh"/>
+                                                            <constraint firstItem="vxp-DJ-9wx" firstAttribute="centerX" secondItem="8Ts-np-OcV" secondAttribute="centerX" id="bdH-eE-WtD"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -154,20 +146,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38q-gE-ziK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="mvE-X8-DqP"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
                                                                 <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-hH-2mN">
-                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
-                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
-                                                            </imageView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="38q-gE-ziK" firstAttribute="centerY" secondItem="PV5-Fk-umO" secondAttribute="centerY" id="RnV-SH-TCe"/>
+                                                            <constraint firstItem="38q-gE-ziK" firstAttribute="centerX" secondItem="PV5-Fk-umO" secondAttribute="centerX" id="e1D-6g-Z9Y"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -185,20 +173,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvd-2a-qv4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="OeV-Am-0rt"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
                                                                 <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dxc-Pm-LSh">
-                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="34.666666666666664" height="11.000000000000007"/>
-                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
-                                                            </imageView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Hvd-2a-qv4" firstAttribute="centerX" secondItem="j1B-5J-D95" secondAttribute="centerX" id="0It-9x-atp"/>
+                                                            <constraint firstItem="Hvd-2a-qv4" firstAttribute="centerY" secondItem="j1B-5J-D95" secondAttribute="centerY" id="Bib-aO-ILT"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -216,20 +200,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDb-9x-Q4X">
-                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="56b-0T-Enk"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
                                                                 <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vwk-Ax-9RE">
-                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
-                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
-                                                            </imageView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="xDb-9x-Q4X" firstAttribute="centerX" secondItem="2fk-7L-ovF" secondAttribute="centerX" id="LfC-C7-Mk9"/>
+                                                            <constraint firstItem="xDb-9x-Q4X" firstAttribute="centerY" secondItem="2fk-7L-ovF" secondAttribute="centerY" id="b5p-56-JnV"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -247,20 +227,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUI-Bo-edN">
-                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="bK2-WC-Sig"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="35"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
                                                                 <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ptG-Qd-dtl">
-                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="34.666666666666664" height="11.000000000000007"/>
-                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
-                                                            </imageView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="HUI-Bo-edN" firstAttribute="centerY" secondItem="8G9-wV-ehD" secondAttribute="centerY" id="VL9-Gr-6kH"/>
+                                                            <constraint firstItem="HUI-Bo-edN" firstAttribute="centerX" secondItem="8G9-wV-ehD" secondAttribute="centerX" id="d7t-Fq-X1a"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -278,20 +254,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bF2-7b-Kui">
-                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="T0t-j5-OH1"/>
-                                                                </constraints>
+                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
                                                                 <color key="textColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Eo-6K-l5y">
-                                                                <rect key="frame" x="0.0" y="22.333333333333321" width="35" height="11.000000000000007"/>
-                                                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
-                                                            </imageView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="bF2-7b-Kui" firstAttribute="centerY" secondItem="hsT-5Q-rC2" secondAttribute="centerY" id="aPs-BB-7Oz"/>
+                                                            <constraint firstItem="bF2-7b-Kui" firstAttribute="centerX" secondItem="hsT-5Q-rC2" secondAttribute="centerX" id="tUB-pe-MGf"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -362,13 +334,10 @@
                 <outlet property="deleteStepButton" destination="hgd-XB-G60" id="kn4-uV-PYH"/>
                 <outlet property="deleteStepImage" destination="aso-jI-wsi" id="TaL-Vl-s6c"/>
                 <outlet property="editStepNameImage" destination="S4C-hg-7qZ" id="Juv-uS-cvR"/>
-                <outlet property="friCheckMarkImageView" destination="Vwk-Ax-9RE" id="ysy-2g-uFU"/>
                 <outlet property="friLabel" destination="xDb-9x-Q4X" id="wFh-nq-CIu"/>
                 <outlet property="friView" destination="pIq-Ic-zrm" id="SuN-BK-K3l"/>
-                <outlet property="monCheckMarkImageView" destination="E2e-ZL-jrh" id="g7N-N6-UDI"/>
                 <outlet property="monLabel" destination="qMn-l1-xef" id="Om1-ti-8iU"/>
                 <outlet property="monView" destination="ZYk-zu-2jX" id="1S8-at-Klz"/>
-                <outlet property="satCheckMarkImageView" destination="ptG-Qd-dtl" id="rlK-eI-5zS"/>
                 <outlet property="satLabel" destination="HUI-Bo-edN" id="diI-ep-LgM"/>
                 <outlet property="satView" destination="7jA-HL-VH3" id="QAw-7D-n7H"/>
                 <outlet property="stepDaysView" destination="Xkz-hg-Kue" id="n6P-n0-EqG"/>
@@ -379,16 +348,12 @@
                 <outlet property="stepProductNameLabel" destination="phv-uo-iJ0" id="nNO-ge-6W2"/>
                 <outlet property="stepProductView" destination="jla-4O-yac" id="vWP-AO-BHG"/>
                 <outlet property="stepView" destination="BJ9-Ha-49Y" id="tVf-gB-Cog"/>
-                <outlet property="sunCheckMarkImageView" destination="4Eo-6K-l5y" id="IjC-Cw-Del"/>
                 <outlet property="sunLabel" destination="bF2-7b-Kui" id="M7D-ZE-sgZ"/>
                 <outlet property="sunView" destination="efD-Uk-sHi" id="a2e-A0-WsQ"/>
-                <outlet property="thuCheckMarkImageView" destination="dxc-Pm-LSh" id="BQe-b8-CkS"/>
                 <outlet property="thuLabel" destination="Hvd-2a-qv4" id="N0G-zp-if0"/>
                 <outlet property="thuView" destination="eUa-J1-6zx" id="VTl-2f-fLB"/>
-                <outlet property="tueCheckMarkImageView" destination="cWp-5J-lUE" id="CB0-t0-Vop"/>
                 <outlet property="tueLabel" destination="vxp-DJ-9wx" id="aQo-Vf-ZqI"/>
                 <outlet property="tueView" destination="cLG-dv-H0C" id="uuM-8j-EQp"/>
-                <outlet property="wedCheckMarkImageView" destination="B3w-hH-2mN" id="LMx-GO-avA"/>
                 <outlet property="wedLabel" destination="38q-gE-ziK" id="6oU-7b-qr3"/>
                 <outlet property="wedView" destination="fj0-w3-LEK" id="6mW-Sq-z6B"/>
             </connections>
@@ -397,7 +362,6 @@
     </objects>
     <resources>
         <image name="cerave" width="500" height="500"/>
-        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
