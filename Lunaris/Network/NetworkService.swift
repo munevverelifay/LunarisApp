@@ -111,9 +111,31 @@ class NetworkService {
                        encoding: JSONEncoding.default,
                        headers: headers)
             .responseString { response in
-
+                completion(response.result)
             }
         }
     }
+    
+    func postRoutine(userId: String?, routine: String?, completion: @escaping(Result<String, AFError>) -> Void) {
+        if let usrId = userId, let routine = routine {
+            let parameters: [String: Any] = [
+                "user-id": usrId,
+                "routine": routine
+            ]
+            print(userId ?? "")
+            print(routine)
+            let url = "https://kouiot.com/elif/routine.php"
+            let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
+            AF.request(url, method: .post,
+                       parameters: parameters,
+                       encoding: JSONEncoding.default,
+                       headers: headers)
+            .responseString { response in
+                completion(response.result)
+            }
+        }
+    }
+    
+    
 
 }

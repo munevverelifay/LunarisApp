@@ -37,15 +37,7 @@ class UserCommentsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        GlobalDataManager.sharedGlobalManager.commentId = []
-//        GlobalDataManager.sharedGlobalManager.commentUserId = []
-//        GlobalDataManager.sharedGlobalManager.commentContent = []
-//        GlobalDataManager.sharedGlobalManager.commentRatings = []
-//        GlobalDataManager.sharedGlobalManager.commentTitle = []
-//        GlobalDataManager.sharedGlobalManager.commentCreatedAt = []
-//        commentCollectionView.reloadData()
-//        configureCommentData()
-        
+
     }
 
     func configureCommentData() {

@@ -62,7 +62,6 @@ class AddCommentViewController: UIViewController {
                                                  commentTitle: reviewTitleTextField.text) { response in
             switch response {
             case .success(let value):
-//                print(value[0].id)
                 if let data = value.data(using: .utf8),
                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
                    let result = json.first?["result"] as? String {

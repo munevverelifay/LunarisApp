@@ -12,6 +12,8 @@ class StepProductViewController: UIViewController {
     
     @IBOutlet weak var stepProductCollectionView: UICollectionView!
     
+    var selectProduct: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +27,7 @@ class StepProductViewController: UIViewController {
 
 extension StepProductViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return GlobalDataManager.sharedGlobalManager.productListId?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -33,10 +35,39 @@ extension StepProductViewController: UICollectionViewDelegate, UICollectionViewD
         guard let stepProductCell = stepProductCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: StepProductCell.self), for: indexPath) as? StepProductCell else {
             return UICollectionViewCell()
         }
+        
+        stepProductCell.stepProductNameLabel.text = GlobalDataManager.sharedGlobalManager.productListName?[indexPath.item]
+        stepProductCell.stepProductBrandNameLabel.text = GlobalDataManager.sharedGlobalManager.productListBrand?[indexPath.item]
+//        productCell.productTotalRatin.text = GlobalDataManager.sharedGlobalManager.productListTotalRating?[indexPath.item]
+        if let imageUrlString = GlobalDataManager.sharedGlobalManager.productListImage?[indexPath.item],
+           let imageUrl = URL(string: imageUrlString) {
+            stepProductCell.stepProductImageView.kf.setImage(with: imageUrl)
+        } else {
+            let defaultImageUrlString = "cerave"
+            let defaultImageUrl = URL(string: defaultImageUrlString)
+            stepProductCell.stepProductImageView.kf.setImage(with: defaultImageUrl)
+        }
 
         return stepProductCell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedProductName = GlobalDataManager.sharedGlobalManager.productListName?[indexPath.item]
+        let selectedProductBrand = GlobalDataManager.sharedGlobalManager.productListBrand?[indexPath.item]
+        let selectedProductId = GlobalDataManager.sharedGlobalManager.productListId?[indexPath.item]
+        let selectedProductImage = GlobalDataManager.sharedGlobalManager.productListImage?[indexPath.item]
+        // Diğer değerleri de burada alabilirsiniz
+        let selectedProductIndex = selectProduct
+        
+        let userInfo: [String: Any] = [
+            "productName": selectedProductName ?? "",
+            "productBrand": selectedProductBrand ?? "",
+            "productIndex": selectedProductIndex,
+            "productId": selectedProductId ?? "",
+            "productImage": selectedProductImage ?? ""
+        ]
+        
+        NotificationCenter.default.post(name: Notification.Name("SelectedProduct"), object: nil, userInfo: userInfo)
+        navigationController?.popViewController(animated: true)
     }
 }
 

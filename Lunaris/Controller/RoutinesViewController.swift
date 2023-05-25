@@ -18,6 +18,8 @@ class RoutinesViewController: UIViewController {
     @IBOutlet weak var eveningRoutineLabel: UILabel!
     @IBOutlet weak var eveningRoutineView: UIView!
     
+    var morningRoutine: String = ""
+    
     var steps: [String] = [] { // Adımları tutan dizi
         didSet {
             //test = Array(repeating: [], count: steps.count)
@@ -26,7 +28,7 @@ class RoutinesViewController: UIViewController {
                     checkTest.append(days)
                     test = checkTest
                 } else {
-                    test = checkTest
+                     test = checkTest
                 }
                 print("Yeni ekleme test \(test)")
                 print("Yeni ekleme checktest \(checkTest)")
@@ -72,6 +74,56 @@ class RoutinesViewController: UIViewController {
     var checkMorTest: [[Bool]] = []
     var checkEveTest: [[Bool]] = []
     
+    var productIdArray: [String] = [] {
+        didSet {
+            print("productların idsi")
+            print(productIdArray)
+        }
+    }
+    
+    var productImageArray: [String] = []
+    var morningProductImageArray: [String] = []
+    var eveningProductImageArray: [String] = []
+    
+    var morningProductIdArray: [String] = []
+    var eveningProductIdArray: [String] = []
+    
+    var productNameArray: [String] = []
+    var morningProductNameArray: [String] = []
+    var eveningProductNameArray: [String] = []
+    
+    var productBrandNameArray: [String] = []
+    var morningProductBrandArray: [String] = []
+    var eveningProductBrandArray: [String] = []
+    
+    var selectedProductCell: [Int] = [] {
+        didSet {
+            stepCollectionView.reloadData()
+        }
+    }
+    var morningSelectedProductCell: [Int] = []
+    var eveningSelectedProductCell: [Int] = []
+    
+    
+    //MARK: - Morning Day Save Array
+    var morMonArray: [Int] = []
+    var morTueArray: [Int] = []
+    var morWedArray: [Int] = []
+    var morThuArray: [Int] = []
+    var morFriArray: [Int] = []
+    var morSatArray: [Int] = []
+    var morSunArray: [Int] = []
+    
+    //MARK: - Evening Day Save Array
+    var eveMonArray: [Int] = []
+    var eveTueArray: [Int] = []
+    var eveWedArray: [Int] = []
+    var eveThuArray: [Int] = []
+    var eveFriArray: [Int] = []
+    var eveSatArray: [Int] = []
+    var eveSunArray: [Int] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,11 +149,161 @@ class RoutinesViewController: UIViewController {
         
         let tapEveningRoutineGesture = UITapGestureRecognizer(target: self, action: #selector(tappedEveningRoutineLabel))
         configureTouchableLabel(label: eveningRoutineLabel, gesture: tapEveningRoutineGesture)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(handleSelectedProduct(_:)), name: Notification.Name("SelectedProduct"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+        if morning {
+            if morningTest.isEmpty {
+                morningTest = checkTest
+            } else {
+                morningTest = checkTest
+            }
+        } else {
+            if eveningTest.isEmpty {
+                eveningTest = checkTest
+            } else {
+                eveningTest = checkTest
+            }
+        }
+        //MARK: - Morning Product set save data
+        morMonArray = []
+        morTueArray = []
+        morWedArray = []
+        morThuArray = []
+        morFriArray = []
+        morSatArray = []
+        morSunArray = []
+        
+        var daysIndexControl = 0
+        
+        morningTest.forEach { days in
+            var itemIndexControl = 0
+            days.forEach { item in
+                if item == true {
+                    switch itemIndexControl {
+                    case 0:
+                        morMonArray.append(daysIndexControl)
+                    case 1:
+                        morTueArray.append(daysIndexControl)
+                    case 2:
+                        morWedArray.append(daysIndexControl)
+                    case 3:
+                        morThuArray.append(daysIndexControl)
+                    case 4:
+                        morFriArray.append(daysIndexControl)
+                    case 5:
+                        morSatArray.append(daysIndexControl)
+                    case 6:
+                        morSunArray.append(daysIndexControl)
+                    default:
+                        break
+                    }
+                }
+                itemIndexControl += 1
+            }
+            daysIndexControl += 1
+        }
+        
+        var morMonIDArray : [String] = []
+        var morTueIDArray : [String] = []
+        var morWedIDArray : [String] = []
+        var morThuIDArray : [String] = []
+        var morFriIDArray : [String] = []
+        var morSatIDArray : [String] = []
+        var morSunIDArray : [String] = []
+       
+        var controlll = 0
+        selectedProductCell.forEach { item in
+            morMonArray.forEach { mon in
+                if item == mon {
+                    let string = String(describing: productIdArray[controlll])
+                    morMonIDArray.append(string)
+                }
+            }
+            morTueArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: productIdArray[controlll])
+                    morTueIDArray.append(string)
+                }
+            }
+            
+            morWedArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: productIdArray[controlll])
+                    morWedIDArray.append(string)
+                }
+            }
+            
+            morThuArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: productIdArray[controlll])
+                    morThuIDArray.append(string)
+                }
+            }
+            
+            morFriArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: productIdArray[controlll])
+                    morFriIDArray.append(string)
+                }
+            }
+            
+            morSatArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: productIdArray[controlll])
+                    morSatIDArray.append(string)
+                }
+            }
+            
+            morSunArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: productIdArray[controlll])
+                    morSunIDArray.append(string)
+                }
+            }
+            controlll += 1
+        }
+        
+        let morMonString = morMonIDArray.joined(separator: ",")
+        let morTueString = morTueIDArray.joined(separator: ",")
+        let morWedString = morWedIDArray.joined(separator: ",")
+        let morThuString = morThuIDArray.joined(separator: ",")
+        let morFriString = morFriIDArray.joined(separator: ",")
+        let morSatString = morSatIDArray.joined(separator: ",")
+        let morSunString = morSunIDArray.joined(separator: ",")
+
+
+        morningRoutine = "mon=\(morMonString)&tue=\(morTueString)&wed=\(morWedString)&thu=\(morThuString)&fri=\(morFriString)&sat=\(morSatString)&sun=\(morSunString)&time=0"
+
+        configureRoutineData()
+    }
+    
+    func configureRoutineData() {
+        NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: morningRoutine) { response in
+            switch response {
+            case .success(let value):
+                if let data = value.data(using: .utf8),
+                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+                   let result = json.first?["result"] as? String {
+                    print(result)
+                    if result == "true" {
+                        print("fuck")
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     @IBAction func addStepButton(_ sender: UIButton) {
@@ -129,13 +331,31 @@ class RoutinesViewController: UIViewController {
             print("Test \(test)")
             print("Check \(checkTest)")
         }
+
         
         stepCollectionView.performBatchUpdates({
             steps.remove(at: indexPath.item) // Tıklanan adımı diziden sil
             stepCollectionView.deleteItems(at: [indexPath])
         }, completion: nil)
         let indexPaths = stepCollectionView.indexPathsForVisibleItems
+        
+        selectedProductCell.forEach { item in
+            if item == indexPath.item {
+                if let index = selectedProductCell.firstIndex(of: item) {
+                    selectedProductCell.remove(at: index)
+                    productNameArray.remove(at: index)
+                    productBrandNameArray.remove(at: index)
+                    productIdArray.remove(at: index)
+                    productImageArray.remove(at: index)
+                }
+            } else if item > indexPath.item {
+                if let index = selectedProductCell.firstIndex(of: item) {
+                    selectedProductCell[index] = selectedProductCell[index] - 1
+                }
+            }
+        }
         stepCollectionView.reloadItems(at: indexPaths)
+        stepCollectionView.reloadData()
         
     
     }
@@ -148,13 +368,37 @@ class RoutinesViewController: UIViewController {
 
     }
     
-    @objc func editProductImageViewTapped(_ sender: UIImageView) { //bunun yerine kaydırma ile yap
-        if let selectStepVC = storyboard?.instantiateViewController(withIdentifier: "StepProductViewController") as? StepProductViewController {
-            self.navigationController?.pushViewController(selectStepVC, animated: true)
-            navigationController?.isNavigationBarHidden = false
+    @objc func editProductImageViewTapped(_ sender: UITapGestureRecognizer) { //bunun yerine kaydırma ile yap
+        // Dokunulan noktayı alın
+        let location = sender.location(in: stepCollectionView)
+        
+        // Dokunulan noktanın indexPath değerini alın
+        if let indexPath = stepCollectionView.indexPathForItem(at: location) {
+            // indexPath'i kullanabilirsiniz
+            let item = indexPath.item
+            if let selectStepVC = storyboard?.instantiateViewController(withIdentifier: "StepProductViewController") as? StepProductViewController {
+                self.navigationController?.pushViewController(selectStepVC, animated: true)
+                navigationController?.isNavigationBarHidden = false
+                selectStepVC.selectProduct = item
+            }
         }
-
     }
+    
+    @objc func handleSelectedProduct(_ notification: Notification) {
+        if let userInfo = notification.userInfo,
+           let productName = userInfo["productName"] as? String,
+           let productBrand = userInfo["productBrand"] as? String,
+           let productIndex = userInfo["productIndex"] as? Int,
+           let productId = userInfo["productId"] as? String,
+           let productImage = userInfo["productImage"] as? String {
+            productNameArray.append(productName)
+            productBrandNameArray.append(productBrand)
+            selectedProductCell.append(productIndex)
+            productIdArray.append(productId)
+            productImageArray.append(productImage)
+        }
+    }
+
     
     @objc func tappedMorningRoutineLabel() {
         addControl = false
@@ -164,12 +408,27 @@ class RoutinesViewController: UIViewController {
             eveningSteps = steps
             eveningTest = test
             checkEveTest = checkTest
+            eveningSelectedProductCell = selectedProductCell
+            eveningProductNameArray = productNameArray
+            eveningProductBrandArray = productBrandNameArray
+            eveningProductIdArray = productIdArray
+            eveningProductImageArray = productImageArray
             steps = []
             test = []
             checkTest = []
+            selectedProductCell = []
+            productNameArray = []
+            productBrandNameArray = []
+            productIdArray = []
+            productImageArray = []
             steps = morningSteps
             test = morningTest
             checkTest = checkMorTest
+            selectedProductCell = morningSelectedProductCell
+            productNameArray = morningProductNameArray
+            productBrandNameArray = morningProductBrandArray
+            productIdArray = morningProductIdArray
+            productImageArray = morningProductImageArray
             morning = true
             morningRoutineView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             morningRoutineLabel.textColor = UIColor.white
@@ -185,12 +444,27 @@ class RoutinesViewController: UIViewController {
             morningSteps = steps
             morningTest = test
             checkMorTest = checkTest
+            morningSelectedProductCell = selectedProductCell
+            morningProductNameArray = productNameArray
+            morningProductBrandArray = productBrandNameArray
+            morningProductIdArray = productIdArray
+            morningProductImageArray = productImageArray
             steps = []
             test = []
             checkTest = []
+            selectedProductCell = []
+            productNameArray = []
+            productBrandNameArray = []
+            productIdArray = []
+            productImageArray = []
             steps = eveningSteps
             test = eveningTest
             checkTest = checkEveTest
+            selectedProductCell = eveningSelectedProductCell
+            productNameArray = eveningProductNameArray
+            productBrandNameArray = eveningProductBrandArray
+            productIdArray = eveningProductIdArray
+            productImageArray = eveningProductImageArray
             morning = false
             eveningRoutineView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             eveningRoutineLabel.textColor = UIColor.white
@@ -210,8 +484,6 @@ class RoutinesViewController: UIViewController {
             // Diğer işlemleri burada gerçekleştiri
             test[item][0] = true
             indexSelect = item
-        
-            
             stepCollectionView.reloadData()
         } else {
             // Silinecek adımın indeksi bulunamadı
@@ -401,10 +673,43 @@ extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewData
                 case 2:
                     routineStepCell.wedView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
                     routineStepCell.wedLabel.textColor = UIColor.white
+                case 3:
+                    routineStepCell.thuView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                    routineStepCell.thuLabel.textColor = UIColor.white
+                case 4:
+                    routineStepCell.friView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                    routineStepCell.friLabel.textColor = UIColor.white
+                case 5:
+                    routineStepCell.satView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                    routineStepCell.satLabel.textColor = UIColor.white
+                case 6:
+                    routineStepCell.sunView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                    routineStepCell.sunLabel.textColor = UIColor.white
                 default:
                     break
                 }
             }
+            
+           
+            routineStepCell.stepProductNameLabel.text = "Product Name"
+            routineStepCell.stepProductBrandLabel.text = "Product Brand"
+            
+            let defaultImageUrlString = "cerave"
+            let defaultImageUrl = URL(string: defaultImageUrlString)
+            routineStepCell.stepProductImage.kf.setImage(with: defaultImageUrl)
+
+            var check = 0
+            selectedProductCell.forEach { item in
+                if item == indexPath.item {
+                    routineStepCell.stepProductNameLabel.text = productNameArray[check]
+                    routineStepCell.stepProductBrandLabel.text = productBrandNameArray[check]
+                    let imageUrlString = productImageArray[check]
+                    let imageUrl = URL(string: imageUrlString)
+                    routineStepCell.stepProductImage.kf.setImage(with: imageUrl)
+                }
+                check += 1
+            }
+       
             return routineStepCell
         }
         
@@ -415,11 +720,13 @@ extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == routinePageTitleCollectionView {
             if indexPath.item == 0 {
-                if let dailyRoutineVC = storyboard?.instantiateViewController(withIdentifier: "DailyRoutineViewController") as? DailyRoutineViewController {
-
-                    self.navigationController?.pushViewController(dailyRoutineVC, animated: false)
-                    navigationController?.isNavigationBarHidden = true
-                }
+                navigationController?.popViewController(animated: false)
+                navigationController?.isNavigationBarHidden = true
+//                if let dailyRoutineVC = storyboard?.instantiateViewController(withIdentifier: "DailyRoutineViewController") as? DailyRoutineViewController {
+//
+//                    self.navigationController?.pushViewController(dailyRoutineVC, animated: false)
+//                    navigationController?.isNavigationBarHidden = true
+//                }
             }
         } else {
             GlobalDataManager.sharedGlobalManager.currentStep = indexPath.item
@@ -449,7 +756,7 @@ extension RoutinesViewController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if collectionView == routinePageTitleCollectionView {
-            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         } else {
             return UIEdgeInsets(top: 0, left: 2, bottom: 20, right: 2)
         }
