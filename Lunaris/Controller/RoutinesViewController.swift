@@ -19,6 +19,7 @@ class RoutinesViewController: UIViewController {
     @IBOutlet weak var eveningRoutineView: UIView!
     
     var morningRoutine: String = ""
+    var eveningRoutine: String = ""
     
     var steps: [String] = [] { // Adımları tutan dizi
         didSet {
@@ -161,18 +162,21 @@ class RoutinesViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        
         if morning {
             if morningTest.isEmpty {
                 morningTest = checkTest
+                morningProductIdArray = productIdArray
             } else {
                 morningTest = checkTest
+                morningProductIdArray = productIdArray
             }
         } else {
             if eveningTest.isEmpty {
                 eveningTest = checkTest
+                eveningProductIdArray = productIdArray
             } else {
                 eveningTest = checkTest
+                eveningProductIdArray = productIdArray
             }
         }
         //MARK: - Morning Product set save data
@@ -226,48 +230,48 @@ class RoutinesViewController: UIViewController {
         selectedProductCell.forEach { item in
             morMonArray.forEach { mon in
                 if item == mon {
-                    let string = String(describing: productIdArray[controlll])
+                    let string = String(describing: morningProductIdArray[controlll])
                     morMonIDArray.append(string)
                 }
             }
             morTueArray.forEach { tue in
                 if item == tue {
-                    let string = String(describing: productIdArray[controlll])
+                    let string = String(describing: morningProductIdArray[controlll])
                     morTueIDArray.append(string)
                 }
             }
             
             morWedArray.forEach { tue in
                 if item == tue {
-                    let string = String(describing: productIdArray[controlll])
+                    let string = String(describing: morningProductIdArray[controlll])
                     morWedIDArray.append(string)
                 }
             }
             
             morThuArray.forEach { tue in
                 if item == tue {
-                    let string = String(describing: productIdArray[controlll])
+                    let string = String(describing: morningProductIdArray[controlll])
                     morThuIDArray.append(string)
                 }
             }
             
             morFriArray.forEach { tue in
                 if item == tue {
-                    let string = String(describing: productIdArray[controlll])
+                    let string = String(describing: morningProductIdArray[controlll])
                     morFriIDArray.append(string)
                 }
             }
             
             morSatArray.forEach { tue in
                 if item == tue {
-                    let string = String(describing: productIdArray[controlll])
+                    let string = String(describing: morningProductIdArray[controlll])
                     morSatIDArray.append(string)
                 }
             }
             
             morSunArray.forEach { tue in
                 if item == tue {
-                    let string = String(describing: productIdArray[controlll])
+                    let string = String(describing: morningProductIdArray[controlll])
                     morSunIDArray.append(string)
                 }
             }
@@ -284,12 +288,138 @@ class RoutinesViewController: UIViewController {
 
 
         morningRoutine = "mon=\(morMonString)&tue=\(morTueString)&wed=\(morWedString)&thu=\(morThuString)&fri=\(morFriString)&sat=\(morSatString)&sun=\(morSunString)&time=0"
+    
+        //MARK: - Evening Product set save data
 
-        configureRoutineData()
+        eveMonArray = []
+        eveTueArray = []
+        eveWedArray = []
+        eveThuArray = []
+        eveFriArray = []
+        eveSatArray = []
+        eveSunArray = []
+
+        var eveDaysIndexControl = 0
+
+        eveningTest.forEach { days in
+            var eveItemIndexControl = 0
+            days.forEach { item in
+                if item == true {
+                    switch eveItemIndexControl {
+                    case 0:
+                        eveMonArray.append(eveDaysIndexControl)
+                    case 1:
+                        eveTueArray.append(eveDaysIndexControl)
+                    case 2:
+                        eveWedArray.append(eveDaysIndexControl)
+                    case 3:
+                        eveThuArray.append(eveDaysIndexControl)
+                    case 4:
+                        eveFriArray.append(eveDaysIndexControl)
+                    case 5:
+                        eveSatArray.append(eveDaysIndexControl)
+                    case 6:
+                        eveSunArray.append(eveDaysIndexControl)
+                    default:
+                        break
+                    }
+                }
+                eveItemIndexControl += 1
+            }
+            eveDaysIndexControl += 1
+        }
+
+        var eveMonIDArray: [String] = []
+        var eveTueIDArray: [String] = []
+        var eveWedIDArray: [String] = []
+        var eveThuIDArray: [String] = []
+        var eveFriIDArray: [String] = []
+        var eveSatIDArray: [String] = []
+        var eveSunIDArray: [String] = []
+
+        var eveningDaysControl = 0
+        selectedProductCell.forEach { item in
+            eveMonArray.forEach { mon in
+                if item == mon {
+                    let string = String(describing: eveningProductIdArray[eveningDaysControl])
+                    eveMonIDArray.append(string)
+                }
+            }
+            eveTueArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: eveningProductIdArray[eveningDaysControl])
+                    eveTueIDArray.append(string)
+                }
+            }
+
+            eveWedArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: eveningProductIdArray[eveningDaysControl])
+                    eveWedIDArray.append(string)
+                }
+            }
+
+            eveThuArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: eveningProductIdArray[eveningDaysControl])
+                    eveThuIDArray.append(string)
+                }
+            }
+
+            eveFriArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: eveningProductIdArray[eveningDaysControl])
+                    eveFriIDArray.append(string)
+                }
+            }
+
+            eveSatArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: eveningProductIdArray[eveningDaysControl])
+                    eveSatIDArray.append(string)
+                }
+            }
+
+            eveSunArray.forEach { tue in
+                if item == tue {
+                    let string = String(describing: eveningProductIdArray[eveningDaysControl])
+                    eveSunIDArray.append(string)
+                }
+            }
+            eveningDaysControl += 1
+        }
+
+        let eveMonString = eveMonIDArray.joined(separator: ",")
+        let eveTueString = eveTueIDArray.joined(separator: ",")
+        let eveWedString = eveWedIDArray.joined(separator: ",")
+        let eveThuString = eveThuIDArray.joined(separator: ",")
+        let eveFriString = eveFriIDArray.joined(separator: ",")
+        let eveSatString = eveSatIDArray.joined(separator: ",")
+        let eveSunString = eveSunIDArray.joined(separator: ",")
+
+        eveningRoutine = "mon=\(eveMonString)&tue=\(eveTueString)&wed=\(eveWedString)&thu=\(eveThuString)&fri=\(eveFriString)&sat=\(eveSatString)&sun=\(eveSunString)&time=1"
+
+        configureRoutineData(routineEve: eveningRoutine, routineMor: morningRoutine)
     }
     
-    func configureRoutineData() {
-        NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: morningRoutine) { response in
+    func configureRoutineData(routineEve: String, routineMor: String ) {
+        NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineMor) { response in
+            switch response {
+            case .success(let value):
+                if let data = value.data(using: .utf8),
+                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+                   let result = json.first?["result"] as? String {
+                    print(result)
+                    if result == "true" {
+                        print("fuck")
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineEve) { response in
             switch response {
             case .success(let value):
                 if let data = value.data(using: .utf8),
@@ -376,6 +506,11 @@ class RoutinesViewController: UIViewController {
         if let indexPath = stepCollectionView.indexPathForItem(at: location) {
             // indexPath'i kullanabilirsiniz
             let item = indexPath.item
+            
+            if selectedProductCell.contains(item) {
+                return
+            }
+
             if let selectStepVC = storyboard?.instantiateViewController(withIdentifier: "StepProductViewController") as? StepProductViewController {
                 self.navigationController?.pushViewController(selectStepVC, animated: true)
                 navigationController?.isNavigationBarHidden = false
