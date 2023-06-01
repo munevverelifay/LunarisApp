@@ -1,98 +1,93 @@
 //
-//  ProductViewController.swift
+//  FavoriteViewController.swift
 //  Lunaris
 //
-//  Created by Münevver Elif Ay on 30.04.2023.
+//  Created by Münevver Elif Ay on 28.05.2023.
 //
 
-import Foundation
 import UIKit
-import Kingfisher
+import Alamofire
 
-struct cellData {
-    var opened = Bool()
-    var title = String()
-}
-
-class ProductViewController : UIViewController {
-    @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var productBrandNameLabel: UILabel!
-    @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var productTableView: UITableView!
-    @IBOutlet weak var productCategoryLabel: UILabel!
-    @IBOutlet weak var productTotalCommentLabel: UILabel!
-    @IBOutlet weak var firstStarImage: UIImageView!
-    @IBOutlet weak var secondStarImage: UIImageView!
-    @IBOutlet weak var thirdStarImage: UIImageView!
-    @IBOutlet weak var fourthStarImage: UIImageView!
-    @IBOutlet weak var fifthStarImage: UIImageView!
-    
-    var favoriteProductsString: String = ""
-    
-    var tableViewData = [cellData]()
-    
-    var selectedProductId: String = ""
-    
-    var productListTotalRating: String = "0"
-    
-    var addFavorite: Bool = false
-    
-    // Favori durumunu tutmak için bir değişken tanımlayın
-    var isLiked = false
-    
-    
+class FavoriteViewController: UIViewController {
+    @IBOutlet weak var favoritesCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        productImage.layer.cornerRadius = 30
         
-        productImage.layer.applySketchShadow(color: UIColor.black, alpha: 0.01, x: 2, y: 2, blur: 10, spread: 0)
-        productImage.layer.masksToBounds = true
+        favoritesCollectionView.dataSource = self
+        favoritesCollectionView.delegate = self
+        favoritesCollectionView.register(UINib(nibName: String(describing: FavoriteCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: FavoriteCell.self))
+        favoritesCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        print(GlobalDataManager.sharedGlobalManager.favoriteProductsList)
         
-        productNameLabel.text = GlobalDataManager.sharedGlobalManager.productListName?[Int(selectedProductId) ?? 0]
-        productBrandNameLabel.text = GlobalDataManager.sharedGlobalManager.productListBrand?[Int(selectedProductId) ?? 0]
-        productCategoryLabel.text = GlobalDataManager.sharedGlobalManager.productListCategories?[Int(selectedProductId) ?? 0]
-        productTotalCommentLabel.text = GlobalDataManager.sharedGlobalManager.productListReviewNumbers?[Int(selectedProductId) ?? 0]
-        
-        productListTotalRating = GlobalDataManager.sharedGlobalManager.productListTotalRating?[Int(selectedProductId) ?? 0] ?? "0.00"
-        if let imageUrlString = GlobalDataManager.sharedGlobalManager.productListImage?[Int(selectedProductId) ?? 0],
-           let imageUrl = URL(string: imageUrlString) {
-            productImage.kf.setImage(with: imageUrl)
-        } else {
-            let defaultImageUrlString = "cerave"
-            let defaultImageUrl = URL(string: defaultImageUrlString)
-            productImage.kf.setImage(with: defaultImageUrl)
-        }
-        
-        navigationController?.isNavigationBarHidden = false
-        configureNavigationTitle(pageTitle: "Products") //ürünün adını gir
-
-
-        
-        // Boş bir dizi ile tableViewData'yı başlatma
-        tableViewData = []
-        
-        // TableView'i veri kaynağı ve delegesi olarak ayarlama
-        productTableView.dataSource = self
-        productTableView.delegate = self
-        
-        // Cell'leri kaydolma
-        productTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        productTableView.register(UINib(nibName: String(describing: ReviewsCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ReviewsCell.self))
-        
-        productTableView.backgroundColor = .clear
-
-        
-        tableViewData = [
-            cellData(opened: false, title: "Ingredients"),
-            cellData(opened: false, title: "Comments")
-        ]
-        
-        productRatingStar()
-
+        title = "Favorites"
+       
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 249/255, green: 36/255, blue: 87/255, alpha: 1.0)]
     }
+    override func viewWillAppear(_ animated: Bool) {
+        configureFavoriteData()
+    }
+    func configureFavoriteData() {
+        NetworkService.sharedNetwork.getFavoriteList(userId: GlobalDataManager.sharedGlobalManager.userId) { response in
+            switch response {
+            case .success(let value):
+                print(value)
+                value.forEach { item in
+                    GlobalDataManager.sharedGlobalManager.favoriteProductsList.append(contentsOf: item.fav)
+                    self.favoritesCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
 
     
-    func productRatingStar() {
+extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return GlobalDataManager.sharedGlobalManager.favoriteProductsList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let favoriteCell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: FavoriteCell.self), for: indexPath) as? FavoriteCell else {
+            return UICollectionViewCell()
+        }
+        
+        if let favoriteProductId = Int(GlobalDataManager.sharedGlobalManager.favoriteProductsList[indexPath.item]) {
+            favoriteCell.favoriteProductNameLabel.text = GlobalDataManager.sharedGlobalManager.productListName?[favoriteProductId]
+            favoriteCell.favoriteProductCommentLabel.text = GlobalDataManager.sharedGlobalManager.productListReviewNumbers?[favoriteProductId]
+            
+            if let imageUrlString = GlobalDataManager.sharedGlobalManager.productListImage?[favoriteProductId],
+               let imageUrl = URL(string: imageUrlString) {
+                favoriteCell.favoriteProductImageView.kf.setImage(with: imageUrl)
+            } else {
+                let defaultImageUrlString = "cerave"
+                let defaultImageUrl = URL(string: defaultImageUrlString)
+                favoriteCell.favoriteProductImageView.kf.setImage(with: defaultImageUrl)
+            }
+            
+            if let productListTotalRating = GlobalDataManager.sharedGlobalManager.productListTotalRating?[favoriteProductId] {
+                productRatingStar(firstStarImage: favoriteCell.firstStarImage, secondStarImage: favoriteCell.secondStarImage, thirdStarImage: favoriteCell.thirdStarImage, fourthStarImage: favoriteCell.fourthStarImage, fifthStarImage: favoriteCell.fifthStarImage, productListTotalRating: productListTotalRating)
+            }
+        }
+        
+        return favoriteCell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let productDetailVC = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController {
+            navigationController?.pushViewController(productDetailVC, animated: true)
+            //Index +1 fazla gösteriyordu o yüzden yaptım
+            print(indexPath.item)
+            if let favoriteProductId = Int(GlobalDataManager.sharedGlobalManager.favoriteProductsList[indexPath.item]) {
+                productDetailVC.selectedProductId = GlobalDataManager.sharedGlobalManager.productListId?[favoriteProductId] ?? ""
+
+                GlobalDataManager.sharedGlobalManager.selectedProductId = GlobalDataManager.sharedGlobalManager.productListId?[favoriteProductId] ?? ""
+            }
+        }
+    }
+    
+    func productRatingStar(firstStarImage: UIImageView, secondStarImage: UIImageView, thirdStarImage: UIImageView, fourthStarImage: UIImageView, fifthStarImage: UIImageView, productListTotalRating: String) {
         if Double(productListTotalRating) ?? 0.0 == 0.0 {
             firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             firstStarImage.image = UIImage(systemName: "star")
@@ -105,7 +100,7 @@ class ProductViewController : UIViewController {
             fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             fifthStarImage.image = UIImage(systemName: "star")
         }
-        else if Double(productListTotalRating) ?? 0.1 <= 0.75 {
+        else if Double(productListTotalRating) ?? 0 <= 0.75 {
             firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             firstStarImage.image = UIImage(systemName: "star.leadinghalf.filled")
             secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
@@ -229,102 +224,16 @@ class ProductViewController : UIViewController {
         }
     }
     
-    
-    @IBAction func likeButtonTapped(_ sender: UIButton) {
-        NetworkService.sharedNetwork.postFavorites(userId: GlobalDataManager.sharedGlobalManager.userId, productId: selectedProductId) { response in
-            switch response {
-            case .success(let value):
-                if let data = value.data(using: .utf8),
-                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
-                   let result = json.first?["result"] as? String {
-                    print(result)
-                    if result == "true" {
-                        print("postFavoriteee")
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
 }
 
-extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return tableViewData.count
+extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 394, height: 100)
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableViewData[section].opened == true {
-            return 2
-        } else {
-            return 1
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 25
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }
-            cell.textLabel?.text = tableViewData[indexPath.section].title
-            cell.backgroundColor = .clear
-            return cell
-        } else if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }
-            cell.textLabel?.text = GlobalDataManager.sharedGlobalManager.productListIngredients?[Int(selectedProductId) ?? 0]
-//            tableViewData[indexPath.section].sectionData
-            cell.textLabel?.numberOfLines = 0
-            cell.backgroundColor = .clear
-            cell.textLabel?.sizeToFit()
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReviewsCell.self)) as? ReviewsCell else { return UITableViewCell() }
-            cell.backgroundColor = .clear
-            return cell
-        }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if tableViewData[indexPath.section].opened == true {
-//            tableViewData[indexPath.section].opened = false
-//            let sections = IndexSet.init(integer: indexPath.section)
-//            tableView.reloadSections(sections, with: .none)
-//
-//
-//        } else {
-//            tableViewData[indexPath.section].opened = true
-//            let sections = IndexSet.init(integer: indexPath.section)
-//            tableView.reloadSections(sections, with: .none)
-//
-//        }
-
-        if indexPath.section == 1 && indexPath.row == 1 {
-            // İlgili hücre seçildiğinde başka bir ekrana geçmek için kodları buraya yazın.
-            if let commentCV = storyboard?.instantiateViewController(withIdentifier: "CommentPageViewController") as? UserCommentsViewController {
-                self.navigationController?.pushViewController(commentCV, animated: true)
-                navigationController?.isNavigationBarHidden = false
-            }
-            
-        } else if tableViewData[indexPath.section].opened == true {
-            tableViewData[indexPath.section].opened = false
-            let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .none)
-        } else {
-            tableViewData[indexPath.section].opened = true
-            let sections = IndexSet.init(integer: indexPath.section)
-            tableView.reloadSections(sections, with: .none)
-        }
-    }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-         if indexPath.row == 0 {
-             if tableViewData[indexPath.section].opened == true {
-                 cell.accessoryView = UIImageView(image: UIImage(named: "up-arrow"))
-             } else {
-                 cell.accessoryView = UIImageView(image: UIImage(named: "down-arrow"))
-             }
-         }
-    }
-
 }

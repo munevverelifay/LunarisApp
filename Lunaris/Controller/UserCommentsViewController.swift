@@ -24,6 +24,7 @@ class UserCommentsViewController: UIViewController {
         
         configureButton(btn: commentButton)
         
+        
         GlobalDataManager.sharedGlobalManager.commentId = []
         GlobalDataManager.sharedGlobalManager.commentUserId = []
         GlobalDataManager.sharedGlobalManager.commentContent = []

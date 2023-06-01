@@ -28,14 +28,21 @@ class UserProfileViewController: UIViewController {
         profileSectionsCollectionView.register(UINib(nibName: String(describing: ProfileSectionsCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProfileSectionsCell.self))
         profileSectionsCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
         
+        configureNavigationTitle(pageTitle: "Profile")
+        
         if let imageUrlString = UserDefaults.standard.string(forKey: "userProfileImageURL"), let imageUrl = URL(string: imageUrlString) {
             profilePictureIV.kf.setImage(with: imageUrl)
         }
-        
+        userNameLabel.text = GlobalDataManager.sharedGlobalManager.userSurname
+        userBirthDateLabel.text = GlobalDataManager.sharedGlobalManager.userDateOfBirth
+//        profileDescriptonLabel.text = userDescription
+        let imageUrl = URL(string: GlobalDataManager.sharedGlobalManager.profileImage ?? "")
+        profilePictureIV.kf.setImage(with: imageUrl)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
+    override func viewDidAppear(_ animated: Bool) {
+
+        
     }
     
     
@@ -44,8 +51,6 @@ class UserProfileViewController: UIViewController {
         if let editProfileVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController {
             navigationController?.pushViewController(editProfileVC, animated: true)
         }
-
-        
     }
 }
 
@@ -95,3 +100,25 @@ extension UserProfileViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension UIViewController {
+    func configureUserProfilImage(userProfil: UIImageView) {
+        userProfil.layer.cornerRadius = userProfil.frame.height / 2
+        userProfil.layer.borderWidth = 5
+        let profileBorderColor = UIColor(red: 244/255, green: 241/255, blue: 222/255, alpha: 1.0)
+        userProfil.layer.borderColor = profileBorderColor.cgColor
+    }
+    
+    func configureNavigationTitle(pageTitle: String?) {
+        title = pageTitle
+        // Navigation bar başlığını sola yasla
+      navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 55/255, green: 41/255, blue: 77/255, alpha: 1.0)]
+        
+        // Navigation bar başlığı için özel bir font ve boyut belirle
+        if let font = UIFont(name: "Bodoni 72 Book", size: 25) {
+            navigationController?.navigationBar.titleTextAttributes = [
+                NSAttributedString.Key.font: font
+            ]
+        }
+    
+    }
+}

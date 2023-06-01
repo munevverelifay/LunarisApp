@@ -33,6 +33,11 @@ class SignInViewController: UIViewController {
         
         configureData()
         
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        configureFavoriteData()
     }
     //MARK: - ProductListData
     func configureData() {
@@ -40,9 +45,9 @@ class SignInViewController: UIViewController {
             switch response{
             case .success(let value):
                 print(value[0].id)
-        
                 value.forEach { item in
-                    GlobalDataManager.sharedGlobalManager.productListId?.append(item.id)
+                    let productId = String((Int(item.id) ?? 0) - 1)
+                    GlobalDataManager.sharedGlobalManager.productListId?.append(productId)
                     GlobalDataManager.sharedGlobalManager.productListName?.append(item.productName)
                     GlobalDataManager.sharedGlobalManager.productListCategories?.append(item.productCategories)
                     GlobalDataManager.sharedGlobalManager.productListBrand?.append(item.productBrand)
@@ -56,6 +61,37 @@ class SignInViewController: UIViewController {
             }
         }
     }
+    
+    func configureUserDetailData(completion: @escaping() -> Void) {
+        NetworkService.sharedNetwork.getUserDetail(userId: GlobalDataManager.sharedGlobalManager.userId) { response in
+            switch response{
+            case .success(let value):
+                print(value[0])
+                GlobalDataManager.sharedGlobalManager.userSurname = value[0].surname
+                GlobalDataManager.sharedGlobalManager.userDateOfBirth = value[0].dateOfBirth
+//               GlobalDataManager.sharedGlobalManager.userDescription = value[0].profileDescription
+                GlobalDataManager.sharedGlobalManager.userImage = value[0].userImage
+                completion()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func configureFavoriteData() {
+        NetworkService.sharedNetwork.getFavoriteList(userId: GlobalDataManager.sharedGlobalManager.userId) { response in
+            switch response {
+            case .success(let value):
+                print(value)
+                value.forEach { item in
+                    GlobalDataManager.sharedGlobalManager.favoriteProductsList.append(contentsOf: item.fav)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     
     @objc func tappedSignUpLabel() {
         if let signUpVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
@@ -93,11 +129,14 @@ class SignInViewController: UIViewController {
                         print("User ID: \(id)")
                         print("Profile Image URL: \(userImg)")
                         
-                        // Present tab bar controller
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let signUpVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-                        signUpVC.modalPresentationStyle = .fullScreen
-                        self.present(signUpVC, animated: true, completion: nil)
+                        self.configureUserDetailData {
+                            // Present tab bar controller
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let signUpVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                            signUpVC.modalPresentationStyle = .fullScreen
+                            self.present(signUpVC, animated: true, completion: nil)
+
+                        }
                     }
                 } else {
                     print("Invalid response format")

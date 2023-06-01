@@ -13,7 +13,6 @@
 		F70CC4F82A0C413F0081528D /* SelectStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70CC4F72A0C413F0081528D /* SelectStepViewController.swift */; };
 		F724C6CB29E085DC0095EA5F /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F724C6C929E085DC0095EA5F /* ProductCell.swift */; };
 		F724C6CC29E085DC0095EA5F /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F724C6CA29E085DC0095EA5F /* ProductCell.xib */; };
-		F724C6CE29E1B1D20095EA5F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F724C6CD29E1B1D20095EA5F /* ProfileViewController.swift */; };
 		F7328AB82A17DB5500C306EE /* StepProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7328AB62A17DB5500C306EE /* StepProductCell.swift */; };
 		F7328AB92A17DB5500C306EE /* StepProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7328AB72A17DB5500C306EE /* StepProductCell.xib */; };
 		F7328ABC2A17DC0900C306EE /* StepProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7328ABB2A17DC0900C306EE /* StepProductViewController.swift */; };
@@ -39,6 +38,10 @@
 		F7B94AD32A0D05450021641D /* ReviewListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B94AD22A0D05450021641D /* ReviewListResponse.swift */; };
 		F7BD20DB29FDCAD5002C4F12 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD20DA29FDCAD5002C4F12 /* UserResponse.swift */; };
 		F7C3624D29E994330066E40D /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C3624C29E994330066E40D /* NewPasswordViewController.swift */; };
+		F7C3C6E42A23821700123234 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C3C6E22A23821700123234 /* FavoriteCell.swift */; };
+		F7C3C6E52A23821700123234 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C3C6E32A23821700123234 /* FavoriteCell.xib */; };
+		F7C3C6E72A239A8F00123234 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C3C6E62A239A8F00123234 /* FavoriteViewController.swift */; };
+		F7C3C6E92A23A1CA00123234 /* FavoriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C3C6E82A23A1CA00123234 /* FavoriteResponse.swift */; };
 		F7C8CD7B2A07C94000A8575D /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8CD792A07C94000A8575D /* ReviewsCell.swift */; };
 		F7C8CD7C2A07C94000A8575D /* ReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C8CD7A2A07C94000A8575D /* ReviewsCell.xib */; };
 		F7C8CD802A0800C600A8575D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8CD7E2A0800C600A8575D /* CommentCell.swift */; };
@@ -68,7 +71,6 @@
 		F70CC4F72A0C413F0081528D /* SelectStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStepViewController.swift; sourceTree = "<group>"; };
 		F724C6C929E085DC0095EA5F /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		F724C6CA29E085DC0095EA5F /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
-		F724C6CD29E1B1D20095EA5F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F7328AB62A17DB5500C306EE /* StepProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProductCell.swift; sourceTree = "<group>"; };
 		F7328AB72A17DB5500C306EE /* StepProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepProductCell.xib; sourceTree = "<group>"; };
 		F7328ABB2A17DC0900C306EE /* StepProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProductViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,10 @@
 		F7B94AD22A0D05450021641D /* ReviewListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListResponse.swift; sourceTree = "<group>"; };
 		F7BD20DA29FDCAD5002C4F12 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		F7C3624C29E994330066E40D /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
+		F7C3C6E22A23821700123234 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		F7C3C6E32A23821700123234 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
+		F7C3C6E62A239A8F00123234 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		F7C3C6E82A23A1CA00123234 /* FavoriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteResponse.swift; sourceTree = "<group>"; };
 		F7C8CD792A07C94000A8575D /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		F7C8CD7A2A07C94000A8575D /* ReviewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
 		F7C8CD7E2A0800C600A8575D /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 				F7CF17A22A0308C900AE7C46 /* ProductDetailResponse.swift */,
 				F7B2D4D22A09450D00419A74 /* AddCommentResponse.swift */,
 				F7B94AD22A0D05450021641D /* ReviewListResponse.swift */,
+				F7C3C6E82A23A1CA00123234 /* FavoriteResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 		F77BB66429E034BB00427FAC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F7C3C6E12A23820600123234 /* FavoriteCell */,
 				F7C8E20B2A1A5912007BBA60 /* ProfileSectionsCell */,
 				F7328AB52A17DB3A00C306EE /* StepProductCell */,
 				F7E0EBEB2A0A71C000A7B04A /* RoutineStepCell */,
@@ -237,15 +245,24 @@
 				F7A92E8F29FF03980062D153 /* ProductViewController.swift */,
 				F7C8CD822A08048D00A8575D /* UserCommentsViewController.swift */,
 				F7C8CD842A082AE900A8575D /* AddCommentViewController.swift */,
-				F724C6CD29E1B1D20095EA5F /* ProfileViewController.swift */,
 				F7C8E2092A1A5397007BBA60 /* UserProfileViewController.swift */,
 				F7DC1ABD29E421650065D724 /* EditProfileViewController.swift */,
 				F7DC1ABF29E455910065D724 /* DailyRoutineViewController.swift */,
 				F7055B0629F800A80027FF07 /* RoutinesViewController.swift */,
 				F70CC4F72A0C413F0081528D /* SelectStepViewController.swift */,
 				F7328ABB2A17DC0900C306EE /* StepProductViewController.swift */,
+				F7C3C6E62A239A8F00123234 /* FavoriteViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		F7C3C6E12A23820600123234 /* FavoriteCell */ = {
+			isa = PBXGroup;
+			children = (
+				F7C3C6E22A23821700123234 /* FavoriteCell.swift */,
+				F7C3C6E32A23821700123234 /* FavoriteCell.xib */,
+			);
+			path = FavoriteCell;
 			sourceTree = "<group>";
 		};
 		F7C8CD702A07C0E200A8575D /* ReviewsCell */ = {
@@ -396,6 +413,7 @@
 				F7328AB92A17DB5500C306EE /* StepProductCell.xib in Resources */,
 				F77BB65C29E0347F00427FAC /* LaunchScreen.storyboard in Resources */,
 				F724C6CC29E085DC0095EA5F /* ProductCell.xib in Resources */,
+				F7C3C6E52A23821700123234 /* FavoriteCell.xib in Resources */,
 				F7E0EBEF2A0A71D400A7B04A /* RoutineStepCell.xib in Resources */,
 				F7C8CD812A0800C600A8575D /* CommentCell.xib in Resources */,
 				F77BB65929E0347F00427FAC /* Assets.xcassets in Resources */,
@@ -426,8 +444,8 @@
 				F734698429E07BC100360618 /* ShelfPageViewController.swift in Sources */,
 				F77BB66729E034F600427FAC /* SignInViewController.swift in Sources */,
 				F77BB65429E0347E00427FAC /* ViewController.swift in Sources */,
+				F7C3C6E72A239A8F00123234 /* FavoriteViewController.swift in Sources */,
 				F734698229E06EFA00360618 /* SearchPageViewController.swift in Sources */,
-				F724C6CE29E1B1D20095EA5F /* ProfileViewController.swift in Sources */,
 				F7C8CD852A082AE900A8575D /* AddCommentViewController.swift in Sources */,
 				F77BB65029E0347E00427FAC /* AppDelegate.swift in Sources */,
 				F7BD20DB29FDCAD5002C4F12 /* UserResponse.swift in Sources */,
@@ -444,10 +462,12 @@
 				F7C3624D29E994330066E40D /* NewPasswordViewController.swift in Sources */,
 				F77BB66E29E045E600427FAC /* VerifyEmailViewController.swift in Sources */,
 				F7CF17A32A0308C900AE7C46 /* ProductDetailResponse.swift in Sources */,
+				F7C3C6E42A23821700123234 /* FavoriteCell.swift in Sources */,
 				F77BB66929E03EEA00427FAC /* SignUpViewController.swift in Sources */,
 				F7A92E9029FF03980062D153 /* ProductViewController.swift in Sources */,
 				F7CF17A12A01206900AE7C46 /* UserDetailResponse.swift in Sources */,
 				F7B2D4D32A09450D00419A74 /* AddCommentResponse.swift in Sources */,
+				F7C3C6E92A23A1CA00123234 /* FavoriteResponse.swift in Sources */,
 				F7055B0729F800A80027FF07 /* RoutinesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,9 +10,14 @@ class GlobalDataManager {
     static let sharedGlobalManager = GlobalDataManager() //singletone
     var productsData: [ProductDetailResponse] = []
     var userId: String?
+    
+    var userSurname: String?
+    var userDateOfBirth: String?
+    var profileImage: String?
     var userImage: String?
     var productID: String?
     var selectedProductId: String = ""
+
     
     var productListId: [String]? = []
     var productListName: [String]? = []
@@ -27,7 +32,7 @@ class GlobalDataManager {
     var stepNumber: [Int]? = [0] //saymaya direkt 2'den başlıyor geçiçi çözümler yaptım
     var currentStep: Int?
     
-
+    var favoriteProductsList: [String] = []
     
     //comment GlobalData
     

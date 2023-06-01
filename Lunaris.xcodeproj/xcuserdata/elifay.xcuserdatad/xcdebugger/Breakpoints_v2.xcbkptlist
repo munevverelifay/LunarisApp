@@ -7,352 +7,95 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5516AB07-FEB8-4205-BC1A-F618368163AE"
-            shouldBeEnabled = "No"
+            uuid = "421AC21C-E698-4EB9-A5FB-A4BB0207F631"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
+            filePath = "Lunaris/Controller/FavoriteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
-            landmarkName = "viewWillDisappear(_:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0F2F647-A82D-41C7-90E4-FAE308CE7088"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lunaris/Controller/FavoriteViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "configureFavoriteData()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "5516AB07-FEB8-4205-BC1A-F618368163AE - 101d85fc33493575"
+                  uuid = "B0F2F647-A82D-41C7-90E4-FAE308CE7088 - 7708d5b476298e57"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
+                  symbolName = "Lunaris.FavoriteViewController.configureFavoriteData() -&gt; ()"
                   moduleName = "Lunaris"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
+                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/FavoriteViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "397"
-                  endingLineNumber = "397"
-                  offsetFromSymbolStart = "5148">
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
-                  uuid = "5516AB07-FEB8-4205-BC1A-F618368163AE - 101d85fc334936b7"
+                  uuid = "B0F2F647-A82D-41C7-90E4-FAE308CE7088 - b8c43b2e17e0a60"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Lunaris.FavoriteResponse&gt;, Swift.Error&gt;) -&gt; () in Lunaris.FavoriteViewController.configureFavoriteData() -&gt; ()"
                   moduleName = "Lunaris"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
+                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/FavoriteViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "399"
-                  endingLineNumber = "399"
-                  offsetFromSymbolStart = "3376">
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "B0F2F647-A82D-41C7-90E4-FAE308CE7088 - 7708d5b476298e57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lunaris.FavoriteViewController.configureFavoriteData() -&gt; ()"
+                  moduleName = "Lunaris"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/FavoriteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "B0F2F647-A82D-41C7-90E4-FAE308CE7088 - b8c43b2e17e0a60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Lunaris.FavoriteResponse&gt;, Swift.Error&gt;) -&gt; () in Lunaris.FavoriteViewController.configureFavoriteData() -&gt; ()"
+                  moduleName = "Lunaris"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/FavoriteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "108">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F661A61E-4194-4084-94DD-F5A1CAC1BB10"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F661A61E-4194-4084-94DD-F5A1CAC1BB10 - 101d85fc33490747"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "287"
-                  endingLineNumber = "287"
-                  offsetFromSymbolStart = "2700">
-               </Location>
-               <Location
-                  uuid = "F661A61E-4194-4084-94DD-F5A1CAC1BB10 - 101d85fc33490747"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "287"
-                  endingLineNumber = "287"
-                  offsetFromSymbolStart = "2640">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E974E908-D3AD-4955-B6E9-B62661423561"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E974E908-D3AD-4955-B6E9-B62661423561 - 101d85fc334936b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "399"
-                  endingLineNumber = "399"
-                  offsetFromSymbolStart = "5884">
-               </Location>
-               <Location
-                  uuid = "E974E908-D3AD-4955-B6E9-B62661423561 - 101d85fc334936b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "399"
-                  endingLineNumber = "399"
-                  offsetFromSymbolStart = "5876">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DAE51CD9-0D70-4C4D-BA19-58013CF81EDA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
-            landmarkName = "configureRoutineData(routineEve:routineMor:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F89CADE2-4799-4B58-8648-6EFDF43EFEE6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
-            landmarkName = "configureRoutineData(routineEve:routineMor:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5838B828-D33F-4CB2-9C08-912C765B8847"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5838B828-D33F-4CB2-9C08-912C765B8847 - 4d4fc61fa83d8ed6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.Int) -&gt; () in closure #4 (Swift.Int) -&gt; () in Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "360"
-                  endingLineNumber = "360"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "5838B828-D33F-4CB2-9C08-912C765B8847 - 4d4fc61fa83d8ed6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.Int) -&gt; () in closure #4 (Swift.Int) -&gt; () in Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "360"
-                  endingLineNumber = "360"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "5838B828-D33F-4CB2-9C08-912C765B8847 - 4d4fc61fa83d8e6b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.Int) -&gt; () in closure #4 (Swift.Int) -&gt; () in Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "363"
-                  endingLineNumber = "363"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "05F55C0B-E4FB-4564-AAF2-B9B60EBFAF3F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "05F55C0B-E4FB-4564-AAF2-B9B60EBFAF3F - 101d85fc3349346d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "389"
-                  endingLineNumber = "389"
-                  offsetFromSymbolStart = "4296">
-               </Location>
-               <Location
-                  uuid = "05F55C0B-E4FB-4564-AAF2-B9B60EBFAF3F - 101d85fc334935ce"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lunaris.RoutinesViewController.viewWillDisappear(Swift.Bool) -&gt; ()"
-                  moduleName = "Lunaris"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elifay/Desktop/Lunaris%20Base/LunarisApp/Lunaris/Controller/RoutinesViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "392"
-                  endingLineNumber = "392"
-                  offsetFromSymbolStart = "4520">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A6338264-3191-42ED-9A26-097FCF4B42C2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5008AD29-C3D6-43E8-925F-6FA52CC9F640"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A3BAEBE2-6EB2-4F6C-8BEC-3A8ABFF249F4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4F847733-D155-46BA-8F5A-0A5682E42A3F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lunaris/Controller/RoutinesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
