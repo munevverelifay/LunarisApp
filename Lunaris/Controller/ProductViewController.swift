@@ -64,8 +64,8 @@ class ProductViewController : UIViewController {
         }
         
         navigationController?.isNavigationBarHidden = false
-        configureNavigationTitle(pageTitle: "Products") //ürünün adını gir
-
+        title = "Products"
+        configureNavigationTitle() //ürünün adını gir
 
         
         // Boş bir dizi ile tableViewData'yı başlatma

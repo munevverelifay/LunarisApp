@@ -19,8 +19,9 @@ class SearchPageViewController: UIViewController {
         productCollectionView.dataSource = self
         productCollectionView.delegate = self
         productCollectionView.register(UINib(nibName: String(describing: ProductCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProductCell.self))
+        title = "Search"
         productCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        configureNavigationTitle(pageTitle: "Search")
+        configureNavigationTitle()
         configureView(bgView: categoryView)
 
     }

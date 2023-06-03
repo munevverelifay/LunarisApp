@@ -127,17 +127,14 @@ class RoutinesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        routinePageTitleCollectionView.dataSource = self
-        routinePageTitleCollectionView.delegate = self
-        routinePageTitleCollectionView.register(UINib(nibName: String(describing: PageTitleCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: PageTitleCell.self))
+        title = "Routines"
+        configureNavigationTitle()
         
         stepCollectionView.dataSource = self
         stepCollectionView.delegate = self
         stepCollectionView.register(UINib(nibName: String(describing: RoutineStepCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: RoutineStepCell.self))
         stepCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
         
-        routinePageTitleCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
         
         configureRoutinesLabelView(routineBgView: allRoutinesView, routineBgColor: UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0))
         configureRoutinesLabelView(routineBgView: activatedRoutinesView, routineBgColor: UIColor.white)
@@ -156,7 +153,6 @@ class RoutinesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -709,164 +705,133 @@ class RoutinesViewController: UIViewController {
 }
 extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == routinePageTitleCollectionView {
-            return 2
-        } else {
-            return steps.count
-        }
-
+        return steps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == routinePageTitleCollectionView {
-            guard let pageTitleCell = routinePageTitleCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PageTitleCell.self), for: indexPath) as? PageTitleCell else {
-                return UICollectionViewCell()
-            }
-            
-            if indexPath.item == 0 {
-                pageTitleCell.pageTitleLabel.text = "Daily"
-                
-            } else if indexPath.item == 1 {
-                pageTitleCell.pageTitleLabel.text = "Routines"
-                
-            }
-            
-            return pageTitleCell
-            
-        } else {
-
-            guard let routineStepCell = stepCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RoutineStepCell.self), for: indexPath) as? RoutineStepCell else {
-                return UICollectionViewCell()
-            }
-            routineStepCell.deleteStepButton.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside) // butona silme aksiyonu eklenir
-            routineStepCell.deleteStepButton.tag = indexPath.row // silinecek hücrenin index değeri butonun tag özelliğine atanır
-            
-            let step = routineStepCell.deleteStepButton.tag + 1
-             routineStepCell.stepNumberLabel.text = String(step) + "."
         
-            
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(editStepNameImageViewTapped(_:)))
-            routineStepCell.editStepNameImage.isUserInteractionEnabled = true
-            routineStepCell.editStepNameImage.addGestureRecognizer(tapGesture)
-
-            let productTapGesture = UITapGestureRecognizer(target: self, action: #selector(editProductImageViewTapped(_:)))
-            routineStepCell.addStepProductImageView.isUserInteractionEnabled = true
-            routineStepCell.addStepProductImageView.addGestureRecognizer(productTapGesture)
-            
-            let monTapGesture = UITapGestureRecognizer(target: self, action: #selector(monViewTapped(_:)))
-            routineStepCell.monView.isUserInteractionEnabled = true
-            routineStepCell.monView.addGestureRecognizer(monTapGesture)
-
-            let tueTapGesture = UITapGestureRecognizer(target: self, action: #selector(tueViewTapped(_:)))
-            routineStepCell.tueView.isUserInteractionEnabled = true
-            routineStepCell.tueView.addGestureRecognizer(tueTapGesture)
-            
-            let wedTapGesture = UITapGestureRecognizer(target: self, action: #selector(wedViewTapped(_:)))
-            routineStepCell.wedView.isUserInteractionEnabled = true
-            routineStepCell.wedView.addGestureRecognizer(wedTapGesture)
-            
-            let thuTapGesture = UITapGestureRecognizer(target: self, action: #selector(thuViewTapped(_:)))
-            routineStepCell.thuView.isUserInteractionEnabled = true
-            routineStepCell.thuView.addGestureRecognizer(thuTapGesture)
-            
-            let friTapGesture = UITapGestureRecognizer(target: self, action: #selector(friViewTapped(_:)))
-            routineStepCell.friView.isUserInteractionEnabled = true
-            routineStepCell.friView.addGestureRecognizer(friTapGesture)
-            
-            let satTapGesture = UITapGestureRecognizer(target: self, action: #selector(satViewTapped(_:)))
-            routineStepCell.satView.isUserInteractionEnabled = true
-            routineStepCell.satView.addGestureRecognizer(satTapGesture)
-            
-            let sunTapGesture = UITapGestureRecognizer(target: self, action: #selector(sunViewTapped(_:)))
-            routineStepCell.sunView.isUserInteractionEnabled = true
-            routineStepCell.sunView.addGestureRecognizer(sunTapGesture)
-
-            
-            let viewArr = [routineStepCell.monView, routineStepCell.tueView, routineStepCell.wedView, routineStepCell.thuView, routineStepCell.friView, routineStepCell.satView, routineStepCell.sunView]
-            
-            let lblArr = [routineStepCell.monLabel, routineStepCell.tueLabel, routineStepCell.wedLabel, routineStepCell.thuLabel, routineStepCell.friLabel, routineStepCell.satLabel, routineStepCell.sunLabel]
-            
-            viewArr.forEach { item in
-                item?.backgroundColor = UIColor.white
-            }
-            
-            lblArr.forEach { item in
-                item?.textColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-            }
-
-            let selectedArr = test[indexPath.item]
-            let trueIndices = selectedArr.enumerated().compactMap { $0.element ? $0.offset : nil }
-            for dayIndex in trueIndices {
-                // İlgili günün rengini değiştirin
-                switch dayIndex {
-                case 0:
-                    routineStepCell.monView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-                    routineStepCell.monLabel.textColor = UIColor.white
-                case 1:
-                    routineStepCell.tueView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-                    routineStepCell.tueLabel.textColor = UIColor.white
-                case 2:
-                    routineStepCell.wedView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-                    routineStepCell.wedLabel.textColor = UIColor.white
-                case 3:
-                    routineStepCell.thuView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-                    routineStepCell.thuLabel.textColor = UIColor.white
-                case 4:
-                    routineStepCell.friView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-                    routineStepCell.friLabel.textColor = UIColor.white
-                case 5:
-                    routineStepCell.satView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-                    routineStepCell.satLabel.textColor = UIColor.white
-                case 6:
-                    routineStepCell.sunView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-                    routineStepCell.sunLabel.textColor = UIColor.white
-                default:
-                    break
-                }
-            }
-            
-           
-            routineStepCell.stepProductNameLabel.text = "Product Name"
-            routineStepCell.stepProductBrandLabel.text = "Product Brand"
-            
-            let defaultImageUrlString = "cerave"
-            let defaultImageUrl = URL(string: defaultImageUrlString)
-            routineStepCell.stepProductImage.kf.setImage(with: defaultImageUrl)
-
-            var check = 0
-            selectedProductCell.forEach { item in
-                if item == indexPath.item {
-                    routineStepCell.stepProductNameLabel.text = productNameArray[check]
-                    routineStepCell.stepProductBrandLabel.text = productBrandNameArray[check]
-                    let imageUrlString = productImageArray[check]
-                    let imageUrl = URL(string: imageUrlString)
-                    routineStepCell.stepProductImage.kf.setImage(with: imageUrl)
-                }
-                check += 1
-            }
-       
-            return routineStepCell
+        guard let routineStepCell = stepCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RoutineStepCell.self), for: indexPath) as? RoutineStepCell else {
+            return UICollectionViewCell()
         }
+        routineStepCell.deleteStepButton.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside) // butona silme aksiyonu eklenir
+        routineStepCell.deleteStepButton.tag = indexPath.row // silinecek hücrenin index değeri butonun tag özelliğine atanır
+        
+        let step = routineStepCell.deleteStepButton.tag + 1
+        
+        routineStepCell.stepNumberLabel.text = String(step) + "."
+        
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(editStepNameImageViewTapped(_:)))
+        routineStepCell.editStepNameImage.isUserInteractionEnabled = true
+        routineStepCell.editStepNameImage.addGestureRecognizer(tapGesture)
+        
+        let productTapGesture = UITapGestureRecognizer(target: self, action: #selector(editProductImageViewTapped(_:)))
+        routineStepCell.addStepProductImageView.isUserInteractionEnabled = true
+        routineStepCell.addStepProductImageView.addGestureRecognizer(productTapGesture)
+        
+        let monTapGesture = UITapGestureRecognizer(target: self, action: #selector(monViewTapped(_:)))
+        routineStepCell.monView.isUserInteractionEnabled = true
+        routineStepCell.monView.addGestureRecognizer(monTapGesture)
+        
+        let tueTapGesture = UITapGestureRecognizer(target: self, action: #selector(tueViewTapped(_:)))
+        routineStepCell.tueView.isUserInteractionEnabled = true
+        routineStepCell.tueView.addGestureRecognizer(tueTapGesture)
+        
+        let wedTapGesture = UITapGestureRecognizer(target: self, action: #selector(wedViewTapped(_:)))
+        routineStepCell.wedView.isUserInteractionEnabled = true
+        routineStepCell.wedView.addGestureRecognizer(wedTapGesture)
+        
+        let thuTapGesture = UITapGestureRecognizer(target: self, action: #selector(thuViewTapped(_:)))
+        routineStepCell.thuView.isUserInteractionEnabled = true
+        routineStepCell.thuView.addGestureRecognizer(thuTapGesture)
+        
+        let friTapGesture = UITapGestureRecognizer(target: self, action: #selector(friViewTapped(_:)))
+        routineStepCell.friView.isUserInteractionEnabled = true
+        routineStepCell.friView.addGestureRecognizer(friTapGesture)
+        
+        let satTapGesture = UITapGestureRecognizer(target: self, action: #selector(satViewTapped(_:)))
+        routineStepCell.satView.isUserInteractionEnabled = true
+        routineStepCell.satView.addGestureRecognizer(satTapGesture)
+        
+        let sunTapGesture = UITapGestureRecognizer(target: self, action: #selector(sunViewTapped(_:)))
+        routineStepCell.sunView.isUserInteractionEnabled = true
+        routineStepCell.sunView.addGestureRecognizer(sunTapGesture)
+        
+        
+        let viewArr = [routineStepCell.monView, routineStepCell.tueView, routineStepCell.wedView, routineStepCell.thuView, routineStepCell.friView, routineStepCell.satView, routineStepCell.sunView]
+        
+        let lblArr = [routineStepCell.monLabel, routineStepCell.tueLabel, routineStepCell.wedLabel, routineStepCell.thuLabel, routineStepCell.friLabel, routineStepCell.satLabel, routineStepCell.sunLabel]
+        
+        viewArr.forEach { item in
+            item?.backgroundColor = UIColor.white
+        }
+        
+        lblArr.forEach { item in
+            item?.textColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+        }
+        
+        let selectedArr = test[indexPath.item]
+        let trueIndices = selectedArr.enumerated().compactMap { $0.element ? $0.offset : nil }
+        for dayIndex in trueIndices {
+            // İlgili günün rengini değiştirin
+            switch dayIndex {
+            case 0:
+                routineStepCell.monView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                routineStepCell.monLabel.textColor = UIColor.white
+            case 1:
+                routineStepCell.tueView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                routineStepCell.tueLabel.textColor = UIColor.white
+            case 2:
+                routineStepCell.wedView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                routineStepCell.wedLabel.textColor = UIColor.white
+            case 3:
+                routineStepCell.thuView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                routineStepCell.thuLabel.textColor = UIColor.white
+            case 4:
+                routineStepCell.friView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                routineStepCell.friLabel.textColor = UIColor.white
+            case 5:
+                routineStepCell.satView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                routineStepCell.satLabel.textColor = UIColor.white
+            case 6:
+                routineStepCell.sunView.backgroundColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                routineStepCell.sunLabel.textColor = UIColor.white
+            default:
+                break
+            }
+        }
+        
+        
+        routineStepCell.stepProductNameLabel.text = "Product Name"
+        routineStepCell.stepProductBrandLabel.text = "Product Brand"
+        
+        let defaultImageUrlString = "cerave"
+        let defaultImageUrl = URL(string: defaultImageUrlString)
+        routineStepCell.stepProductImage.kf.setImage(with: defaultImageUrl)
+        
+        var check = 0
+        selectedProductCell.forEach { item in
+            if item == indexPath.item {
+                routineStepCell.stepProductNameLabel.text = productNameArray[check]
+                routineStepCell.stepProductBrandLabel.text = productBrandNameArray[check]
+                let imageUrlString = productImageArray[check]
+                let imageUrl = URL(string: imageUrlString)
+                routineStepCell.stepProductImage.kf.setImage(with: imageUrl)
+            }
+            check += 1
+        }
+        
+        return routineStepCell
+        
         
     }
     
 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == routinePageTitleCollectionView {
-            if indexPath.item == 0 {
-                navigationController?.popViewController(animated: false)
-                navigationController?.isNavigationBarHidden = true
-//                if let dailyRoutineVC = storyboard?.instantiateViewController(withIdentifier: "DailyRoutineViewController") as? DailyRoutineViewController {
-//
-//                    self.navigationController?.pushViewController(dailyRoutineVC, animated: false)
-//                    navigationController?.isNavigationBarHidden = true
-//                }
-            }
-        } else {
-            GlobalDataManager.sharedGlobalManager.currentStep = indexPath.item
-            stepCollectionView.reloadData()
-        }
+        GlobalDataManager.sharedGlobalManager.currentStep = indexPath.item
+        stepCollectionView.reloadData()
+        
     }
     
     
@@ -874,26 +839,12 @@ extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewData
 }
 extension RoutinesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == routinePageTitleCollectionView {
-            return CGSize(width: 90, height: 30)
-        } else {
-            return CGSize(width: 410, height: 161)
-        }
-
+        return CGSize(width: 410, height: 161)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == routinePageTitleCollectionView {
-            return 0
-        } else {
-            return 20
-        }
-
+        return 20
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if collectionView == routinePageTitleCollectionView {
-            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        } else {
-            return UIEdgeInsets(top: 0, left: 2, bottom: 20, right: 2)
-        }
+        return UIEdgeInsets(top: 0, left: 2, bottom: 20, right: 2)
     }
 }

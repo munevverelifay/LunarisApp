@@ -135,7 +135,6 @@ class SignInViewController: UIViewController {
                             let signUpVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
                             signUpVC.modalPresentationStyle = .fullScreen
                             self.present(signUpVC, animated: true, completion: nil)
-
                         }
                     }
                 } else {

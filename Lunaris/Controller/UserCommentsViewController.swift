@@ -14,6 +14,7 @@ class UserCommentsViewController: UIViewController {
     @IBOutlet weak var commentButton: UIButton!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

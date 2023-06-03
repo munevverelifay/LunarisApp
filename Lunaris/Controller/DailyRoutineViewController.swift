@@ -13,8 +13,6 @@ class DailyRoutineViewController: UIViewController {
     var formatter = DateFormatter()
     var calendarHeightConstraint: NSLayoutConstraint?
     var timer: Timer?
-    
-    var selectedPageIndex = -1
 
     @IBOutlet weak var dailyRoutinePageTitleCollectionView: UICollectionView!
     @IBOutlet weak var weeklyFSCalendarView: FSCalendar!
@@ -29,11 +27,11 @@ class DailyRoutineViewController: UIViewController {
         dailyRoutinePageTitleCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
         
         
-        weeklyFSCalendarView.delegate = self
-        weeklyFSCalendarView.dataSource = self
-        configureWeeklyCalendar(calendar: weeklyFSCalendarView)
-        applyShadowOnView(weeklyFSCalendarView)
-        weeklyFSCalendarView.layer.cornerRadius = weeklyFSCalendarView.frame.height / 10
+//        weeklyFSCalendarView.delegate = self
+//        weeklyFSCalendarView.dataSource = self
+//        configureWeeklyCalendar(calendar: weeklyFSCalendarView)
+//        applyShadowOnView(weeklyFSCalendarView)
+//        weeklyFSCalendarView.layer.cornerRadius = weeklyFSCalendarView.frame.height / 10
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,79 +41,79 @@ class DailyRoutineViewController: UIViewController {
   
 }
 
-extension DailyRoutineViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    func configureWeeklyCalendar(calendar: FSCalendar?) {
-        if let calendar = calendar {
-            
-            calendarHeightConstraint = weeklyFSCalendarView.heightAnchor.constraint(equalToConstant: 300)
-            calendarHeightConstraint?.isActive = true
-            
-            calendar.scrollDirection = .horizontal
-            calendar.setScope(.week, animated: false)
-    
-            
-            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
-            calendar.addGestureRecognizer(panGesture)
-
-            calendar.locale = Locale(identifier: "en") // BU SATIRI CİHAZ DİLİNE GÖRE YAP
-            
-            // Calendar appearance
-            calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-            calendar.appearance.borderDefaultColor = .clear
-            calendar.appearance.borderSelectionColor = .clear
-            
-
-
-            // Offset'i ayarla ve görüntü ve renk ayarlarını da uygula
-//            calendar.appearance.headerTitleOffset = offset
-            calendar.appearance.headerTitleColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-            calendar.appearance.weekdayTextColor = UIColor(red: 176/255, green: 176/255, blue: 176/255, alpha: 1.0)
-            calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 19.0)
-            calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
-            
-            calendar.appearance.todayColor = .clear
-            calendar.appearance.titleTodayColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-            
-            calendar.appearance.selectionColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-
-         
-        }
-    }
-    
-    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-        if translation.y > 0 {
-            // aşağı hareket - aylık takvime geçiş
-            weeklyFSCalendarView.setScope(.month, animated: true)
-        } else {
-            // yukarı hareket - haftalık takvime geçiş
-            weeklyFSCalendarView.setScope(.week, animated: true)
-        }
-    }
-
-    //MARK: - Delegate Func
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        formatter.dateFormat = "dd-MMM-yyyy"
-        print("Date Selected == \(formatter.string(from: date))")
-    }
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        // Aşağıdaki satırı ekleyin:
-        self.calendarHeightConstraint?.constant = bounds.height
-        
-    }
-}
-
-extension UIViewController {
-    func applyShadowOnView(_ view: UIView) {
-        view.layer.shadowRadius = 5
-        view.layer.shadowOffset = .zero
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowColor =   UIColor(red: 90/255, green: 108/255, blue: 234/255, alpha: 1).cgColor
-        view.layer.masksToBounds = false
-        view.layer.shadowOffset = CGSize(width: 2, height: 1)
-    }
-}
+//extension DailyRoutineViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+//    func configureWeeklyCalendar(calendar: FSCalendar?) {
+//        if let calendar = calendar {
+//            
+//            calendarHeightConstraint = weeklyFSCalendarView.heightAnchor.constraint(equalToConstant: 300)
+//            calendarHeightConstraint?.isActive = true
+//            
+//            calendar.scrollDirection = .horizontal
+//            calendar.setScope(.week, animated: false)
+//    
+//            
+//            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+//            calendar.addGestureRecognizer(panGesture)
+//
+//            calendar.locale = Locale(identifier: "en") // BU SATIRI CİHAZ DİLİNE GÖRE YAP
+//            
+//            // Calendar appearance
+//            calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+//            calendar.appearance.borderDefaultColor = .clear
+//            calendar.appearance.borderSelectionColor = .clear
+//            
+//
+//
+//            // Offset'i ayarla ve görüntü ve renk ayarlarını da uygula
+////            calendar.appearance.headerTitleOffset = offset
+//            calendar.appearance.headerTitleColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+//            calendar.appearance.weekdayTextColor = UIColor(red: 176/255, green: 176/255, blue: 176/255, alpha: 1.0)
+//            calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 19.0)
+//            calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
+//            
+//            calendar.appearance.todayColor = .clear
+//            calendar.appearance.titleTodayColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+//            
+//            calendar.appearance.selectionColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+//
+//         
+//        }
+//    }
+//    
+//    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+//        let translation = gesture.translation(in: view)
+//        if translation.y > 0 {
+//            // aşağı hareket - aylık takvime geçiş
+//            weeklyFSCalendarView.setScope(.month, animated: true)
+//        } else {
+//            // yukarı hareket - haftalık takvime geçiş
+//            weeklyFSCalendarView.setScope(.week, animated: true)
+//        }
+//    }
+//
+//    //MARK: - Delegate Func
+//    
+//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//        formatter.dateFormat = "dd-MMM-yyyy"
+//        print("Date Selected == \(formatter.string(from: date))")
+//    }
+//    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+//        // Aşağıdaki satırı ekleyin:
+//        self.calendarHeightConstraint?.constant = bounds.height
+//        
+//    }
+//}
+//
+//extension UIViewController {
+//    func applyShadowOnView(_ view: UIView) {
+//        view.layer.shadowRadius = 5
+//        view.layer.shadowOffset = .zero
+//        view.layer.shadowOpacity = 0.1
+//        view.layer.shadowColor =   UIColor(red: 90/255, green: 108/255, blue: 234/255, alpha: 1).cgColor
+//        view.layer.masksToBounds = false
+//        view.layer.shadowOffset = CGSize(width: 2, height: 1)
+//    }
+//}
 
 extension DailyRoutineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
