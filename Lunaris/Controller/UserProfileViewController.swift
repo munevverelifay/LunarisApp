@@ -13,9 +13,8 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userBirthDateLabel: UILabel!
     @IBOutlet weak var profileDescriptonLabel: UILabel!
-    @IBOutlet weak var profileSectionsCollectionView: UICollectionView!
     @IBOutlet weak var dividingLineView: UIView!
-    @IBOutlet weak var routineView: UIView!
+    
     @IBOutlet weak var routineTableView: UITableView!
     @IBOutlet weak var weeklyFSCalendarView: FSCalendar!
     
@@ -34,12 +33,7 @@ class UserProfileViewController: UIViewController {
         weeklyFSCalendarView.layer.cornerRadius = weeklyFSCalendarView.frame.height / 10
         
         configureUserProfilImage(userProfil: profilePictureIV)
-        
-        profileSectionsCollectionView.dataSource = self
-        profileSectionsCollectionView.delegate = self
-        profileSectionsCollectionView.register(UINib(nibName: String(describing: ProfileSectionsCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ProfileSectionsCell.self))
-        profileSectionsCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        
+       
         routineTableView.dataSource = self
         routineTableView.delegate = self
         routineTableView.layer.cornerRadius = 20
@@ -147,51 +141,6 @@ extension UIViewController {
     }
 }
 
-extension UserProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-
-        guard let profileSectionsCell = profileSectionsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProfileSectionsCell.self), for: indexPath) as? ProfileSectionsCell else {
-            return UICollectionViewCell()
-
-        }
-        
-        return profileSectionsCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let profileSectionCell = collectionView.cellForItem(at: indexPath) as? ProfileSectionsCell {
-            // Seçili hücrenin arka plan rengini değiştir
-            profileSectionCell.profileSectionNameLabel.textColor = UIColor(red: 55/255, green: 41/255, blue: 77/255, alpha: 1.0)
-            profileSectionCell.profileSectionSelectedView.backgroundColor = UIColor(red: 55/255, green: 41/255, blue: 77/255, alpha: 1.0)
-
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let profileSectionCell = collectionView.cellForItem(at: indexPath) as? ProfileSectionsCell {
-            // Seçili hücrenin arka plan rengini değiştir
-            profileSectionCell.profileSectionNameLabel.textColor = UIColor(red: 176/255, green: 176/255, blue: 176/255, alpha: 1.0)
-            profileSectionCell.profileSectionSelectedView.backgroundColor = UIColor.white
-        }
-    }
-}
-
-
-extension UserProfileViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: 30)
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 50
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-    }
-}
 
 extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {

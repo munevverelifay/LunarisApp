@@ -42,4 +42,17 @@ class GlobalDataManager {
     var commentRatings: [String]? = []
     var commentTitle: [String]? = []
     var commentCreatedAt: [String]? = []
+    
+    var receiverCategories: [[Int]] = []
+    var selectedCategory: String = ""
+    
+    var receiverId: [String] = []
+    var receiverName: [String] = []
+    var receiverProductCategory: [String] = []
+    var receiverBrand: [String] = []
+    var receiverIngredients: [String] = []
+    var receiverImage: [String] = []
+    var receiverTotalRating: [String] = []
+    var receiverReviewNumbers: [String] = []
+
 }

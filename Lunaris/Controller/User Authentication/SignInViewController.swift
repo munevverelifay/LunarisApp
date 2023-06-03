@@ -60,6 +60,7 @@ class SignInViewController: UIViewController {
                 print(error)
             }
         }
+        
     }
     
     func configureUserDetailData(completion: @escaping() -> Void) {
