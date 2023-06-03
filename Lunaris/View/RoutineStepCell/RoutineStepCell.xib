@@ -34,11 +34,6 @@
                                 <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S4C-hg-7qZ">
-                                <rect key="frame" x="83" y="8.6666666666666679" width="27" height="25.333333333333332"/>
-                                <color key="tintColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large" variableValue="1"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jla-4O-yac">
                                 <rect key="frame" x="20" y="39" width="374" height="56"/>
                                 <subviews>
@@ -312,10 +307,8 @@
                             <constraint firstAttribute="trailing" secondItem="Xkz-hg-Kue" secondAttribute="trailing" constant="20" id="aGP-eS-a6i"/>
                             <constraint firstAttribute="bottom" secondItem="Xkz-hg-Kue" secondAttribute="bottom" constant="10" id="hiP-KS-5he"/>
                             <constraint firstAttribute="height" constant="160" id="sRb-De-NFI"/>
-                            <constraint firstItem="S4C-hg-7qZ" firstAttribute="top" secondItem="BJ9-Ha-49Y" secondAttribute="top" constant="12" id="szH-cQ-f8E"/>
                             <constraint firstItem="hgd-XB-G60" firstAttribute="width" secondItem="aso-jI-wsi" secondAttribute="width" multiplier="3.35821" id="tyj-w4-bUM"/>
                             <constraint firstItem="jla-4O-yac" firstAttribute="top" secondItem="6h4-Yq-OEd" secondAttribute="bottom" constant="5" id="ucb-Zn-4Bk"/>
-                            <constraint firstItem="S4C-hg-7qZ" firstAttribute="leading" secondItem="tDd-Fa-fCP" secondAttribute="trailing" constant="5" id="vAa-Cs-Swm"/>
                             <constraint firstItem="6h4-Yq-OEd" firstAttribute="leading" secondItem="BJ9-Ha-49Y" secondAttribute="leading" constant="20" symbolic="YES" id="vbf-Ph-469"/>
                             <constraint firstItem="hgd-XB-G60" firstAttribute="centerY" secondItem="aso-jI-wsi" secondAttribute="centerY" id="xvT-rn-08g"/>
                             <constraint firstItem="hgd-XB-G60" firstAttribute="height" secondItem="aso-jI-wsi" secondAttribute="height" multiplier="1.72131" id="z0S-at-V2r"/>
@@ -334,7 +327,6 @@
                 <outlet property="addStepProductImageView" destination="cnv-KF-3Wt" id="3hK-JR-xKI"/>
                 <outlet property="deleteStepButton" destination="hgd-XB-G60" id="kn4-uV-PYH"/>
                 <outlet property="deleteStepImage" destination="aso-jI-wsi" id="TaL-Vl-s6c"/>
-                <outlet property="editStepNameImage" destination="S4C-hg-7qZ" id="Juv-uS-cvR"/>
                 <outlet property="friLabel" destination="xDb-9x-Q4X" id="wFh-nq-CIu"/>
                 <outlet property="friView" destination="pIq-Ic-zrm" id="SuN-BK-K3l"/>
                 <outlet property="monLabel" destination="qMn-l1-xef" id="Om1-ti-8iU"/>

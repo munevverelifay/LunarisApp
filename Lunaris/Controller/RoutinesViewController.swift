@@ -8,7 +8,6 @@
 import UIKit
 
 class RoutinesViewController: UIViewController {
-    @IBOutlet weak var routinePageTitleCollectionView: UICollectionView!
     @IBOutlet weak var allRoutinesView: UIView!
     @IBOutlet weak var activatedRoutinesView: UIView!
     @IBOutlet weak var addStepButton: UIButton!
@@ -482,17 +481,9 @@ class RoutinesViewController: UIViewController {
         }
         stepCollectionView.reloadItems(at: indexPaths)
         stepCollectionView.reloadData()
-        
-    
-    }
-    
-    @objc func editStepNameImageViewTapped(_ sender: UIImageView) { //bunun yerine kaydırma ile yap
-        if let selectStepVC = storyboard?.instantiateViewController(withIdentifier: "SelectStepViewController") as? SelectStepViewController {
-            self.navigationController?.pushViewController(selectStepVC, animated: true)
-            navigationController?.isNavigationBarHidden = false
-        }
 
     }
+    
     
     @objc func editProductImageViewTapped(_ sender: UITapGestureRecognizer) { //bunun yerine kaydırma ile yap
         // Dokunulan noktayı alın
@@ -720,10 +711,6 @@ extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewData
         
         routineStepCell.stepNumberLabel.text = String(step) + "."
         
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(editStepNameImageViewTapped(_:)))
-        routineStepCell.editStepNameImage.isUserInteractionEnabled = true
-        routineStepCell.editStepNameImage.addGestureRecognizer(tapGesture)
         
         let productTapGesture = UITapGestureRecognizer(target: self, action: #selector(editProductImageViewTapped(_:)))
         routineStepCell.addStepProductImageView.isUserInteractionEnabled = true

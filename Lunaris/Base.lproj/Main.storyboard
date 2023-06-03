@@ -1493,6 +1493,7 @@
                         <outlet property="categoryPickerView" destination="FAP-Zo-TCu" id="yZK-Xy-pZB"/>
                         <outlet property="categoryView" destination="p2w-Bk-jI0" id="FtP-hT-pUf"/>
                         <outlet property="productCollectionView" destination="IQA-39-YUs" id="Tkp-RK-6O1"/>
+                        <outlet property="productSearch" destination="zGr-NH-Olh" id="7I2-NE-azP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lck-el-ypb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

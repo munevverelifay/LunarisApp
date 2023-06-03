@@ -11,7 +11,6 @@ class RoutineStepCell: UICollectionViewCell {
     @IBOutlet weak var stepView: UIView!
     @IBOutlet weak var stepNumberLabel: UILabel!
     @IBOutlet weak var stepNameLabel: UILabel!
-    @IBOutlet weak var editStepNameImage: UIImageView!
     @IBOutlet weak var addStepProductImageView: UIImageView!
     @IBOutlet weak var stepProductView: UIView!
     @IBOutlet weak var stepProductImage: UIImageView!

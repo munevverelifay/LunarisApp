@@ -12,6 +12,7 @@ class SearchPageViewController: UIViewController {
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var allProductsButton: UIButton!
+    @IBOutlet weak var productSearch: UISearchBar!
     @IBOutlet weak var productCollectionView: UICollectionView!
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
@@ -21,7 +22,8 @@ class SearchPageViewController: UIViewController {
     var isPickerViewShown: Bool = false
     var categoriesSet = Set<String>()
     
-    var filteredProducts: [Int] = []
+    var filteredProductsName: [String] = []
+//    var filteredProductsIds: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,8 @@ class SearchPageViewController: UIViewController {
         categoryPickerView.isHidden = true
         //        view.addSubview(pickerView)
         
+        productSearch.delegate = self
+        
         configureCategory()
 
         // PickerView'i categoryLabel'a bağlayın
@@ -52,22 +56,58 @@ class SearchPageViewController: UIViewController {
         if let categories = GlobalDataManager.sharedGlobalManager.productListCategories {
             pickerViewData = Set(categories)
         }
-        
-//        if let categories = GlobalDataManager.sharedGlobalManager.productListCategories {
-//
-//            let uniqueCategories = Array(Set(categories))
-//            let categoryCounts = categories.reduce(into: [:]) { counts, category in
-//                counts[category, default: 0] += 1
-//            }
-//
-//            print("Benzersiz kategori sayısı: \(uniqueCategories.count)")
-//            for category in uniqueCategories {
-//                let count = categoryCounts[category] ?? 0
-//                print("\(category): \(count) adet")
-//            }
-//        }
-
     }
+    
+    
+    func filterProducts(with searchText: String) {
+        if searchText.isEmpty {
+            // Arama metni boş ise, filtrelenmiş ürünleri temizleyin
+            
+            filteredProductsName = []
+            productCollectionView.reloadData()
+        } else {
+            // Arama metni boş değilse, productList'teki ürünleri filtreleyin
+            filteredProductsName = GlobalDataManager.sharedGlobalManager.productListName?.filter { product in
+                // Arama metnini ürün adı veya kategori ile karşılaştırın
+                let productName = product.lowercased()
+                let lowercasedSearchText = searchText.lowercased()
+                return productName.contains(lowercasedSearchText)
+            } ?? []
+
+            // Filtrelenmiş ürünlerin indekslerini kaydetmek için döngüyü kullanın
+            var filteredProductsIds: [Int] = []
+            GlobalDataManager.sharedGlobalManager.searchId = []
+            GlobalDataManager.sharedGlobalManager.searchProductCategory = []
+            GlobalDataManager.sharedGlobalManager.searchBrand = []
+            GlobalDataManager.sharedGlobalManager.searchImage = []
+            var filteredIndexes: [Int] = []
+            for filteredProduct in filteredProductsName {
+                if let index = GlobalDataManager.sharedGlobalManager.productListName?.firstIndex(of: filteredProduct) {
+                    filteredIndexes.append(index)
+                }
+            }
+
+            // filteredIndexes dizisini kullanarak diğer işlemleri yapabilirsiniz
+            // Örneğin, GlobalDataManager.sharedGlobalManager.productListId içinden ilgili ürün ID'lerini alabilirsiniz
+            filteredProductsIds = filteredIndexes.compactMap { index in
+                guard let id = GlobalDataManager.sharedGlobalManager.productListId?[index] else {
+                    return nil
+                }
+                return Int(id)
+            }
+            print(filteredProductsIds)
+            filteredProductsIds.forEach { item in
+                GlobalDataManager.sharedGlobalManager.searchId.append(GlobalDataManager.sharedGlobalManager.productListId?[item] ?? "")
+                GlobalDataManager.sharedGlobalManager.searchProductCategory.append(GlobalDataManager.sharedGlobalManager.productListCategories?[item] ?? "")
+                GlobalDataManager.sharedGlobalManager.searchBrand.append(GlobalDataManager.sharedGlobalManager.productListBrand?[item] ?? "")
+                GlobalDataManager.sharedGlobalManager.searchImage.append(GlobalDataManager.sharedGlobalManager.productListImage?[item] ?? "")
+            }
+            productCollectionView.reloadData()
+        }
+    }
+
+
+    
     func configureCategory() {
         if let categories = GlobalDataManager.sharedGlobalManager.productListCategories {
             categoriesSet = Set(categories)
@@ -121,7 +161,9 @@ extension UIViewController {
 
 extension SearchPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if GlobalDataManager.sharedGlobalManager.selectedCategory == categoryLabel.text  {
+        if !filteredProductsName.isEmpty {
+            return filteredProductsName.count
+        } else if GlobalDataManager.sharedGlobalManager.selectedCategory == categoryLabel.text  {
             return GlobalDataManager.sharedGlobalManager.receiverName.count
         } else {
             return GlobalDataManager.sharedGlobalManager.productListId?.count ?? 0
@@ -133,7 +175,22 @@ extension SearchPageViewController: UICollectionViewDelegate, UICollectionViewDa
         guard let productCell = productCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ProductCell.self), for: indexPath) as? ProductCell else {
             return UICollectionViewCell()
         }
-        if GlobalDataManager.sharedGlobalManager.selectedCategory == categoryLabel.text {
+        if !filteredProductsName.isEmpty {
+            productCell.productNameLabel.text = filteredProductsName[indexPath.item]
+            
+            productCell.productCategoryLabel.text = GlobalDataManager.sharedGlobalManager.searchProductCategory[indexPath.item]
+            productCell.productBrandLabel.text = GlobalDataManager.sharedGlobalManager.searchBrand[indexPath.item]
+            let imageUrlString = GlobalDataManager.sharedGlobalManager.searchImage[indexPath.item]
+            if let imageUrl = URL(string: imageUrlString) {
+                productCell.productImage.kf.setImage(with: imageUrl)
+            } else {
+                let defaultImageUrlString = "cerave"
+                let defaultImageUrl = URL(string: defaultImageUrlString)
+                productCell.productImage.kf.setImage(with: defaultImageUrl)
+            }
+            
+            return productCell
+        } else if GlobalDataManager.sharedGlobalManager.selectedCategory == categoryLabel.text {
             productCell.productNameLabel.text = GlobalDataManager.sharedGlobalManager.receiverName[indexPath.item]
             productCell.productCategoryLabel.text = GlobalDataManager.sharedGlobalManager.receiverProductCategory[indexPath.item]
             productCell.productBrandLabel.text = GlobalDataManager.sharedGlobalManager.receiverBrand[indexPath.item]
@@ -169,8 +226,11 @@ extension SearchPageViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let productDetailVC = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController {
             navigationController?.pushViewController(productDetailVC, animated: true)
-            //Index +1 fazla gösteriyordu o yüzden yaptım
-            if GlobalDataManager.sharedGlobalManager.selectedCategory == categoryLabel.text  {
+            if !filteredProductsName.isEmpty {
+                print(indexPath.item)
+                productDetailVC.selectedProductId = GlobalDataManager.sharedGlobalManager.searchId[indexPath.item]
+                GlobalDataManager.sharedGlobalManager.selectedProductId = GlobalDataManager.sharedGlobalManager.searchId[indexPath.item]
+            } else if GlobalDataManager.sharedGlobalManager.selectedCategory == categoryLabel.text  {
                 print(indexPath.item)
                 productDetailVC.selectedProductId = GlobalDataManager.sharedGlobalManager.receiverId[indexPath.item]
                 
@@ -183,6 +243,19 @@ extension SearchPageViewController: UICollectionViewDelegate, UICollectionViewDa
             }
           
         }
+    }
+}
+
+
+extension SearchPageViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // Arama metni her değiştiğinde filtrelemeyi uygula
+        filterProducts(with: searchText)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // Klavyede "Ara" düğmesine basıldığında klavyeyi gizle
+        searchBar.resignFirstResponder()
     }
 }
 

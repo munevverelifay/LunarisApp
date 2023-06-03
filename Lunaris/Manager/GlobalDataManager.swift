@@ -54,5 +54,13 @@ class GlobalDataManager {
     var receiverImage: [String] = []
     var receiverTotalRating: [String] = []
     var receiverReviewNumbers: [String] = []
+ 
+    var searchId: [String] = []
+    var searchProductCategory: [String] = []
+    var searchBrand: [String] = []
+    var searchIngredients: [String] = []
+    var searchImage: [String] = []
+    var searchTotalRating: [String] = []
+    var searchReviewNumbers: [String] = []
 
 }
