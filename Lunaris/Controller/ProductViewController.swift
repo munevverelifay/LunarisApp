@@ -15,6 +15,7 @@ struct cellData {
 }
 
 class ProductViewController : UIViewController {
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productBrandNameLabel: UILabel!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -35,10 +36,7 @@ class ProductViewController : UIViewController {
     
     var productListTotalRating: String = "0"
     
-    var addFavorite: Bool = false
-    
-    // Favori durumunu tutmak için bir değişken tanımlayın
-    var isLiked = false
+    var isFavorite: Bool = false
     
     
     override func viewDidLoad() {
@@ -47,6 +45,7 @@ class ProductViewController : UIViewController {
         
         productImage.layer.applySketchShadow(color: UIColor.black, alpha: 0.01, x: 2, y: 2, blur: 10, spread: 0)
         productImage.layer.masksToBounds = true
+        
         
         productNameLabel.text = GlobalDataManager.sharedGlobalManager.productListName?[Int(selectedProductId) ?? 0]
         productBrandNameLabel.text = GlobalDataManager.sharedGlobalManager.productListBrand?[Int(selectedProductId) ?? 0]
@@ -66,7 +65,7 @@ class ProductViewController : UIViewController {
         navigationController?.isNavigationBarHidden = false
         title = "Products"
         configureNavigationTitle() //ürünün adını gir
-
+        
         
         // Boş bir dizi ile tableViewData'yı başlatma
         tableViewData = []
@@ -80,7 +79,7 @@ class ProductViewController : UIViewController {
         productTableView.register(UINib(nibName: String(describing: ReviewsCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ReviewsCell.self))
         
         productTableView.backgroundColor = .clear
-
+        
         
         tableViewData = [
             cellData(opened: false, title: "Ingredients"),
@@ -88,9 +87,19 @@ class ProductViewController : UIViewController {
         ]
         
         productRatingStar()
-
+        configureLikeButton()
     }
-
+    
+    func configureLikeButton() {
+        if GlobalDataManager.sharedGlobalManager.favoriteProductsList.contains(selectedProductId) {
+            let filledHeartImage = UIImage(systemName: "heart.fill")
+            likeButton.setImage(filledHeartImage, for: .normal)
+        } else {
+            let emptyHeartImage = UIImage(systemName: "heart")
+            likeButton.setImage(emptyHeartImage, for: .normal)
+        }
+    }
+    
     
     func productRatingStar() {
         if Double(productListTotalRating) ?? 0.0 == 0.0 {
@@ -231,24 +240,53 @@ class ProductViewController : UIViewController {
     
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
-        NetworkService.sharedNetwork.postFavorites(userId: GlobalDataManager.sharedGlobalManager.userId, productId: selectedProductId) { response in
-            switch response {
-            case .success(let value):
-                if let data = value.data(using: .utf8),
-                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
-                   let result = json.first?["result"] as? String {
-                    print(result)
-                    if result == "true" {
-                        print("postFavoriteee")
+        isFavorite = GlobalDataManager.sharedGlobalManager.favoriteProductsList.contains(selectedProductId)
+
+        if !isFavorite {
+            // Favori ise, postRemoveFavorite işlemini gerçekleştirin
+            NetworkService.sharedNetwork.postFavorites(userId: GlobalDataManager.sharedGlobalManager.userId, productId: selectedProductId) { response in
+                switch response {
+                case .success(let value):
+                    if let data = value.data(using: .utf8),
+                       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+                       let result = json.first?["result"] as? String {
+                        print(result)
+                        if result == "true" {
+                            print("postRemoveFavorite")
+                            self.isFavorite = true
+                            let filledHeartImage = UIImage(systemName: "heart.fill")
+                            self.likeButton.setImage(filledHeartImage, for: .normal)
+                        }
                     }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
+            }
+        } else {
+            // Favori değilse, postFavorites işlemini gerçekleştirin
+            NetworkService.sharedNetwork.postRemoveFavorite(userId: GlobalDataManager.sharedGlobalManager.userId, productId: selectedProductId) { response in
+                switch response {
+                case .success(let value):
+                    if let data = value.data(using: .utf8),
+                       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+                       let result = json.first?["result"] as? String {
+                        print(result)
+                        if result == "true" {
+                            print("postFavorites")
+                            let emptyHeartImage = UIImage(systemName: "heart")
+                            self.likeButton.setImage(emptyHeartImage, for: .normal)
+                        }
+                        
+                    }
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
     
 }
+
 
 extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -273,7 +311,7 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }
             cell.textLabel?.text = GlobalDataManager.sharedGlobalManager.productListIngredients?[Int(selectedProductId) ?? 0]
-//            tableViewData[indexPath.section].sectionData
+            //            tableViewData[indexPath.section].sectionData
             cell.textLabel?.numberOfLines = 0
             cell.backgroundColor = .clear
             cell.textLabel?.sizeToFit()
@@ -283,23 +321,23 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .clear
             return cell
         }
-    
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if tableViewData[indexPath.section].opened == true {
-//            tableViewData[indexPath.section].opened = false
-//            let sections = IndexSet.init(integer: indexPath.section)
-//            tableView.reloadSections(sections, with: .none)
-//
-//
-//        } else {
-//            tableViewData[indexPath.section].opened = true
-//            let sections = IndexSet.init(integer: indexPath.section)
-//            tableView.reloadSections(sections, with: .none)
-//
-//        }
-
+        //        if tableViewData[indexPath.section].opened == true {
+        //            tableViewData[indexPath.section].opened = false
+        //            let sections = IndexSet.init(integer: indexPath.section)
+        //            tableView.reloadSections(sections, with: .none)
+        //
+        //
+        //        } else {
+        //            tableViewData[indexPath.section].opened = true
+        //            let sections = IndexSet.init(integer: indexPath.section)
+        //            tableView.reloadSections(sections, with: .none)
+        //
+        //        }
+        
         if indexPath.section == 1 && indexPath.row == 1 {
             // İlgili hücre seçildiğinde başka bir ekrana geçmek için kodları buraya yazın.
             if let commentCV = storyboard?.instantiateViewController(withIdentifier: "CommentPageViewController") as? UserCommentsViewController {
@@ -318,13 +356,13 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-         if indexPath.row == 0 {
-             if tableViewData[indexPath.section].opened == true {
-                 cell.accessoryView = UIImageView(image: UIImage(named: "up-arrow"))
-             } else {
-                 cell.accessoryView = UIImageView(image: UIImage(named: "down-arrow"))
-             }
-         }
+        if indexPath.row == 0 {
+            if tableViewData[indexPath.section].opened == true {
+                cell.accessoryView = UIImageView(image: UIImage(named: "up-arrow"))
+            } else {
+                cell.accessoryView = UIImageView(image: UIImage(named: "down-arrow"))
+            }
+        }
     }
-
+    
 }

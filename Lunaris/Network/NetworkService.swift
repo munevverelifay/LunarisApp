@@ -146,6 +146,32 @@ class NetworkService {
         }
     }
     
+    func getRoutineList(userId: String?, completion: @escaping(Result<[DailyRoutineResponse], Error>) -> Void) {
+        if let userId = userId {
+            let parameters: [String: Any] = [
+                "user-id": userId
+            ]
+            let url = "https://kouiot.com/elif/routine-list.php"
+            let headers: HTTPHeaders = ["Content-Type": "application/json"]
+            
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        let dailyRoutine = try decoder.decode([DailyRoutineResponse].self, from: data)
+                        completion(.success(dailyRoutine))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
     func postFavorites(userId: String?, productId: String?, completion: @escaping(Result<String, AFError>) -> Void) {
         if let userId = userId, let productId = productId {
             let parameters: [String: Any] = [
@@ -188,7 +214,22 @@ class NetworkService {
                 }
             }
         }
-        
-        
+    }
+    func postRemoveFavorite(userId: String?, productId: String?, completion: @escaping(Result<String, AFError>) -> Void) {
+        if let userId = userId, let productId = productId {
+            let parameters: [String: Any] = [
+                "user-id": userId,
+                "product-id": productId
+            ]
+            let url = "https://kouiot.com/elif/fav-remove.php"
+            let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
+            AF.request(url, method: .post,
+                       parameters: parameters,
+                       encoding: JSONEncoding.default,
+                       headers: headers)
+            .responseString { response in
+                completion(response.result)
+            }
+        }
     }
 }

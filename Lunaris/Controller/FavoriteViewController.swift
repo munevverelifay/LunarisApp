@@ -27,6 +27,7 @@ class FavoriteViewController: UIViewController {
         configureFavoriteData()
     }
     func configureFavoriteData() {
+        GlobalDataManager.sharedGlobalManager.favoriteProductsList = []
         NetworkService.sharedNetwork.getFavoriteList(userId: GlobalDataManager.sharedGlobalManager.userId) { response in
             switch response {
             case .success(let value):

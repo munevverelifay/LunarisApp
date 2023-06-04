@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DayRoutineCell" customModule="Lunaris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="394" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ok-Ma-8m3">
+                        <rect key="frame" x="10" y="7" width="374" height="56"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cerave" translatesAutoresizingMaskIntoConstraints="NO" id="HV6-wi-691">
+                                <rect key="frame" x="5" y="4" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="b05-RH-jHi"/>
+                                    <constraint firstAttribute="width" constant="48" id="m9w-Be-BGO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nemlendirici Bakım" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiJ-Uy-4rn">
+                                <rect key="frame" x="63" y="6" width="311" height="17"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="14"/>
+                                <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVf-Py-Xei">
+                                <rect key="frame" x="61" y="25" width="313" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="16"/>
+                                <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="374" id="JBx-gz-uvD"/>
+                            <constraint firstItem="YVf-Py-Xei" firstAttribute="leading" secondItem="HV6-wi-691" secondAttribute="trailing" constant="8" id="JaF-7i-F2p"/>
+                            <constraint firstItem="HV6-wi-691" firstAttribute="top" secondItem="5Ok-Ma-8m3" secondAttribute="top" constant="4" id="KEo-L2-Jqz"/>
+                            <constraint firstItem="QiJ-Uy-4rn" firstAttribute="top" secondItem="5Ok-Ma-8m3" secondAttribute="top" constant="6" id="QFY-ko-fRn"/>
+                            <constraint firstItem="QiJ-Uy-4rn" firstAttribute="leading" secondItem="HV6-wi-691" secondAttribute="trailing" constant="10" id="VzG-SL-QK5"/>
+                            <constraint firstAttribute="height" constant="56" id="WHu-aE-zFg"/>
+                            <constraint firstAttribute="bottom" secondItem="HV6-wi-691" secondAttribute="bottom" constant="4" id="gRc-Mo-9Qp"/>
+                            <constraint firstItem="YVf-Py-Xei" firstAttribute="top" secondItem="QiJ-Uy-4rn" secondAttribute="bottom" constant="2" id="lfa-hp-Cwh"/>
+                            <constraint firstItem="HV6-wi-691" firstAttribute="leading" secondItem="5Ok-Ma-8m3" secondAttribute="leading" constant="5" id="qcZ-nq-MZI"/>
+                            <constraint firstAttribute="trailing" secondItem="QiJ-Uy-4rn" secondAttribute="trailing" id="ssb-zp-bEp"/>
+                            <constraint firstAttribute="trailing" secondItem="YVf-Py-Xei" secondAttribute="trailing" id="u1w-x4-Pw8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5Ok-Ma-8m3" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="QZ2-w6-T36"/>
+                    <constraint firstItem="5Ok-Ma-8m3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qxn-FZ-UR7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dayProductRoutineView" destination="5Ok-Ma-8m3" id="grc-vW-Kkw"/>
+                <outlet property="dayRoutineView" destination="H2p-sc-9uM" id="Gbm-mW-Vuf"/>
+                <outlet property="productCategoryLabel" destination="QiJ-Uy-4rn" id="cGz-FL-5fs"/>
+                <outlet property="productImageView" destination="HV6-wi-691" id="Z9t-Bq-IGI"/>
+                <outlet property="productNameLabel" destination="YVf-Py-Xei" id="3e3-s2-UG3"/>
+            </connections>
+            <point key="canvasLocation" x="90" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cerave" width="500" height="500"/>
+    </resources>
+</document>

@@ -398,35 +398,41 @@ class RoutinesViewController: UIViewController {
     }
     
     func configureRoutineData(routineEve: String, routineMor: String ) {
-        NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineMor) { response in
-            switch response {
-            case .success(let value):
-                if let data = value.data(using: .utf8),
-                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
-                   let result = json.first?["result"] as? String {
-                    print(result)
-                    if result == "true" {
-                        print("fuck")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
+            NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineMor) { response in
+                switch response {
+                case .success(let value):
+                    if let data = value.data(using: .utf8),
+                       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+                       let result = json.first?["result"] as? String {
+                        print(result)
+                        if result == "true" {
+                            print("fuck")
+                        }
                     }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
         
-        NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineEve) { response in
-            switch response {
-            case .success(let value):
-                if let data = value.data(using: .utf8),
-                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
-                   let result = json.first?["result"] as? String {
-                    print(result)
-                    if result == "true" {
-                        print("fuck")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
+            NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineEve) { response in
+                switch response {
+                case .success(let value):
+                    if let data = value.data(using: .utf8),
+                       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+                       let result = json.first?["result"] as? String {
+                        print(result)
+                        if result == "true" {
+                            print("fuck")
+                        }
                     }
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
     }
@@ -441,7 +447,10 @@ class RoutinesViewController: UIViewController {
         print("eveningggg")
         print(eveningTest)
     }
-
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        
+    }
     @objc func deleteButtonTapped(_ sender: UIButton) { //bunun yerine kaydırma ile yap
         addControl = false
         guard let buttonPosition = sender.convert(CGPoint.zero, to: stepCollectionView) as CGPoint?,
