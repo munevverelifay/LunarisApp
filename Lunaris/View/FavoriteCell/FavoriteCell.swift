@@ -25,8 +25,8 @@ class FavoriteCell: UICollectionViewCell {
         favoriteCellView.layer.cornerRadius = 20
         favoriteCellView.layer.cornerRadius = 20
  
-        favoriteProductImageView.layer.cornerRadius = favoriteProductImageView.frame.height / 2
-        
+        favoriteProductImageView.layer.cornerRadius = 20
+         
         layer.applySketchShadow(color: UIColor.black, alpha: 0.1, x: 2, y: 2, blur: 10, spread: 0)
     }
 

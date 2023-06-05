@@ -49,7 +49,7 @@ class ProductViewController : UIViewController {
         
         productNameLabel.text = GlobalDataManager.sharedGlobalManager.productListName?[Int(selectedProductId) ?? 0]
         productBrandNameLabel.text = GlobalDataManager.sharedGlobalManager.productListBrand?[Int(selectedProductId) ?? 0]
-        productCategoryLabel.text = GlobalDataManager.sharedGlobalManager.productListCategories?[Int(selectedProductId) ?? 0]
+        productCategoryLabel.text = GlobalDataManager.sharedGlobalManager.productListCategories?[(Int(selectedProductId) ?? 0)]
         if let imageUrlString = GlobalDataManager.sharedGlobalManager.productListImage?[Int(selectedProductId) ?? 0],
            let imageUrl = URL(string: imageUrlString) {
             productImage.kf.setImage(with: imageUrl)

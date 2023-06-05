@@ -22,6 +22,8 @@ class UserProfileViewController: UIViewController {
     var calendarHeightConstraint: NSLayoutConstraint?
     var timer: Timer?
     
+    var routineDay: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class UserProfileViewController: UIViewController {
         weeklyFSCalendarView.layer.cornerRadius = weeklyFSCalendarView.frame.height / 10
         
         configureUserProfilImage(userProfil: profilePictureIV)
-       
+        
         routineTableView.dataSource = self
         routineTableView.delegate = self
         routineTableView.layer.cornerRadius = 20
@@ -48,14 +50,39 @@ class UserProfileViewController: UIViewController {
         }
         userNameLabel.text = GlobalDataManager.sharedGlobalManager.userSurname
         userBirthDateLabel.text = GlobalDataManager.sharedGlobalManager.userDateOfBirth
-//        profileDescriptonLabel.text = userDescription
+        //        profileDescriptonLabel.text = userDescription
         let imageUrl = URL(string: GlobalDataManager.sharedGlobalManager.profileImage ?? "")
         profilePictureIV.kf.setImage(with: imageUrl)
+        
+        
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
-
+        super.viewDidAppear(true)
+        let currentDayOfWeek = getDayOfWeek()
+        routineDay = currentDayOfWeek
         
+        // Herhangi bir tıklama yapmadan önceki günü temizle
+        if let selectedDate = weeklyFSCalendarView.selectedDate {
+            weeklyFSCalendarView.deselect(selectedDate)
+        }
+        
+        routineTableView.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        configureRoutineData()
+        routineTableView.reloadData()
+    }
+    
+    func getDayOfWeek() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        let dayOfWeekString = dateFormatter.string(from: date)
+        return dayOfWeekString
     }
     
     
@@ -63,6 +90,45 @@ class UserProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let editProfileVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController {
             navigationController?.pushViewController(editProfileVC, animated: true)
+        }
+    }
+}
+
+func configureRoutineData() {
+    NetworkService.sharedNetwork.getRoutineList(userId: GlobalDataManager.sharedGlobalManager.userId) { response in
+        switch response {
+        case .success(let routines):
+            if routines.indices.contains(0) {
+                let firstRoutine = routines[0]
+                // Birinci rutin
+                GlobalDataManager.sharedGlobalManager.mon1 = firstRoutine.mon.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.tue1 = firstRoutine.tue.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.wed1 = firstRoutine.wed.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.thu1 = firstRoutine.thu.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.fri1 = firstRoutine.fri.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.sat1 = firstRoutine.sat.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.sun1 = firstRoutine.sun.filter{ !$0.isEmpty }
+            } else {
+                
+                print("Birinci rutin bulunamadı.")
+            }
+            
+            if routines.indices.contains(1) {
+                let secondRoutine = routines[1]
+                // İkinci rutin
+                GlobalDataManager.sharedGlobalManager.mon2 = secondRoutine.mon.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.tue2 = secondRoutine.tue.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.wed2 = secondRoutine.wed.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.thu2 = secondRoutine.thu.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.fri2 = secondRoutine.fri.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.sat2 = secondRoutine.sat.filter{ !$0.isEmpty }
+                GlobalDataManager.sharedGlobalManager.sun2 = secondRoutine.sun.filter{ !$0.isEmpty }
+            } else {
+                // İndeks 1 yoksa uygun hata işleme stratejisini uygulayabilirsiniz
+                print("İkinci rutin bulunamadı.")
+            }
+        case .failure(let error):
+            print(error)
         }
     }
 }
@@ -76,11 +142,11 @@ extension UserProfileViewController: FSCalendarDelegate, FSCalendarDataSource, F
             
             calendar.scrollDirection = .horizontal
             calendar.setScope(.week, animated: false)
-    
+            
             
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
             calendar.addGestureRecognizer(panGesture)
-
+            
             calendar.locale = Locale(identifier: "en") // BU SATIRI CİHAZ DİLİNE GÖRE YAP
             
             // Calendar appearance
@@ -88,10 +154,10 @@ extension UserProfileViewController: FSCalendarDelegate, FSCalendarDataSource, F
             calendar.appearance.borderDefaultColor = .clear
             calendar.appearance.borderSelectionColor = .clear
             
-
-
+            
+            
             // Offset'i ayarla ve görüntü ve renk ayarlarını da uygula
-//            calendar.appearance.headerTitleOffset = offset
+            //            calendar.appearance.headerTitleOffset = offset
             calendar.appearance.headerTitleColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             calendar.appearance.weekdayTextColor = UIColor(red: 176/255, green: 176/255, blue: 176/255, alpha: 1.0)
             calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 19.0)
@@ -101,8 +167,8 @@ extension UserProfileViewController: FSCalendarDelegate, FSCalendarDataSource, F
             calendar.appearance.titleTodayColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
             
             calendar.appearance.selectionColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
-
-         
+            
+            
         }
     }
     
@@ -116,12 +182,20 @@ extension UserProfileViewController: FSCalendarDelegate, FSCalendarDataSource, F
             weeklyFSCalendarView.setScope(.week, animated: true)
         }
     }
-
+    
     //MARK: - Delegate Func
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         formatter.dateFormat = "dd-MMM-yyyy"
         print("Date Selected == \(formatter.string(from: date))")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE" // Gün adını almak için "EEEE" formatı kullanılır
+        dateFormatter.locale = Locale(identifier: "en_US") // İngilizce olarak ayarla
+        let dayOfWeek = dateFormatter.string(from: date)
+        
+        routineDay = dayOfWeek
+        routineTableView.reloadData()
     }
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         // Aşağıdaki satırı ekleyin:
@@ -149,31 +223,92 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 3 // Morning section
+            switch routineDay { // Morning section
+            case "Monday":
+                return GlobalDataManager.sharedGlobalManager.mon1.count
+            case "Tuesday":
+                return GlobalDataManager.sharedGlobalManager.tue1.count
+            case "Wednesday":
+                return GlobalDataManager.sharedGlobalManager.wed1.count
+            case "Thursday":
+                return GlobalDataManager.sharedGlobalManager.thu1.count
+            case "Friday":
+                return GlobalDataManager.sharedGlobalManager.fri1.count
+            case "Saturday":
+                return GlobalDataManager.sharedGlobalManager.sat1.count
+            case "Sunday":
+                return GlobalDataManager.sharedGlobalManager.sun1.count
+            default:
+                return 0
+            }
         } else {
-            return 1 // Evening section
+            switch routineDay { // Evening section
+            case "Monday":
+                return GlobalDataManager.sharedGlobalManager.mon2.count
+            case "Tuesday":
+                return GlobalDataManager.sharedGlobalManager.tue2.count
+            case "Wednesday":
+                return GlobalDataManager.sharedGlobalManager.wed2.count
+            case "Thursday":
+                return GlobalDataManager.sharedGlobalManager.thu2.count
+            case "Friday":
+                return GlobalDataManager.sharedGlobalManager.fri2.count
+            case "Saturday":
+                return GlobalDataManager.sharedGlobalManager.sat2.count
+            case "Sunday":
+                return GlobalDataManager.sharedGlobalManager.sun2.count
+            default:
+                return 0
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RoutineCell", for: indexPath)
-        cell.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        
+        let routineCell = tableView.dequeueReusableCell(withIdentifier: "RoutineCell", for: indexPath)
+        routineCell.backgroundColor = UIColor.clear.withAlphaComponent(0)
         if indexPath.section == 0 {
             // Morning section
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "1. Step: Cerave"
-            } else if indexPath.row == 1 {
-                cell.textLabel?.text = "2. Step: Rice Toner"
-            } else if indexPath.row == 2 {
-                cell.textLabel?.text = "3. Step: Dalba"
+            switch routineDay {
+            case "Monday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.mon1, cell: routineCell, color: UIColor(red: 250/255, green: 180/255, blue: 88/255, alpha: 1.0))
+            case "Tuesday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.tue1, cell: routineCell, color: UIColor(red: 250/255, green: 180/255, blue: 88/255, alpha: 1.0))
+            case "Wednesday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.wed1, cell: routineCell, color: UIColor(red: 250/255, green: 180/255, blue: 88/255, alpha: 1.0))
+            case "Thursday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.thu1, cell: routineCell, color: UIColor(red: 250/255, green: 180/255, blue: 88/255, alpha: 1.0))
+            case "Friday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.fri1, cell: routineCell, color: UIColor(red: 250/255, green: 180/255, blue: 88/255, alpha: 1.0))
+            case "Saturday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.sat1, cell: routineCell, color: UIColor(red: 250/255, green: 180/255, blue: 88/255, alpha: 1.0))
+            case "Sunday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.sun1, cell: routineCell, color: UIColor(red: 250/255, green: 180/255, blue: 88/255, alpha: 1.0))
+            default:
+                break
             }
         } else {
             // Evening section
-            cell.textLabel?.text = "1. Step: Purito"
+            switch routineDay {
+            case "Monday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.mon2, cell: routineCell, color: UIColor(red: 68/255, green: 192/255, blue: 207/255, alpha: 1.0))
+            case "Tuesday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.tue2, cell: routineCell, color: UIColor(red: 68/255, green: 192/255, blue: 207/255, alpha: 1.0))
+            case "Wednesday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.wed2, cell: routineCell, color: UIColor(red: 68/255, green: 192/255, blue: 207/255, alpha: 1.0))
+            case "Thursday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.thu2, cell: routineCell, color: UIColor(red: 68/255, green: 192/255, blue: 207/255, alpha: 1.0))
+            case "Friday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.fri2, cell: routineCell, color: UIColor(red: 68/255, green: 192/255, blue: 207/255, alpha: 1.0))
+            case "Saturday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.sat2, cell: routineCell, color: UIColor(red: 68/255, green: 192/255, blue: 207/255, alpha: 1.0))
+            case "Sunday":
+                configureRoutineStep(index: indexPath.row, currentDay: GlobalDataManager.sharedGlobalManager.sun2, cell: routineCell, color: UIColor(red: 68/255, green: 192/255, blue: 207/255, alpha: 1.0))
+            default:
+                break
+            }
         }
         
-        return cell
+        return routineCell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -214,7 +349,33 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
         
         return headerView
     }
-
+    // Cell düzenleme
+    func configureRoutineStep(index: Int, currentDay: Array<String>, cell: UITableViewCell, color: UIColor) {
+        if index < currentDay.count {
+            if let dayItem = Int(currentDay[index]) {
+                if let dayProduct = GlobalDataManager.sharedGlobalManager.productListName?[dayItem] {
+                    let stepNumber = "\(index + 1). Step:"
+                    let stepText = "\(stepNumber) \(String(describing: dayProduct))"
+                    
+                    let attributedString = NSMutableAttributedString(string: stepText)
+                    
+                    let stepRange = NSRange(location: 0, length: stepNumber.count)
+                    let productRange = NSRange(location: stepNumber.count + 1, length: dayProduct.count)
+                    
+                    attributedString.addAttribute(.foregroundColor, value: color, range: stepRange)
+                    attributedString.addAttribute(.foregroundColor, value: UIColor(red: 55/255, green: 41/255, blue: 77/255, alpha: 1.0), range: productRange)
+                    
+                    let stepFont = UIFont(name: "Bodoni 72 Bold", size: 20)!
+                    let productFont = UIFont(name: "Bodoni 72 Book", size: 17)!
+                    
+                    attributedString.addAttribute(.font, value: stepFont, range: stepRange)
+                    attributedString.addAttribute(.font, value: productFont, range: productRange)
+                    
+                    cell.textLabel?.attributedText = attributedString
+                }
+            }
+        }
+    }
 }
 
 
@@ -227,12 +388,12 @@ extension UIViewController {
     }
     
     func configureNavigationTitle() {
-//        if let font = UIFont(name: "Bodoni 72 Book", size: 22) {
-//            navigationController?.navigationBar.titleTextAttributes = [
-//                NSAttributedString.Key.font: font
-//            ]
-//        }
-//
+        //        if let font = UIFont(name: "Bodoni 72 Book", size: 22) {
+        //            navigationController?.navigationBar.titleTextAttributes = [
+        //                NSAttributedString.Key.font: font
+        //            ]
+        //        }
+        //
         navigationController?.navigationBar.tintColor = UIColor(red: 249/255, green: 36/255, blue: 87/255, alpha: 1.0)
         navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 249/255, green: 36/255, blue: 87/255, alpha: 1.0)]

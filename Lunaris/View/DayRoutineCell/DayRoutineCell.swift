@@ -18,9 +18,7 @@ class DayRoutineCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         dayRoutineView.layer.cornerRadius = 20
-        dayProductRoutineView.layer.cornerRadius = 20
-        productImageView.layer.cornerRadius = productImageView.frame.height / 2
-    }
+        dayProductRoutineView.layer.cornerRadius = 20    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         

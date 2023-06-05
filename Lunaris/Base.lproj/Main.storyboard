@@ -131,13 +131,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your account," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2I-rz-SAF">
-                                <rect key="frame" x="25" y="198" width="364" height="132.5"/>
+                                <rect key="frame" x="25" y="148" width="364" height="132.5"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="55"/>
                                 <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8tE-OQ-AMy">
-                                <rect key="frame" x="25" y="400" width="364" height="228"/>
+                                <rect key="frame" x="25" y="350" width="364" height="414"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nMR-gp-B2q">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="42"/>
@@ -153,8 +153,23 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGR-li-lZU">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJb-i6-ShB">
                                         <rect key="frame" x="0.0" y="124" width="364" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SQZ-w1-oSb">
+                                        <rect key="frame" x="0.0" y="186" width="364" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1As-Ef-hDV">
+                                        <rect key="frame" x="0.0" y="248" width="364" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGR-li-lZU">
+                                        <rect key="frame" x="0.0" y="310" width="364" height="42"/>
                                         <color key="backgroundColor" red="0.23901382960000001" green="0.1882675338" blue="0.34112241110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="SIGN UP">
@@ -165,7 +180,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have account? Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POU-T6-HaW">
-                                        <rect key="frame" x="0.0" y="186" width="364" height="42"/>
+                                        <rect key="frame" x="0.0" y="372" width="364" height="42"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="16"/>
                                         <color key="textColor" red="0.23921568630000001" green="0.18823529410000001" blue="0.3411764706" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -173,7 +188,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to continue!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ2-G4-vCw">
-                                <rect key="frame" x="25" y="330.5" width="364" height="24.5"/>
+                                <rect key="frame" x="25" y="280.5" width="364" height="24.5"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="20"/>
                                 <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -187,17 +202,20 @@
                             <constraint firstItem="XtF-Ql-lrd" firstAttribute="trailing" secondItem="W2I-rz-SAF" secondAttribute="trailing" constant="25" id="BN8-HV-2kS"/>
                             <constraint firstItem="W2I-rz-SAF" firstAttribute="leading" secondItem="XtF-Ql-lrd" secondAttribute="leading" constant="25" id="JOK-nL-Q73"/>
                             <constraint firstItem="8tE-OQ-AMy" firstAttribute="top" secondItem="tJ2-G4-vCw" secondAttribute="bottom" constant="45" id="gYp-DF-uuV"/>
-                            <constraint firstItem="W2I-rz-SAF" firstAttribute="top" secondItem="XtF-Ql-lrd" secondAttribute="top" constant="150" id="ht6-eY-wmv"/>
+                            <constraint firstItem="W2I-rz-SAF" firstAttribute="top" secondItem="XtF-Ql-lrd" secondAttribute="top" constant="100" id="ht6-eY-wmv"/>
                             <constraint firstItem="tJ2-G4-vCw" firstAttribute="top" secondItem="W2I-rz-SAF" secondAttribute="bottom" id="i78-Pv-ySx"/>
                             <constraint firstItem="tJ2-G4-vCw" firstAttribute="leading" secondItem="XtF-Ql-lrd" secondAttribute="leading" constant="25" id="tTR-EF-Z9T"/>
                             <constraint firstItem="XtF-Ql-lrd" firstAttribute="trailing" secondItem="8tE-OQ-AMy" secondAttribute="trailing" constant="25" id="zS5-HR-FHe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dateOfBirthTextField" destination="1As-Ef-hDV" id="tv8-dJ-Fvl"/>
                         <outlet property="emailTextField" destination="nMR-gp-B2q" id="i1s-zm-bTK"/>
+                        <outlet property="nameTextField" destination="VJb-i6-ShB" id="Ijp-IV-VJ5"/>
                         <outlet property="passwordTextField" destination="uU9-1J-BY8" id="pZM-nL-9ls"/>
                         <outlet property="signInLabel" destination="POU-T6-HaW" id="nGx-JN-kVl"/>
                         <outlet property="signUpButton" destination="WGR-li-lZU" id="Ll8-6s-xHF"/>
+                        <outlet property="surnameTextField" destination="SQZ-w1-oSb" id="hJZ-PC-Lby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZNG-GF-bsu" sceneMemberID="firstResponder"/>
