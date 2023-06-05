@@ -63,5 +63,22 @@ class GlobalDataManager {
     var searchImage: [String] = []
     var searchTotalRating: [String] = []
     var searchReviewNumbers: [String] = []
+    
+    
+    var mon1: [String] = []
+    var tue1: [String] = []
+    var wed1: [String] = []
+    var thu1: [String] = []
+    var fri1: [String] = []
+    var sat1: [String] = []
+    var sun1: [String] = []
+    
+    var mon2: [String] = []
+    var tue2: [String] = []
+    var wed2: [String] = []
+    var thu2: [String] = []
+    var fri2: [String] = []
+    var sat2: [String] = []
+    var sun2: [String] = []
 
 }

@@ -51,7 +51,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phv-uo-iJ0">
-                                        <rect key="frame" x="61.000000000000007" y="25.000000000000007" width="85.666666666666686" height="19.333333333333336"/>
+                                        <rect key="frame" x="61" y="25.000000000000007" width="271" height="19.333333333333336"/>
                                         <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="16"/>
                                         <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -71,6 +71,7 @@
                                     <constraint firstItem="phv-uo-iJ0" firstAttribute="leading" secondItem="KBH-nJ-yQ4" secondAttribute="trailing" constant="8" id="Ozv-Mk-Viv"/>
                                     <constraint firstAttribute="bottom" secondItem="KBH-nJ-yQ4" secondAttribute="bottom" constant="4" id="Qul-rP-THm"/>
                                     <constraint firstItem="KBH-nJ-yQ4" firstAttribute="leading" secondItem="jla-4O-yac" secondAttribute="leading" constant="5" id="dyO-bD-0sb"/>
+                                    <constraint firstAttribute="trailing" secondItem="phv-uo-iJ0" secondAttribute="trailing" constant="42" id="o9F-Bk-jDZ"/>
                                     <constraint firstAttribute="trailing" secondItem="cnv-KF-3Wt" secondAttribute="trailing" constant="5" id="uyH-6I-Az7"/>
                                     <constraint firstItem="Lf6-qV-xAg" firstAttribute="top" secondItem="jla-4O-yac" secondAttribute="top" constant="6" id="xuv-oK-Ve3"/>
                                 </constraints>

@@ -69,7 +69,14 @@ class AddCommentViewController: UIViewController {
                    let result = json.first?["result"] as? String {
                     print(result)
                     if result == "true" {
-                        print("fuck")
+                          let alertController = UIAlertController(title: "Success", message: "Your comment has been saved.", preferredStyle: .alert)
+                          let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+                              // DailyRoutineViewController sayfasına geri dön
+                              self.navigationController?.popViewController(animated: true)
+                          }
+                          alertController.addAction(okayAction)
+                        self.present(alertController, animated: true, completion: nil)
+
                     }
                 }
             case .failure(let error):

@@ -25,6 +25,13 @@ class UserCommentsViewController: UIViewController {
         
         configureButton(btn: commentButton)
         
+       
+        commentCollectionView.reloadData()
+//        GlobalDataManager.sharedGlobalManager.sendedProductId = ""
+        commentCollectionView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
         GlobalDataManager.sharedGlobalManager.commentId = []
         GlobalDataManager.sharedGlobalManager.commentUserId = []
@@ -32,15 +39,7 @@ class UserCommentsViewController: UIViewController {
         GlobalDataManager.sharedGlobalManager.commentRatings = []
         GlobalDataManager.sharedGlobalManager.commentTitle = []
         GlobalDataManager.sharedGlobalManager.commentCreatedAt = []
-        commentCollectionView.reloadData()
-//        GlobalDataManager.sharedGlobalManager.sendedProductId = ""
         configureCommentData()
-        commentCollectionView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
     }
 
     func configureCommentData() {

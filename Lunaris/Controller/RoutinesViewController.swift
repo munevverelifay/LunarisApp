@@ -148,6 +148,9 @@ class RoutinesViewController: UIViewController {
         configureTouchableLabel(label: eveningRoutineLabel, gesture: tapEveningRoutineGesture)
 
         NotificationCenter.default.addObserver(self, selector: #selector(handleSelectedProduct(_:)), name: Notification.Name("SelectedProduct"), object: nil)
+        
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
+            navigationItem.rightBarButtonItem = saveButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,6 +160,20 @@ class RoutinesViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+    }
+
+    @IBAction func addStepButton(_ sender: UIButton) {
+        addControl = true
+        steps.append("New Step")
+        print("testtttt")
+        print(test)
+        print("morninnggg")
+        print(morningTest)
+        print("eveningggg")
+        print(eveningTest)
+    }
+    
+    @objc func saveButtonTapped() {
         if morning {
             if morningTest.isEmpty {
                 morningTest = checkTest
@@ -395,10 +412,21 @@ class RoutinesViewController: UIViewController {
         eveningRoutine = "mon=\(eveMonString)&tue=\(eveTueString)&wed=\(eveWedString)&thu=\(eveThuString)&fri=\(eveFriString)&sat=\(eveSatString)&sun=\(eveSunString)&time=1"
 
         configureRoutineData(routineEve: eveningRoutine, routineMor: morningRoutine)
+        // Pop-up mesajını görüntüle ve DailyRoutineViewController sayfasına geri dön
+           let alertController = UIAlertController(title: "Success", message: "Your routine has been saved.", preferredStyle: .alert)
+           let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+               // DailyRoutineViewController sayfasına geri dön
+               self.navigationController?.popViewController(animated: true)
+           }
+           alertController.addAction(okayAction)
+           present(alertController, animated: true, completion: nil)
+
+
+       
     }
     
     func configureRoutineData(routineEve: String, routineMor: String ) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             
             NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineMor) { response in
                 switch response {
@@ -417,7 +445,7 @@ class RoutinesViewController: UIViewController {
             }
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             
             NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineEve) { response in
                 switch response {
@@ -435,21 +463,6 @@ class RoutinesViewController: UIViewController {
                 }
             }
         }
-    }
-
-    @IBAction func addStepButton(_ sender: UIButton) {
-        addControl = true
-        steps.append("New Step")
-        print("testtttt")
-        print(test)
-        print("morninnggg")
-        print(morningTest)
-        print("eveningggg")
-        print(eveningTest)
-    }
-    
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
-        
     }
     @objc func deleteButtonTapped(_ sender: UIButton) { //bunun yerine kaydırma ile yap
         addControl = false

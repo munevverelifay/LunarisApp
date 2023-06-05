@@ -50,9 +50,6 @@ class ProductViewController : UIViewController {
         productNameLabel.text = GlobalDataManager.sharedGlobalManager.productListName?[Int(selectedProductId) ?? 0]
         productBrandNameLabel.text = GlobalDataManager.sharedGlobalManager.productListBrand?[Int(selectedProductId) ?? 0]
         productCategoryLabel.text = GlobalDataManager.sharedGlobalManager.productListCategories?[Int(selectedProductId) ?? 0]
-        productTotalCommentLabel.text = GlobalDataManager.sharedGlobalManager.productListReviewNumbers?[Int(selectedProductId) ?? 0]
-        
-        productListTotalRating = GlobalDataManager.sharedGlobalManager.productListTotalRating?[Int(selectedProductId) ?? 0] ?? "0.00"
         if let imageUrlString = GlobalDataManager.sharedGlobalManager.productListImage?[Int(selectedProductId) ?? 0],
            let imageUrl = URL(string: imageUrlString) {
             productImage.kf.setImage(with: imageUrl)
@@ -86,8 +83,16 @@ class ProductViewController : UIViewController {
             cellData(opened: false, title: "Comments")
         ]
         
-        productRatingStar()
         configureLikeButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        productTotalCommentLabel.text = GlobalDataManager.sharedGlobalManager.productListReviewNumbers?[Int(selectedProductId) ?? 0]
+        
+        productListTotalRating = GlobalDataManager.sharedGlobalManager.productListTotalRating?[Int(selectedProductId) ?? 0] ?? "0.00"
+        
+        productRatingStar()
     }
     
     func configureLikeButton() {

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,13 +28,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heimish" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ9-vC-faJ">
-                                <rect key="frame" x="71" y="11.999999999999998" width="313" height="18.333333333333329"/>
+                                <rect key="frame" x="71" y="11.999999999999998" width="303" height="18.333333333333329"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="15"/>
                                 <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Effaclar Gel Moussant Cleanser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaL-tw-hxk">
-                                <rect key="frame" x="69" y="32.333333333333336" width="315" height="19.333333333333336"/>
+                                <rect key="frame" x="69" y="32.333333333333336" width="305" height="19.333333333333336"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="16"/>
                                 <color key="textColor" red="0.2156862745" green="0.16078431369999999" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +42,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XJ9-vC-faJ" secondAttribute="trailing" id="0nx-w6-nyi"/>
+                            <constraint firstAttribute="trailing" secondItem="XJ9-vC-faJ" secondAttribute="trailing" constant="10" id="0nx-w6-nyi"/>
                             <constraint firstAttribute="width" constant="384" id="5BZ-Xs-DKx"/>
                             <constraint firstItem="Ai5-Vb-WOR" firstAttribute="top" secondItem="2uF-6T-O1V" secondAttribute="top" constant="4" id="9S2-vY-2ez"/>
                             <constraint firstItem="XJ9-vC-faJ" firstAttribute="leading" secondItem="Ai5-Vb-WOR" secondAttribute="trailing" constant="10" id="ED9-cX-cJ1"/>
@@ -49,7 +50,7 @@
                             <constraint firstAttribute="height" constant="64" id="Hx4-pK-0Fo"/>
                             <constraint firstItem="ZaL-tw-hxk" firstAttribute="top" secondItem="XJ9-vC-faJ" secondAttribute="bottom" constant="2" id="RMe-hf-kCl"/>
                             <constraint firstItem="XJ9-vC-faJ" firstAttribute="top" secondItem="2uF-6T-O1V" secondAttribute="top" constant="12" id="S3X-Oc-JAj"/>
-                            <constraint firstAttribute="trailing" secondItem="ZaL-tw-hxk" secondAttribute="trailing" id="nFt-ar-5mw"/>
+                            <constraint firstAttribute="trailing" secondItem="ZaL-tw-hxk" secondAttribute="trailing" constant="10" id="nFt-ar-5mw"/>
                             <constraint firstAttribute="bottom" secondItem="Ai5-Vb-WOR" secondAttribute="bottom" constant="4" id="urq-ka-hWw"/>
                             <constraint firstItem="Ai5-Vb-WOR" firstAttribute="leading" secondItem="2uF-6T-O1V" secondAttribute="leading" constant="5" id="zNa-Lb-cFf"/>
                         </constraints>

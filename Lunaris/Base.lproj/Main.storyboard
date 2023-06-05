@@ -704,7 +704,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="b35-8e-9yi" kind="relationship" relationship="rootViewController" id="9Vo-zi-uWN"/>
+                        <segue destination="mGb-0O-8m2" kind="relationship" relationship="rootViewController" id="od8-li-h4C"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOQ-RW-CPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -720,7 +720,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSL-pF-f8j">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mey-mB-bGg" userLabel="Routine Label View">
                                         <rect key="frame" x="-4" y="10" width="422" height="50"/>
@@ -768,17 +768,8 @@
                                                     <constraint firstItem="vqK-Bh-G4Z" firstAttribute="centerX" secondItem="SN2-O2-YM1" secondAttribute="centerX" id="eAe-3W-cQb"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-cF-uC8">
-                                                <rect key="frame" x="303" y="0.0" width="75" height="35"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
-                                                <connections>
-                                                    <action selector="saveButtonTapped:" destination="b35-8e-9yi" eventType="touchUpInside" id="Eu1-em-3mm"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="Ikb-cF-uC8" firstAttribute="leading" secondItem="SN2-O2-YM1" secondAttribute="trailing" constant="98" id="2NZ-xe-qdv"/>
                                             <constraint firstItem="zQ0-fz-iaL" firstAttribute="leading" secondItem="Mey-mB-bGg" secondAttribute="leading" constant="30" id="8U3-qT-3PE"/>
                                             <constraint firstItem="66c-RJ-XDA" firstAttribute="leading" secondItem="Mey-mB-bGg" secondAttribute="leading" constant="20" id="OlI-Nl-Z83"/>
                                             <constraint firstAttribute="height" constant="50" id="PQd-b5-Hap"/>
@@ -787,13 +778,10 @@
                                             <constraint firstItem="66c-RJ-XDA" firstAttribute="centerY" secondItem="Mey-mB-bGg" secondAttribute="centerY" id="h8n-4f-bmu"/>
                                             <constraint firstItem="zQ0-fz-iaL" firstAttribute="centerY" secondItem="Mey-mB-bGg" secondAttribute="centerY" id="l6Y-Jd-Ycs"/>
                                             <constraint firstItem="SN2-O2-YM1" firstAttribute="leading" secondItem="66c-RJ-XDA" secondAttribute="trailing" constant="10" id="oLH-nS-rDi"/>
-                                            <constraint firstItem="Ikb-cF-uC8" firstAttribute="top" secondItem="Mey-mB-bGg" secondAttribute="top" id="pGo-dZ-nFh"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ikb-cF-uC8" secondAttribute="bottom" constant="15" id="qsH-GK-991"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ikb-cF-uC8" secondAttribute="trailing" constant="44" id="rRn-DI-lik"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yWk-ak-1Od">
-                                        <rect key="frame" x="0.0" y="70" width="423" height="651"/>
+                                        <rect key="frame" x="0.0" y="70" width="423" height="744"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rc8-Yy-dQa">
                                             <size key="itemSize" width="128" height="128"/>
@@ -804,7 +792,7 @@
                                         <cells/>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4h-BZ-Pcj">
-                                        <rect key="frame" x="152.5" y="674" width="109" height="42"/>
+                                        <rect key="frame" x="152.5" y="767" width="109" height="42"/>
                                         <color key="backgroundColor" red="0.99607843139999996" green="0.43137254899999999" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="4Yb-ob-x9r"/>
@@ -925,7 +913,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PKe-Ld-VO4">
-                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -938,6 +926,7 @@
                             <constraint firstItem="c67-Xp-C1F" firstAttribute="bottom" secondItem="PKe-Ld-VO4" secondAttribute="bottom" id="t3X-CP-8HD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ivl-hL-D7c"/>
                     <connections>
                         <outlet property="dailyRoutineTableView" destination="PKe-Ld-VO4" id="ADv-fJ-fzQ"/>
                     </connections>
@@ -1073,7 +1062,7 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="moonphase.last.quarter.inverse" catalog="system" title="Save"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                         <connections>
                                             <action selector="saveEditButtonTapped:" destination="NOa-Jd-mNh" eventType="touchUpInside" id="tNb-yY-2hg"/>
                                         </connections>
@@ -1723,7 +1712,6 @@
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
-        <image name="moonphase.last.quarter.inverse" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="photo.circle" catalog="system" width="128" height="123"/>
         <image name="square.and.pencil" catalog="system" width="128" height="113"/>
