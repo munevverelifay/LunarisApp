@@ -33,6 +33,7 @@ class UserCommentsViewController: UIViewController {
         GlobalDataManager.sharedGlobalManager.commentTitle = []
         GlobalDataManager.sharedGlobalManager.commentCreatedAt = []
         commentCollectionView.reloadData()
+//        GlobalDataManager.sharedGlobalManager.sendedProductId = ""
         configureCommentData()
         commentCollectionView.reloadData()
     }
@@ -43,8 +44,8 @@ class UserCommentsViewController: UIViewController {
     }
 
     func configureCommentData() {
-
-        NetworkService.sharedNetwork.getReviewList(product_id: GlobalDataManager.sharedGlobalManager.selectedProductId) { response in
+        GlobalDataManager.sharedGlobalManager.sendedProductId = String((Int(GlobalDataManager.sharedGlobalManager.selectedProductId) ?? 0) + 1)
+        NetworkService.sharedNetwork.getReviewList(product_id: GlobalDataManager.sharedGlobalManager.sendedProductId) { response in
             switch response{
             case .success(let reviews):
                     reviews.forEach { item in

@@ -18,6 +18,7 @@ class AddCommentViewController: UIViewController {
     @IBOutlet weak var reviewTitleTextField: UITextField!
     @IBOutlet weak var reviewTextField: UITextField!
     @IBOutlet weak var saveCommentButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,12 +52,13 @@ class AddCommentViewController: UIViewController {
         let fifthTap = UITapGestureRecognizer(target: self, action: #selector(didTapStarImage(_:)))
         fifthStarImage.isUserInteractionEnabled = true
         fifthStarImage.addGestureRecognizer(fifthTap)
+        
     }
     
     //MARK: - PostComment
     @IBAction func saveCommentButton(_ sender: UIButton) {
         NetworkService.sharedNetwork.postComment(userId: GlobalDataManager.sharedGlobalManager.userId,
-                                                 productId: GlobalDataManager.sharedGlobalManager.selectedProductId,
+                                                 productId: GlobalDataManager.sharedGlobalManager.sendedProductId ,
                                                  commentContentTxt: reviewTextField.text,
                                                  commentRatings: GlobalDataManager.sharedGlobalManager.userProductRating,
                                                  commentTitle: reviewTitleTextField.text) { response in

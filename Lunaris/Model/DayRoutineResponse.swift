@@ -8,11 +8,6 @@
 import Foundation
 
 struct DailyRoutineResponse: Codable {
-    let days: [Days]
- 
-}
-
-struct Days: Codable {
     let mon, tue, wed, thu: [String]
     let fri, sat, sun: [String]
 }

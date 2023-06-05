@@ -17,6 +17,7 @@ class GlobalDataManager {
     var userImage: String?
     var productID: String?
     var selectedProductId: String = ""
+    var sendedProductId: String = ""
 
     
     var productListId: [String]? = []
