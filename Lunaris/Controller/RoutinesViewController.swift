@@ -413,39 +413,52 @@ class RoutinesViewController: UIViewController {
 
         configureRoutineData(routineEve: eveningRoutine, routineMor: morningRoutine)
         // Pop-up mesajını görüntüle ve DailyRoutineViewController sayfasına geri dön
-           let alertController = UIAlertController(title: "Success", message: "Your routine has been saved.", preferredStyle: .alert)
-           let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
-               // DailyRoutineViewController sayfasına geri dön
-               self.navigationController?.popViewController(animated: true)
-           }
-           alertController.addAction(okayAction)
-           present(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Success", message: "Your routine has been saved.", preferredStyle: .alert)
 
+        // Okay düğmesine basıldığında çalışacak closure
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            // Yüklenme görselini göster
+            let activityIndicator = UIActivityIndicatorView(style: .large)
+            activityIndicator.color = UIColor(red: 249/255, green: 36/255, blue: 87/255, alpha: 1.0) // Özel renk
+            activityIndicator.startAnimating()
+            self.view.addSubview(activityIndicator)
+            activityIndicator.center = self.view.center
 
-       
+            // 2 saniye bekle
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                activityIndicator.stopAnimating()
+                activityIndicator.removeFromSuperview()
+
+                // DailyRoutineViewController sayfasına geri dön
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+
+        alertController.addAction(okayAction)
+        present(alertController, animated: true, completion: nil)
+
     }
     
     func configureRoutineData(routineEve: String, routineMor: String ) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            
-            NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineMor) { response in
-                switch response {
-                case .success(let value):
-                    if let data = value.data(using: .utf8),
-                       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
-                       let result = json.first?["result"] as? String {
-                        print(result)
-                        if result == "true" {
-                            print("fuck")
-                        }
+       
+        
+        NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineMor) { response in
+            switch response {
+            case .success(let value):
+                if let data = value.data(using: .utf8),
+                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]],
+                   let result = json.first?["result"] as? String {
+                    print(result)
+                    if result == "true" {
+                        print("ok")
                     }
-                case .failure(let error):
-                    print(error)
                 }
+            case .failure(let error):
+                print(error)
             }
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             
             NetworkService.sharedNetwork.postRoutine(userId: GlobalDataManager.sharedGlobalManager.userId, routine: routineEve) { response in
                 switch response {
@@ -455,7 +468,7 @@ class RoutinesViewController: UIViewController {
                        let result = json.first?["result"] as? String {
                         print(result)
                         if result == "true" {
-                            print("fuck")
+                            print("ok")
                         }
                     }
                 case .failure(let error):
@@ -814,7 +827,7 @@ extension RoutinesViewController: UICollectionViewDelegate, UICollectionViewData
         routineStepCell.stepProductNameLabel.text = "Product Name"
         routineStepCell.stepProductBrandLabel.text = "Product Brand"
         
-        let defaultImageUrlString = "cerave"
+        let defaultImageUrlString = "skincare"
         let defaultImageUrl = URL(string: defaultImageUrlString)
         routineStepCell.stepProductImage.kf.setImage(with: defaultImageUrl)
         

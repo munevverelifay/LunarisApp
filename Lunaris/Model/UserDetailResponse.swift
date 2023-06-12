@@ -9,6 +9,7 @@ import Foundation
 
 struct UserDetailResponse: Codable {
     let mail: String
+    let name: String
     let surname: String
     let dateOfBirth: String
 //    let profileDescription: String
@@ -17,6 +18,7 @@ struct UserDetailResponse: Codable {
 
     enum CodingKeys: String, CodingKey {
         case mail = "mail"
+        case name = "name"
         case surname = "surname"
         case dateOfBirth = "date-of-birth"
 //        case profileDescription = "profile-descripton"

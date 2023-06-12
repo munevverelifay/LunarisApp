@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Lottie
 
 class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -14,6 +15,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var forgotPasswordLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var slashView: UIView!
+    @IBOutlet weak var splashImageView: UIImageView!
+    @IBOutlet weak var slashAppName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +25,7 @@ class SignInViewController: UIViewController {
         configureTf(tf: emailTextField, bgColor: UIColor(red: 255, green: 255, blue: 255, alpha: 0.5), placeHolder: "Email")
         
         configureTf(tf: passwordTextField, bgColor: UIColor(red: 255, green: 255, blue: 255, alpha: 0.5), placeHolder: "Password")
+        passwordTextField.isSecureTextEntry = true
         
 
         configureButton(btn: loginButton)
@@ -30,15 +35,58 @@ class SignInViewController: UIViewController {
         
         let tapForgotGesture = UITapGestureRecognizer(target: self, action: #selector(tappedForgotLabel))
         configureTouchableLabel(label: forgotPasswordLabel, gesture: tapForgotGesture)
-        
-        configureData()
-        
-        
+//
+//        setupSplashLabel()
+//        setupSplashAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         configureFavoriteData()
+        configureData()
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        // Check if user is already logged in
+         if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+             // Retrieve user ID and profile image URL from UserDefaults
+             if let userId = UserDefaults.standard.string(forKey: "userID"),
+                let userProfileImageURL = UserDefaults.standard.string(forKey: "userProfileImageURL") {
+                 // Set the user ID and profile image URL in GlobalDataManager
+                 GlobalDataManager.sharedGlobalManager.userId = userId
+                 GlobalDataManager.sharedGlobalManager.userImage = userProfileImageURL
+                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                     // Configure user detail data if needed
+                     self.configureUserDetailData {
+                         // Present the tab bar controller or any desired screen
+                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                         tabBarController.modalPresentationStyle = .fullScreen
+                         self.present(tabBarController, animated: true, completion: nil)
+                     }
+                 }
+             }
+         }else {
+             UIView.animate(withDuration: 1, animations: {
+                 self.slashView.alpha = 0
+                 self.splashImageView.alpha = 0
+                 self.slashAppName.alpha = 0
+             }) { (_) in
+                 self.slashView.isHidden = true
+                 self.splashImageView.isHidden = true
+                 self.slashAppName.isHidden = true
+                 self.slashView.alpha = 1
+                 self.splashImageView.alpha = 1
+                 self.slashAppName.alpha = 1
+             }
+         }
+
+         
+    }
+
+    
     //MARK: - ProductListData
     func configureData() {
         NetworkService.sharedNetwork.getProductList { response in
@@ -48,9 +96,20 @@ class SignInViewController: UIViewController {
                 value.forEach { item in
                     let productId = String((Int(item.id) ?? 0) - 1)
                     GlobalDataManager.sharedGlobalManager.productListId?.append(productId)
-                    GlobalDataManager.sharedGlobalManager.productListName?.append(item.productName)
-                    GlobalDataManager.sharedGlobalManager.productListCategories?.append(item.productCategories)
                     GlobalDataManager.sharedGlobalManager.productListBrand?.append(item.productBrand)
+                    GlobalDataManager.sharedGlobalManager.productListName?.append(item.productName)
+
+                    if let productListBrand = GlobalDataManager.sharedGlobalManager.productListBrand,
+                       let productListName = GlobalDataManager.sharedGlobalManager.productListName {
+                        for index in 0..<productListName.count {
+                            if let productBrand = productListBrand[safe: index] {
+                                let newProductName = productListName[index].replacingOccurrences(of: productBrand, with: "").trimmingCharacters(in: .whitespaces)
+                                GlobalDataManager.sharedGlobalManager.productListName?[index] = newProductName
+                            }
+                        }
+                    }
+
+                    GlobalDataManager.sharedGlobalManager.productListCategories?.append(item.productCategories)
                     GlobalDataManager.sharedGlobalManager.productListIngredients?.append(item.productIndrigients)
                     GlobalDataManager.sharedGlobalManager.productListImage?.append(item.productImage)
                     GlobalDataManager.sharedGlobalManager.productListTotalRating?.append(item.productTotalRating)
@@ -60,7 +119,6 @@ class SignInViewController: UIViewController {
                 print(error)
             }
         }
-        
     }
     
     func configureUserDetailData(completion: @escaping() -> Void) {
@@ -68,10 +126,12 @@ class SignInViewController: UIViewController {
             switch response{
             case .success(let value):
                 print(value[0])
+                GlobalDataManager.sharedGlobalManager.userName = value[0].name
                 GlobalDataManager.sharedGlobalManager.userSurname = value[0].surname
                 GlobalDataManager.sharedGlobalManager.userDateOfBirth = value[0].dateOfBirth
 //               GlobalDataManager.sharedGlobalManager.userDescription = value[0].profileDescription
                 GlobalDataManager.sharedGlobalManager.userImage = value[0].userImage
+                
                 completion()
             case .failure(let error):
                 print(error)
@@ -122,9 +182,11 @@ class SignInViewController: UIViewController {
                         // Save user id and profile image URL to UserDefaults
                         UserDefaults.standard.set(id, forKey: "userID")
                         UserDefaults.standard.set(userImg, forKey: "userProfileImageURL")
+                        UserDefaults.standard.set(true, forKey: "isLoggedIn")
                         
                         GlobalDataManager.sharedGlobalManager.userId = id
                         GlobalDataManager.sharedGlobalManager.userImage = userImg
+                        
                         
                         // Print user id and profile image URL to console
                         print("User ID: \(id)")
@@ -193,4 +255,8 @@ extension CALayer {
     }
   }
 }
-
+extension Array {
+    subscript (safe index: Int) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}

@@ -34,7 +34,7 @@ class UserProfileViewController: UIViewController {
         applyShadowOnView(weeklyFSCalendarView)
         weeklyFSCalendarView.layer.cornerRadius = weeklyFSCalendarView.frame.height / 10
         
-        configureUserProfilImage(userProfil: profilePictureIV)
+        
         
         routineTableView.dataSource = self
         routineTableView.delegate = self
@@ -44,16 +44,18 @@ class UserProfileViewController: UIViewController {
         
         title = "Profile"
         configureNavigationTitle()
-        
-        if let imageUrlString = UserDefaults.standard.string(forKey: "userProfileImageURL"), let imageUrl = URL(string: imageUrlString) {
-            profilePictureIV.kf.setImage(with: imageUrl)
+        if let userSurname = GlobalDataManager.sharedGlobalManager.userSurname,
+           let userName = GlobalDataManager.sharedGlobalManager.userName {
+            userNameLabel.text = "\(userName) \(userSurname)"
+        } else {
+            userNameLabel.text = ""
         }
-        userNameLabel.text = GlobalDataManager.sharedGlobalManager.userSurname
-        userBirthDateLabel.text = GlobalDataManager.sharedGlobalManager.userDateOfBirth
-        //        profileDescriptonLabel.text = userDescription
-        let imageUrl = URL(string: GlobalDataManager.sharedGlobalManager.profileImage ?? "")
-        profilePictureIV.kf.setImage(with: imageUrl)
         
+        userBirthDateLabel.text = GlobalDataManager.sharedGlobalManager.userDateOfBirth
+        
+        // Add Logout Button to Navigation Bar
+        let logoutButton = UIBarButtonItem(image: UIImage(systemName: "power"), style: .plain, target: self, action: #selector(logoutButtonTapped))
+        navigationItem.rightBarButtonItem = logoutButton
         
     }
     
@@ -84,6 +86,53 @@ class UserProfileViewController: UIViewController {
         let dayOfWeekString = dateFormatter.string(from: date)
         return dayOfWeekString
     }
+    func configureRoutineData() {
+        NetworkService.sharedNetwork.getRoutineList(userId: GlobalDataManager.sharedGlobalManager.userId) { response in
+            switch response {
+            case .success(let routines):
+                if routines.indices.contains(0) {
+                    let firstRoutine = routines[0]
+                    // Birinci rutin
+                    GlobalDataManager.sharedGlobalManager.mon1 = firstRoutine.mon.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.tue1 = firstRoutine.tue.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.wed1 = firstRoutine.wed.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.thu1 = firstRoutine.thu.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.fri1 = firstRoutine.fri.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.sat1 = firstRoutine.sat.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.sun1 = firstRoutine.sun.filter{ !$0.isEmpty }
+                } else {
+                    
+                    print("Birinci rutin bulunamadı.")
+                }
+                
+                if routines.indices.contains(1) {
+                    let secondRoutine = routines[1]
+                    // İkinci rutin
+                    GlobalDataManager.sharedGlobalManager.mon2 = secondRoutine.mon.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.tue2 = secondRoutine.tue.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.wed2 = secondRoutine.wed.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.thu2 = secondRoutine.thu.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.fri2 = secondRoutine.fri.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.sat2 = secondRoutine.sat.filter{ !$0.isEmpty }
+                    GlobalDataManager.sharedGlobalManager.sun2 = secondRoutine.sun.filter{ !$0.isEmpty }
+                } else {
+                    // İndeks 1 yoksa uygun hata işleme stratejisini uygulayabilirsiniz
+                    print("İkinci rutin bulunamadı.")
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func logout() {
+        
+        // GlobalDataManager'ın resetData() metodu çağrılıyor
+        GlobalDataManager.sharedGlobalManager.resetData()
+        // UserDefaults'ta isLoggedIn değerini false olarak güncelle
+        UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        UIApplication.restartApplication()
+    }
     
     
     @IBAction func editButton(_ sender: UIButton) {
@@ -92,46 +141,23 @@ class UserProfileViewController: UIViewController {
             navigationController?.pushViewController(editProfileVC, animated: true)
         }
     }
-}
-
-func configureRoutineData() {
-    NetworkService.sharedNetwork.getRoutineList(userId: GlobalDataManager.sharedGlobalManager.userId) { response in
-        switch response {
-        case .success(let routines):
-            if routines.indices.contains(0) {
-                let firstRoutine = routines[0]
-                // Birinci rutin
-                GlobalDataManager.sharedGlobalManager.mon1 = firstRoutine.mon.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.tue1 = firstRoutine.tue.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.wed1 = firstRoutine.wed.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.thu1 = firstRoutine.thu.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.fri1 = firstRoutine.fri.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.sat1 = firstRoutine.sat.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.sun1 = firstRoutine.sun.filter{ !$0.isEmpty }
-            } else {
-                
-                print("Birinci rutin bulunamadı.")
-            }
-            
-            if routines.indices.contains(1) {
-                let secondRoutine = routines[1]
-                // İkinci rutin
-                GlobalDataManager.sharedGlobalManager.mon2 = secondRoutine.mon.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.tue2 = secondRoutine.tue.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.wed2 = secondRoutine.wed.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.thu2 = secondRoutine.thu.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.fri2 = secondRoutine.fri.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.sat2 = secondRoutine.sat.filter{ !$0.isEmpty }
-                GlobalDataManager.sharedGlobalManager.sun2 = secondRoutine.sun.filter{ !$0.isEmpty }
-            } else {
-                // İndeks 1 yoksa uygun hata işleme stratejisini uygulayabilirsiniz
-                print("İkinci rutin bulunamadı.")
-            }
-        case .failure(let error):
-            print(error)
+    
+    @objc func logoutButtonTapped() {
+        
+        let alertController = UIAlertController(title: "Log Out", message: "Are you sure you want to log out?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) { _ in
+            self.logout()
         }
+        alertController.addAction(cancelAction)
+        alertController.addAction(logOutAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
     }
 }
+
+
 
 extension UserProfileViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func configureWeeklyCalendar(calendar: FSCalendar?) {
@@ -403,3 +429,12 @@ extension UIViewController {
     }
 }
 
+extension UIApplication {
+    class func restartApplication() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let windowDelegate = windowScene.delegate as? SceneDelegate {
+                windowDelegate.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+            }
+        }
+    }
+}

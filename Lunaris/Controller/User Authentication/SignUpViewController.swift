@@ -41,6 +41,53 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpButton(_ sender: Any) {
         if let email = emailTextField.text, let pass = passwordTextField.text, let name = nameTextField.text, let surname = surnameTextField.text, let dateOfBirth = dateOfBirthTextField.text {
+            // Email formatını kontrol etmek için bir NSPredicate kullanalım
+            let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+            
+            if !emailPredicate.evaluate(with: email) {
+                // Hatalı email formatı için hata popup'ını göster ve emailTextField'ı temizle
+                let alert = UIAlertController(title: "Invalid Email", message: "Please enter a valid email address.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                emailTextField.text = ""
+                return
+            }
+            
+            // Name ve surname için sadece string kontrolü
+            let nameCharacterSet = CharacterSet.letters
+            if name.rangeOfCharacter(from: nameCharacterSet.inverted) != nil {
+                // Geçersiz name formatı için hata popup'ını göster ve nameTextField'ı temizle
+                let alert = UIAlertController(title: "Invalid Name", message: "Please enter a valid name.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                nameTextField.text = ""
+                return
+            }
+            
+            if surname.rangeOfCharacter(from: nameCharacterSet.inverted) != nil {
+                // Geçersiz surname formatı için hata popup'ını göster ve surnameTextField'ı temizle
+                let alert = UIAlertController(title: "Invalid Surname", message: "Please enter a valid surname.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                surnameTextField.text = ""
+                return
+            }
+            
+            // dateOfBirth formatını kontrol etmek için bir DateFormatter kullanalım
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            
+            if let date = dateFormatter.date(from: dateOfBirth) {
+                // Geçerli bir tarih formatı, devam edebilirsiniz
+                // Geri kalan kodlar...
+            } else {
+                // Geçersiz dateOfBirth formatı için hata popup'ını göster ve dateOfBirthTextField'ı temizle
+                let alert = UIAlertController(title: "Invalid Date", message: "Please enter a valid date in the format: dd/MM/yyyy.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                dateOfBirthTextField.text = ""
+                return
+            }
             let parameters: [String: Any] = [
                 "mail": email,
                 "pass": pass,

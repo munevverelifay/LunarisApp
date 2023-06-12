@@ -11,6 +11,8 @@
 		F70CC4F52A0C3DF70081528D /* SelectStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70CC4F32A0C3DF70081528D /* SelectStepCell.swift */; };
 		F70CC4F62A0C3DF70081528D /* SelectStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70CC4F42A0C3DF70081528D /* SelectStepCell.xib */; };
 		F70CC4F82A0C413F0081528D /* SelectStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70CC4F72A0C413F0081528D /* SelectStepViewController.swift */; };
+		F71D6DF02A374C6A00EC22D7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F71D6DEF2A374C6A00EC22D7 /* Lottie */; };
+		F71D6DF42A37589900EC22D7 /* skincare.json in Resources */ = {isa = PBXBuildFile; fileRef = F71D6DF32A37589900EC22D7 /* skincare.json */; };
 		F724C6CB29E085DC0095EA5F /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F724C6C929E085DC0095EA5F /* ProductCell.swift */; };
 		F724C6CC29E085DC0095EA5F /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F724C6CA29E085DC0095EA5F /* ProductCell.xib */; };
 		F7328AB82A17DB5500C306EE /* StepProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7328AB62A17DB5500C306EE /* StepProductCell.swift */; };
@@ -65,6 +67,7 @@
 		F70CC4F32A0C3DF70081528D /* SelectStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStepCell.swift; sourceTree = "<group>"; };
 		F70CC4F42A0C3DF70081528D /* SelectStepCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectStepCell.xib; sourceTree = "<group>"; };
 		F70CC4F72A0C413F0081528D /* SelectStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStepViewController.swift; sourceTree = "<group>"; };
+		F71D6DF32A37589900EC22D7 /* skincare.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = skincare.json; sourceTree = "<group>"; };
 		F724C6C929E085DC0095EA5F /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		F724C6CA29E085DC0095EA5F /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		F7328AB62A17DB5500C306EE /* StepProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProductCell.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 				F754C2B229FED4E600D6ABA7 /* Kingfisher in Frameworks */,
 				F7AEBE6E29E4919C001101C9 /* Alamofire in Frameworks */,
 				F7D5045A29E9D71000019429 /* FSCalendar in Frameworks */,
+				F71D6DF02A374C6A00EC22D7 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +237,7 @@
 				F70CC4F72A0C413F0081528D /* SelectStepViewController.swift */,
 				F7328ABB2A17DC0900C306EE /* StepProductViewController.swift */,
 				F7C3C6E62A239A8F00123234 /* FavoriteViewController.swift */,
+				F71D6DF32A37589900EC22D7 /* skincare.json */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				F7AEBE6D29E4919C001101C9 /* Alamofire */,
 				F7D5045929E9D71000019429 /* FSCalendar */,
 				F754C2B129FED4E600D6ABA7 /* Kingfisher */,
+				F71D6DEF2A374C6A00EC22D7 /* Lottie */,
 			);
 			productName = Lunaris;
 			productReference = F77BB64C29E0347E00427FAC /* Lunaris.app */;
@@ -364,6 +370,7 @@
 				F7AEBE6C29E4919C001101C9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F7D5045829E9D71000019429 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				F754C2B029FED4E600D6ABA7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				F71D6DEE2A374C6A00EC22D7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = F77BB64D29E0347E00427FAC /* Products */;
 			projectDirPath = "";
@@ -380,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7B5AA342A2CCEBD00E07398 /* DayRoutineCell.xib in Resources */,
+				F71D6DF42A37589900EC22D7 /* skincare.json in Resources */,
 				F70CC4F62A0C3DF70081528D /* SelectStepCell.xib in Resources */,
 				F7328AB92A17DB5500C306EE /* StepProductCell.xib in Resources */,
 				F77BB65C29E0347F00427FAC /* LaunchScreen.storyboard in Resources */,
@@ -656,6 +664,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F71D6DEE2A374C6A00EC22D7 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		F754C2B029FED4E600D6ABA7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -683,6 +699,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F71D6DEF2A374C6A00EC22D7 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F71D6DEE2A374C6A00EC22D7 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		F754C2B129FED4E600D6ABA7 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F754C2B029FED4E600D6ABA7 /* XCRemoteSwiftPackageReference "Kingfisher" */;

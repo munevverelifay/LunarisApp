@@ -23,7 +23,8 @@ class AddCommentViewController: UIViewController {
         super.viewDidLoad()
         
         configureButton(btn: saveCommentButton)
-        
+        title = "Add Comment"
+        configureNavigationTitle() //ürünün adını gir
         tapGesture()
     }
     
@@ -71,6 +72,16 @@ class AddCommentViewController: UIViewController {
                     if result == "true" {
                           let alertController = UIAlertController(title: "Success", message: "Your comment has been saved.", preferredStyle: .alert)
                           let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+                              GlobalDataManager.sharedGlobalManager.productListId = []
+                              GlobalDataManager.sharedGlobalManager.productListName = []
+                              GlobalDataManager.sharedGlobalManager.productListCategories = []
+                              GlobalDataManager.sharedGlobalManager.productListBrand = []
+                              GlobalDataManager.sharedGlobalManager.productListIngredients = []
+                              GlobalDataManager.sharedGlobalManager.productListImage = []
+                              GlobalDataManager.sharedGlobalManager.productListTotalRating = []
+                              GlobalDataManager.sharedGlobalManager.productListReviewNumbers = []
+
+                              self.configureProductData()
                               // DailyRoutineViewController sayfasına geri dön
                               self.navigationController?.popViewController(animated: true)
                           }
@@ -84,7 +95,40 @@ class AddCommentViewController: UIViewController {
             }
         }
     }
-}
+    
+    func configureProductData () {
+        NetworkService.sharedNetwork.getProductList { response in
+            switch response{
+            case .success(let value):
+                print(value[0].id)
+                value.forEach { item in
+                    let productId = String((Int(item.id) ?? 0) - 1)
+                    GlobalDataManager.sharedGlobalManager.productListId?.append(productId)
+                    GlobalDataManager.sharedGlobalManager.productListBrand?.append(item.productBrand)
+                    GlobalDataManager.sharedGlobalManager.productListName?.append(item.productName)
+                    
+                    
+                    if let productListBrand = GlobalDataManager.sharedGlobalManager.productListBrand,
+                       let productListName = GlobalDataManager.sharedGlobalManager.productListName {
+                        for index in 0..<productListName.count {
+                            if let productBrand = productListBrand[safe: index] {
+                                let newProductName = productListName[index].replacingOccurrences(of: productBrand, with: "").trimmingCharacters(in: .whitespaces)
+                                GlobalDataManager.sharedGlobalManager.productListName?[index] = newProductName
+                            }
+                        }
+                    }
+                    
+                    GlobalDataManager.sharedGlobalManager.productListCategories?.append(item.productCategories)
+                    GlobalDataManager.sharedGlobalManager.productListIngredients?.append(item.productIndrigients)
+                    GlobalDataManager.sharedGlobalManager.productListImage?.append(item.productImage)
+                    GlobalDataManager.sharedGlobalManager.productListTotalRating?.append(item.productTotalRating)
+                    GlobalDataManager.sharedGlobalManager.productListReviewNumbers?.append(item.productReviewNumbers)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }}
 
 extension AddCommentViewController {
     @objc func didTapStarImage(_ sender: UITapGestureRecognizer) {

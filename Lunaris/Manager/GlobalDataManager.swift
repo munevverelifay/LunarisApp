@@ -11,6 +11,7 @@ class GlobalDataManager {
     var productsData: [ProductDetailResponse] = []
     var userId: String?
     
+    var userName: String?
     var userSurname: String?
     var userDateOfBirth: String?
     var profileImage: String?
@@ -39,13 +40,18 @@ class GlobalDataManager {
     
     var commentId: [String]? = []
     var commentUserId: [String]? = []
+    var commentUserName: [String]? = []
+    var commentUserSurname: [String]? = []
     var commentContent: [String]? = []
     var commentRatings: [String]? = []
     var commentTitle: [String]? = []
     var commentCreatedAt: [String]? = []
     
     var receiverCategories: [[Int]] = []
+    var receiverBrands: [[Int]] = []
     var selectedCategory: String = ""
+    var selectedBrand: String = ""
+
     
     var receiverId: [String] = []
     var receiverName: [String] = []
@@ -55,6 +61,15 @@ class GlobalDataManager {
     var receiverImage: [String] = []
     var receiverTotalRating: [String] = []
     var receiverReviewNumbers: [String] = []
+    
+    var brandId: [String] = []
+    var brandName: [String] = []
+    var brandProductCategory: [String] = []
+    var brandBrand: [String] = []
+    var brandIngredients: [String] = []
+    var brandImage: [String] = []
+    var brandTotalRating: [String] = []
+    var brandReviewNumbers: [String] = []
  
     var searchId: [String] = []
     var searchProductCategory: [String] = []
@@ -80,5 +95,94 @@ class GlobalDataManager {
     var fri2: [String] = []
     var sat2: [String] = []
     var sun2: [String] = []
+    
+    func resetData() {
+        // productsData
+        productsData = []
+
+        // userId
+        userId = nil
+
+        // Diğer değişkenlerin sıfırlanması...
+
+        // Örnek olarak:
+        userName = nil
+        userSurname = nil
+        userDateOfBirth = nil
+        profileImage = nil
+        userImage = nil
+        productID = nil
+        selectedProductId = ""
+        sendedProductId = ""
+
+        productListId = []
+        productListName = []
+        productListCategories = []
+        productListBrand = []
+        productListIngredients = []
+        productListImage = []
+        productListTotalRating = []
+        productListReviewNumbers = []
+        userProductRating = nil
+        addStepNumber = 1
+        stepNumber = [0]
+        currentStep = nil
+
+        favoriteProductsList = []
+
+        commentId = []
+        commentUserId = []
+        commentContent = []
+        commentRatings = []
+        commentTitle = []
+        commentCreatedAt = []
+
+        receiverCategories = []
+        receiverBrands = []
+        selectedCategory = ""
+        selectedBrand = ""
+
+        receiverId = []
+        receiverName = []
+        receiverProductCategory = []
+        receiverBrand = []
+        receiverIngredients = []
+        receiverImage = []
+        receiverTotalRating = []
+        receiverReviewNumbers = []
+
+        brandId = []
+        brandName = []
+        brandProductCategory = []
+        brandBrand = []
+        brandIngredients = []
+        brandImage = []
+        brandTotalRating = []
+        brandReviewNumbers = []
+
+        searchId = []
+        searchProductCategory = []
+        searchBrand = []
+        searchIngredients = []
+        searchImage = []
+        searchTotalRating = []
+        searchReviewNumbers = []
+
+        mon1 = []
+        tue1 = []
+        wed1 = []
+        thu1 = []
+        fri1 = []
+        sat1 = []
+        sun1 = []
+
+        mon2 = []
+        tue2 = []
+        wed2 = []
+        thu2 = []
+        fri2 = []
+        sat2 = []
+        sun2 = []
+    }
 
 }

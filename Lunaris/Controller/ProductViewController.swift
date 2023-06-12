@@ -54,7 +54,7 @@ class ProductViewController : UIViewController {
            let imageUrl = URL(string: imageUrlString) {
             productImage.kf.setImage(with: imageUrl)
         } else {
-            let defaultImageUrlString = "cerave"
+            let defaultImageUrlString = "skincare"
             let defaultImageUrl = URL(string: defaultImageUrlString)
             productImage.kf.setImage(with: defaultImageUrl)
         }
@@ -87,13 +87,18 @@ class ProductViewController : UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        productTotalCommentLabel.text = GlobalDataManager.sharedGlobalManager.productListReviewNumbers?[Int(selectedProductId) ?? 0]
+        super.viewWillAppear(animated)
+        if let reviewNumberString = GlobalDataManager.sharedGlobalManager.productListReviewNumbers?[Int(selectedProductId) ?? 0] {
+            productTotalCommentLabel.text = String(reviewNumberString)
         
+        }
+
         productListTotalRating = GlobalDataManager.sharedGlobalManager.productListTotalRating?[Int(selectedProductId) ?? 0] ?? "0.00"
         
         productRatingStar()
+
     }
+    
     
     func configureLikeButton() {
         if GlobalDataManager.sharedGlobalManager.favoriteProductsList.contains(selectedProductId) {
@@ -322,26 +327,162 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.sizeToFit()
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReviewsCell.self)) as? ReviewsCell else { return UITableViewCell() }
-            cell.backgroundColor = .clear
-            return cell
+            guard let reviewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReviewsCell.self)) as? ReviewsCell else { return UITableViewCell() }
+            reviewCell.backgroundColor = .clear
+            
+            if Double(productListTotalRating) ?? 0.0 == 0.0 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "0.0"
+            }
+            else if Double(productListTotalRating) ?? 0.1 <= 0.75 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.leadinghalf.filled")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "0.5"
+            }else if Double(productListTotalRating) ?? 0 <= 1.25 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "1.0"
+            } else if Double(productListTotalRating) ?? 0 <= 1.75 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.leadinghalf.filled")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "1.5"
+            } else if Double(productListTotalRating) ?? 0 <= 2.25 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "2.0"
+            } else if Double(productListTotalRating) ?? 0 <= 2.75 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star.leadinghalf.filled")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "2.5"
+            } else if Double(productListTotalRating) ?? 0 <= 3.25 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "3.0"
+            } else if Double(productListTotalRating) ?? 0 <= 3.75 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star.leadinghalf.filled")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "3.5"
+            } else if Double(productListTotalRating) ?? 0 <= 4.25 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "4.0"
+            } else if Double(productListTotalRating) ?? 0 <= 4.75 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star.leadinghalf.filled")
+                reviewCell.ratingLabel.text = "4.5"
+            } else if Double(productListTotalRating) ?? 0 <= 5 {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star.fill")
+                reviewCell.ratingLabel.text = "5.0"
+            } else {
+                reviewCell.firstStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.firstStarImage.image = UIImage(systemName: "star")
+                reviewCell.secondStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.secondStarImage.image = UIImage(systemName: "star")
+                reviewCell.thirdStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.thirdStarImage.image = UIImage(systemName: "star")
+                reviewCell.fourthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fourthStarImage.image = UIImage(systemName: "star")
+                reviewCell.fifthStarImage.tintColor = UIColor(red: 254/255, green: 110/255, blue: 128/255, alpha: 1.0)
+                reviewCell.fifthStarImage.image = UIImage(systemName: "star")
+                reviewCell.ratingLabel.text = "0.0"
+            }
+        
+            return reviewCell
         }
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        if tableViewData[indexPath.section].opened == true {
-        //            tableViewData[indexPath.section].opened = false
-        //            let sections = IndexSet.init(integer: indexPath.section)
-        //            tableView.reloadSections(sections, with: .none)
-        //
-        //
-        //        } else {
-        //            tableViewData[indexPath.section].opened = true
-        //            let sections = IndexSet.init(integer: indexPath.section)
-        //            tableView.reloadSections(sections, with: .none)
-        //
-        //        }
         
         if indexPath.section == 1 && indexPath.row == 1 {
             // İlgili hücre seçildiğinde başka bir ekrana geçmek için kodları buraya yazın.
@@ -370,4 +511,5 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+
 }

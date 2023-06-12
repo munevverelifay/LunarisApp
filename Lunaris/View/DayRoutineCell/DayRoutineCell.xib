@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ok-Ma-8m3">
                         <rect key="frame" x="10" y="7" width="374" height="56"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cerave" translatesAutoresizingMaskIntoConstraints="NO" id="HV6-wi-691">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skincare" translatesAutoresizingMaskIntoConstraints="NO" id="HV6-wi-691">
                                 <rect key="frame" x="5" y="4" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="b05-RH-jHi"/>
@@ -73,6 +73,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cerave" width="500" height="500"/>
+        <image name="skincare" width="125" height="125"/>
     </resources>
 </document>

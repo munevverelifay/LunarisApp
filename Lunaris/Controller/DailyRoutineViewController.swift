@@ -152,7 +152,7 @@ extension DailyRoutineViewController: UITableViewDataSource, UITableViewDelegate
             dayRoutineCell.productNameLabel.text =  "Product Name"
             dayRoutineCell.productCategoryLabel.text = "Product Category"
             
-            let defaultImageUrlString = "cerave"
+            let defaultImageUrlString = "skincare"
             let defaultImageUrl = URL(string: defaultImageUrlString)
             dayRoutineCell.productImageView.kf.setImage(with: defaultImageUrl)
             

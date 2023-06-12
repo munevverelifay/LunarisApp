@@ -63,7 +63,7 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
                let imageUrl = URL(string: imageUrlString) {
                 favoriteCell.favoriteProductImageView.kf.setImage(with: imageUrl)
             } else {
-                let defaultImageUrlString = "cerave"
+                let defaultImageUrlString = "default"
                 let defaultImageUrl = URL(string: defaultImageUrlString)
                 favoriteCell.favoriteProductImageView.kf.setImage(with: defaultImageUrl)
             }

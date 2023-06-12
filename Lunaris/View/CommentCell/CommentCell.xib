@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -150,7 +151,12 @@
                 <outlet property="commentLabel" destination="GCR-zq-7mL" id="sDB-qr-EDV"/>
                 <outlet property="commentTitleLabel" destination="Ucf-pt-Xst" id="PJo-Dq-cSo"/>
                 <outlet property="commentView" destination="Mjr-jJ-BGV" id="Ahi-pM-1Or"/>
+                <outlet property="fifthStarImage" destination="9Yh-wB-Fkl" id="qVU-xb-Obv"/>
+                <outlet property="firstStarImage" destination="9Ib-m7-YeG" id="M79-w0-acg"/>
+                <outlet property="fourthStarImage" destination="yel-ZI-1yu" id="PSJ-zM-6bV"/>
                 <outlet property="ratingStackView" destination="h25-QX-qKX" id="IOw-eZ-XZO"/>
+                <outlet property="secondStarImage" destination="PAP-de-JyZ" id="8is-cQ-Aed"/>
+                <outlet property="thirdStarImage" destination="9Dn-5d-9Sw" id="8KC-vm-1T0"/>
                 <outlet property="userNameLabel" destination="XL2-JY-HTG" id="yBE-HY-SPB"/>
                 <outlet property="userProfileImage" destination="Iux-o9-sht" id="qtE-b3-U2n"/>
             </connections>
