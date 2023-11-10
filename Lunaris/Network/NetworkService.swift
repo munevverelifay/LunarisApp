@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-private let productDetailURL = "https://www.kouiot.com/elif/product-detail.php"
+private let productDetailURL = ""
 class NetworkService {
     static let sharedNetwork = NetworkService()
     
@@ -18,7 +18,7 @@ class NetworkService {
                 "mail": email,
                 "pass": pass
             ]
-            let url = "https://kouiot.com/elif/signin.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
             AF.request(url, method: .post,
                        parameters: parameters,
@@ -37,7 +37,7 @@ class NetworkService {
             ]
             print(userId)
             
-            let url = "https://kouiot.com/elif/user-detail.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
             AF.request(url, method: .post,
                        parameters: commentParameters,
@@ -60,7 +60,7 @@ class NetworkService {
     }
     
     func getProductList(completion: @escaping(Result<[ProductDetailResponse], AFError>) -> Void) {
-        let url = "https://kouiot.com/elif/product-list.php"
+        let url = ""
         let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
         AF.request(url, method: .post,
                    encoding: JSONEncoding.default,
@@ -86,7 +86,7 @@ class NetworkService {
             ]
             GlobalDataManager.sharedGlobalManager.productID = productId
             
-            let url = "https://kouiot.com/elif/review-list.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
             AF.request(url, method: .post,
                        parameters: commentParameters,
@@ -116,7 +116,7 @@ class NetworkService {
                 "comment-ratings": cmmntRatings,
                 "comment-title": cmmntTitle
             ]
-            let url = "https://kouiot.com/elif/product-review.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
             AF.request(url, method: .post,
                        parameters: parameters,
@@ -134,7 +134,7 @@ class NetworkService {
                 "user-id": usrId,
                 "routine": routine
             ]
-            let url = "https://kouiot.com/elif/routine.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
             AF.request(url, method: .post,
                        parameters: parameters,
@@ -151,7 +151,7 @@ class NetworkService {
             let parameters: [String: Any] = [
                 "user-id": userId
             ]
-            let url = "https://kouiot.com/elif/routine-list.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json"]
             
             AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
@@ -178,7 +178,7 @@ class NetworkService {
                 "user-id": userId,
                 "product-id": productId
             ]
-            let url = "https://kouiot.com/elif/fav.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
             AF.request(url, method: .post,
                        parameters: parameters,
@@ -195,7 +195,7 @@ class NetworkService {
             let parameters: [String: Any] = [
                 "user-id": userId
             ]
-            let url = "https://kouiot.com/elif/fav-list.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json"]
             
             AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
@@ -221,7 +221,7 @@ class NetworkService {
                 "user-id": userId,
                 "product-id": productId
             ]
-            let url = "https://kouiot.com/elif/fav-remove.php"
+            let url = ""
             let headers: HTTPHeaders = ["Content-Type": "application/json-rpc"]
             AF.request(url, method: .post,
                        parameters: parameters,
